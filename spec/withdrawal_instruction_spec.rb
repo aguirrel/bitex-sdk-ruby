@@ -161,7 +161,7 @@ describe Bitex::WithdrawalInstruction do
         it_behaves_like 'Not Found'
       end
 
-      context 'with existent id', vcr: { cassette_name: 'withdrawal_instructions/destroy/authorized_yeah' } do
+      context 'with existent id', vcr: { cassette_name: 'withdrawal_instructions/destroy/authorized' } do
 
         it { is_expected.to be_truthy }
       end
