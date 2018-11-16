@@ -82,6 +82,10 @@ module Bitex
       @identification_seeds ||= Forwarder.new(Compliance::IdentificationSeed, api_key)
     end
 
+    def issues
+      @issues ||= Forwarder.new(Compliance::Issue, api_key)
+    end
+
     def natural_docket_seeds
       @natural_docket_seeds ||= Forwarder.new(Compliance::NaturalDocketSeed, api_key)
     end
