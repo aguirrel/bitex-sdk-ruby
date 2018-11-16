@@ -55,5 +55,11 @@ module Bitex
     def withdrawal_instructions
       @withdrawal_instructions ||= Forwarder.new(WithdrawalInstruction, api_key)
     end
+
+    # Compliance
+
+    def allowance_seeds
+      @allowance_seeds = Forwarder.new(Compliance::AllowanceSeed, api_key)
+    end
   end
 end
