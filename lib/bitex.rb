@@ -29,6 +29,9 @@ module Bitex
   class InvalidArgument < StandardError
   end
 
+  class InvalidResourceArgument < InvalidArgument
+  end
+
   class MalformedOtp < StandardError
   end
 

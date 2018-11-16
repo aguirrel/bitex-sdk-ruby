@@ -36,6 +36,10 @@ module Bitex
       @buying_bots = Forwarder.new(BuyingBot, api_key)
     end
 
+    def markets
+      @markets ||= Forwarder.new(Market)
+    end
+
     def selling_bots
       @selling_bots ||= Forwarder.new(SellingBot, api_key)
     end
