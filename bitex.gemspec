@@ -5,7 +5,7 @@ require 'bitex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'bitex'
-  spec.version       = Bitex::VERSION
+  spec.version       = '0.1.0'
   spec.authors       = ['Nubis', 'Eromirou', 'Jas']
   spec.email         = ['nb@bitex.la', 'tr@bitex.la', 'juanangelszymczak@gmail.com']
   spec.description   = %q{API-V2 client library for bitex.la}

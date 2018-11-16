@@ -7,6 +7,7 @@ require 'bigdecimal/util'
 require 'curl'
 require 'json'
 require 'json_api_client'
+require 'string'
 
 require 'bitex/client'
 require 'bitex/forwarder'
@@ -17,4 +18,6 @@ Dir[File.expand_path('bitex/*.rb', __dir__)].each { |f| require f }
 
 # Bitex library scope
 module Bitex
+  class MalformedOtp < StandardError
+  end
 end
