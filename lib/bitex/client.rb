@@ -89,5 +89,9 @@ module Bitex
     def note_seeds
       @note_seeds ||= Forwarder.new(Compliance::NoteSeed, api_key)
     end
+
+    def phone_seeds
+      @phone_seeds ||= Forwarder.new(Compliance::PhoneSeed, api_key)
+    end
   end
 end
