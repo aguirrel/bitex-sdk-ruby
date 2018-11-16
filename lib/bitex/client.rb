@@ -61,5 +61,9 @@ module Bitex
     def allowance_seeds
       @allowance_seeds = Forwarder.new(Compliance::AllowanceSeed, api_key)
     end
+
+    def argentina_invoicing_detail_seeds
+      @argentina_invoicing_detail_seeds ||= Forwarder.new(Compliance::ArgentinaInvoicingDetailSeed, api_key)
+    end
   end
 end
