@@ -85,5 +85,9 @@ module Bitex
     def natural_docket_seeds
       @natural_docket_seeds ||= Forwarder.new(Compliance::NaturalDocketSeed, api_key)
     end
+
+    def note_seeds
+      @note_seeds ||= Forwarder.new(Compliance::NoteSeed, api_key)
+    end
   end
 end
