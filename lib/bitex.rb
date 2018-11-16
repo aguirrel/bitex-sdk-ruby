@@ -30,6 +30,9 @@ module Bitex
   class InvalidArgument < StandardError
   end
 
+  class CurrencyError < InvalidArgument
+  end
+
   class InvalidResourceArgument < InvalidArgument
   end
 

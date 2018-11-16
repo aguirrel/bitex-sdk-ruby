@@ -40,6 +40,10 @@ module Bitex
       @cash_withdrawals ||= Forwarder.new(CashWithdrawal, api_key)
     end
 
+    def coin_withdrawals
+      @coin_withdrawals ||= Forwarder.new(CoinWithdrawal, api_key)
+    end
+
     def markets
       @markets ||= Forwarder.new(Market)
     end
