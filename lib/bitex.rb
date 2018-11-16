@@ -17,6 +17,9 @@ require 'bitex/base'
 require 'bitex/order_group'
 Dir[File.expand_path('bitex/order_group/*.rb', __dir__)].each { |f| require f }
 
+require 'bitex/trading_bot'
+Dir[File.expand_path('bitex/trading_bot/*.rb', __dir__)].each { |f| require f }
+
 Dir[File.expand_path('bitex/*.rb', __dir__)].each { |f| require f }
 
 # Bitex library scope
