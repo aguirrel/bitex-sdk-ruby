@@ -43,5 +43,9 @@ module Bitex
     def selling_bots
       @selling_bots ||= Forwarder.new(SellingBot, api_key)
     end
+
+    def withdrawal_instructions
+      @withdrawal_instructions ||= Forwarder.new(WithdrawalInstruction, api_key)
+    end
   end
 end

@@ -3,6 +3,7 @@ require 'active_support/core_ext'
 
 require 'bigdecimal'
 require 'bigdecimal/util'
+require 'forwardable'
 
 require 'curl'
 require 'json'
