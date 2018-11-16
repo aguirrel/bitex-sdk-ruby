@@ -64,6 +64,10 @@ module Bitex
       @payments ||= Forwarder.new(Payment, api_key)
     end
 
+    def pos
+      @pos ||= Forwarder.new(Pos, api_key)
+    end
+
     def selling_bots
       @selling_bots ||= Forwarder.new(SellingBot, api_key)
     end
