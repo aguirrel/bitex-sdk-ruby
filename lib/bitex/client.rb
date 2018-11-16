@@ -48,6 +48,10 @@ module Bitex
       @markets ||= Forwarder.new(Market)
     end
 
+    def movements
+      @movements ||= Forwarder.new(Movement, api_key)
+    end
+
     def selling_bots
       @selling_bots ||= Forwarder.new(SellingBot, api_key)
     end
