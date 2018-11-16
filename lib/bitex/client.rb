@@ -52,6 +52,10 @@ module Bitex
       @movements ||= Forwarder.new(Movement, api_key)
     end
 
+    def orderbooks
+      @orderbooks ||= Forwarder.new(Orderbook, api_key)
+    end
+
     def orders
       @orders ||= Forwarder.new(Order, api_key)
     end
