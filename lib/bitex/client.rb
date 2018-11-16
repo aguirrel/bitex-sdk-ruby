@@ -36,6 +36,10 @@ module Bitex
       @buying_bots = Forwarder.new(BuyingBot, api_key)
     end
 
+    def cash_withdrawals
+      @cash_withdrawals ||= Forwarder.new(CashWithdrawal, api_key)
+    end
+
     def markets
       @markets ||= Forwarder.new(Market)
     end
