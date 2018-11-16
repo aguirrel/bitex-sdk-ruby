@@ -77,5 +77,9 @@ module Bitex
     def email_seeds
       @email_seeds ||= Forwarder.new(Compliance::EmailSeed, api_key)
     end
+
+    def identification_seeds
+      @identification_seeds ||= Forwarder.new(Compliance::IdentificationSeed, api_key)
+    end
   end
 end
