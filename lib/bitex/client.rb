@@ -69,5 +69,9 @@ module Bitex
     def chile_invoicing_detail_seeds
       @chile_invoicing_detail_seeds ||= Forwarder.new(Compliance::ChileInvoicingDetailSeed, api_key)
     end
+
+    def domicile_seeds
+      @domicile_seeds ||= Forwarder.new(Compliance::DomicileSeed, api_key)
+    end
   end
 end
