@@ -19,5 +19,9 @@ module Bitex
     def api_keys
       @api_keys ||= Forwarder.new(ApiKey, api_key)
     end
+
+    def asset_wallets
+      @asset_wallets ||= Forwarder.new(AssetWallet, api_key)
+    end
   end
 end
