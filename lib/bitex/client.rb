@@ -12,114 +12,29 @@ module Bitex
       Base.site = "https://#{'sandbox.' if sandbox}bitex.la/api/"
     end
 
-    def accounts
-      @accounts ||= Forwarder.new(Account, api_key)
+    # Accessors for public resources that need a public connection.
+    [].each do |resource|
+      accessor = resource.name.demodulize.underscore.downcase.pluralize
+
+      define_method(accessor) do
+        configured_connection = Class.new(Connection::Public)
+        configured_resource = ResourceBuilder.build(resource, configured_connection)
+
+        instance_variable_get("@#{accessor}") || instance_variable_set("@#{accessor}", configured_resource)
+      end
     end
 
-    def api_keys
-      @api_keys ||= Forwarder.new(ApiKey, api_key)
-    end
+    # Accessors for private resources that need a connection with api key.
+    [].each do |resource|
+       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
-    def asks
-      @asks ||= Forwarder.new(Ask, api_key)
-    end
+       define_method(accessor) do
+         configured_connection = Class.new(Connection::Private)
+         configured_connection.api_key = api_key
+         configured_resource = ResourceBuilder.build(resource, configured_connection)
 
-    def asset_wallets
-      @asset_wallets ||= Forwarder.new(AssetWallet, api_key)
-    end
-
-    def bids
-      @bids ||= Forwarder.new(Bid, api_key)
-    end
-
-    def buying_bots
-      @buying_bots = Forwarder.new(BuyingBot, api_key)
-    end
-
-    def cash_withdrawals
-      @cash_withdrawals ||= Forwarder.new(CashWithdrawal, api_key)
-    end
-
-    def coin_withdrawals
-      @coin_withdrawals ||= Forwarder.new(CoinWithdrawal, api_key)
-    end
-
-    def markets
-      @markets ||= Forwarder.new(Market)
-    end
-
-    def movements
-      @movements ||= Forwarder.new(Movement, api_key)
-    end
-
-    def orderbooks
-      @orderbooks ||= Forwarder.new(Orderbook, api_key)
-    end
-
-    def orders
-      @orders ||= Forwarder.new(Order, api_key)
-    end
-
-    def payments
-      @payments ||= Forwarder.new(Payment, api_key)
-    end
-
-    def pos
-      @pos ||= Forwarder.new(Pos, api_key)
-    end
-
-    def selling_bots
-      @selling_bots ||= Forwarder.new(SellingBot, api_key)
-    end
-
-    def tickers
-      @tickers ||= Forwarder.new(Ticker, api_key)
-    end
-
-    def withdrawal_instructions
-      @withdrawal_instructions ||= Forwarder.new(WithdrawalInstruction, api_key)
-    end
-
-    # Compliance
-
-    def allowance_seeds
-      @allowance_seeds = Forwarder.new(Compliance::AllowanceSeed, api_key)
-    end
-
-    def argentina_invoicing_detail_seeds
-      @argentina_invoicing_detail_seeds ||= Forwarder.new(Compliance::ArgentinaInvoicingDetailSeed, api_key)
-    end
-
-    def chile_invoicing_detail_seeds
-      @chile_invoicing_detail_seeds ||= Forwarder.new(Compliance::ChileInvoicingDetailSeed, api_key)
-    end
-
-    def domicile_seeds
-      @domicile_seeds ||= Forwarder.new(Compliance::DomicileSeed, api_key)
-    end
-
-    def email_seeds
-      @email_seeds ||= Forwarder.new(Compliance::EmailSeed, api_key)
-    end
-
-    def identification_seeds
-      @identification_seeds ||= Forwarder.new(Compliance::IdentificationSeed, api_key)
-    end
-
-    def issues
-      @issues ||= Forwarder.new(Compliance::Issue, api_key)
-    end
-
-    def natural_docket_seeds
-      @natural_docket_seeds ||= Forwarder.new(Compliance::NaturalDocketSeed, api_key)
-    end
-
-    def note_seeds
-      @note_seeds ||= Forwarder.new(Compliance::NoteSeed, api_key)
-    end
-
-    def phone_seeds
-      @phone_seeds ||= Forwarder.new(Compliance::PhoneSeed, api_key)
-    end
+         instance_variable_get("@#{accessor}") || instance_variable_set("@#{accessor}", configured_resource)
+       end
+     end
   end
 end
