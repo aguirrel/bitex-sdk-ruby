@@ -13,14 +13,19 @@ describe Bitex::Resources::Orderbook do
     context 'taking a sample' do
       subject { super().sample }
 
+      shared_examples_for 'Pairs' do |pair|
+        subject { super().send(pair).keys }
+
+        it { is_expected.to contain_exactly(*%w[code decimals]) }
+      end
+
       it { is_expected.to be_a(described_class) }
 
       its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id code base quote]) }
       its(:type) { is_expected.to eq(resource_name) }
- #    its(:id) { is_expected.to eq(orderbooks[subject.code]) }
- #    its(:code) { is_expected.to eq(orderbooks.key(subject.id)) }
 
- #    it { expect(orderbooks).to have_key(subject.code) }
+      it_behaves_like 'Pairs', :base
+      it_behaves_like 'Pairs', :quote
     end
   end
 end
