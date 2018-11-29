@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.setup
 
 require 'bitex'
+
 require 'byebug'
 require 'factory_bot'
 require 'rspec/its'

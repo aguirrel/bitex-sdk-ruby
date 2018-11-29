@@ -1,5 +1,5 @@
 module Bitex
-  module Connection
+  module Connections
     class Public < JsonApiClient::Connection
       def run(request_method, path, params: nil, headers: {}, body: nil)
         super(request_method, path, params: params, headers: custom_headers(headers), body: body)
