@@ -4,5 +4,6 @@ module Bitex
     autoload :Private, 'bitex/resources/private'
 
     autoload :Orderbook, 'bitex/resources/public/orderbook'
+    autoload :Ticker, 'bitex/resources/public/ticker'
   end
 end

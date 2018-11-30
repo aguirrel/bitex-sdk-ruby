@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Orderbook do
-  let(:client) { Bitex::Client.new(sandbox: true) }
-  let(:orderbook_code) { :btc_usd }
-  let(:resource_name) { described_class.name.demodulize.underscore.pluralize }
-
   describe '.all', vcr: { cassette_name: 'orderbooks/all' } do
     subject { client.orderbooks.all }
 
