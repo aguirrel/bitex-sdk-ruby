@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Version:
-      - 2.0
+      - '2.0'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -31,18 +31,16 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"2f823e41976e3c2d0827727959e10482"
+      - W/"40b35a226bced9cc378e67e7db03d964"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b52cdd18-852d-4f05-a94e-7817d8734fe2
+      - a696fa4f-adc8-4f23-bb7a-e073645e7804
       X-Runtime:
-      - '0.348289'
-      Transfer-Encoding:
-      - chunked
+      - '0.977388'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"btc_usd","type":"markets","relationships":{"candles":{"data":[{"id":"1539711678","type":"candles"}]},"transactions":{"data":[]},"bids":{"data":[]},"asks":{"data":[]}}},"included":[{"id":"1539711678","type":"candles","attributes":{"timestamp":1539711678,"low":0.0,"open":0.0,"close":0.0,"high":0.0,"volume":0.0,"price_before_last":0.0,"vwap":0.0}}]}'
+      string: '{"data":{"id":"btc_usd","type":"markets","relationships":{"candles":{"data":[{"id":"1543586400_","type":"candles"},{"id":"1543590000_","type":"candles"}]},"transactions":{"data":[]},"bids":{"data":[]},"asks":{"data":[]}}},"included":[{"id":"1543586400_","type":"candles","attributes":{"timestamp":1543586400,"low":50.2,"open":50.2,"close":50.2,"high":50.2,"volume":2.99999999,"price_before_last":50.2,"vwap":50.2},"relationships":{"orderbook":{"data":null}}},{"id":"1543590000_","type":"candles","attributes":{"timestamp":1543590000,"low":100.0,"open":100.0,"close":100.0,"high":100.0,"volume":1.5,"price_before_last":50.2,"vwap":100.0},"relationships":{"orderbook":{"data":null}}}]}'
     http_version: 
-  recorded_at: Tue, 16 Oct 2018 17:41:18 GMT
+  recorded_at: Fri, 30 Nov 2018 15:11:51 GMT
 recorded_with: VCR 4.0.0
