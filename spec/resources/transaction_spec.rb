@@ -28,10 +28,10 @@ describe Bitex::Resources::Transaction do
       end
     end
 
-    context 'with params' do
+    context 'with parameters' do
       let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
 
-      context 'with specific from days', vcr: { cassette_name: 'transactions/all/with_from' } do
+      context 'with specific from hours', vcr: { cassette_name: 'transactions/all/with_from' } do
         let(:from) { 10 }
 
         subject { client.transactions.all(from: from) }
@@ -72,7 +72,7 @@ describe Bitex::Resources::Transaction do
         end
       end
 
-      context 'with specific orderbok and from days', vcr: { cassette_name: 'transactions/all/with_orderbook_and_from' } do
+      context 'with specific orderbok and from hours', vcr: { cassette_name: 'transactions/all/with_orderbook_and_from' } do
         let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
         let(:from) { 2 }
 

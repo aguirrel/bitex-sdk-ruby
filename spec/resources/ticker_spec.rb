@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Ticker do
-
   describe '.all', vcr: { cassette_name: 'tickers/all' } do
     subject { client.tickers.all }
 

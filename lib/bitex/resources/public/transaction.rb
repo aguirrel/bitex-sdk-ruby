@@ -30,6 +30,9 @@ module Bitex
       # @return Transaction.
       #
       # self.find(id)
+      def self.find(id)
+        super(id)[0]
+      end
     end
   end
 end

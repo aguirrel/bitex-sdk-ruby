@@ -15,10 +15,6 @@ module Bitex
         Class.new(Connections::Public)
       end
 
-      def self.find(*args)
-        super(*args)[0]
-      end
-
       class << self
         def resource_name
           (name || superclass.name).demodulize.underscore
