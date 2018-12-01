@@ -9,5 +9,7 @@ module Bitex
     autoload :OrderGroup, 'bitex/resources/public/order_group'
     autoload :Candle, 'bitex/resources/public/candle'
     autoload :Transaction, 'bitex/resources/public/transaction'
+
+    autoload :Order, 'bitex/resources/private/order'
   end
 end

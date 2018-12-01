@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev.bitex.la:3000/api/orders
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"3096b574544e0165e57e3b04a9acc9f3"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=M2FVblFsT1FLS2JQemIrSG9vQ3QvRlBNVXF5Y1FxcFUvY1k5cjhPQUxQVUE3eGpuQ0JaVndSRE93bzRWNnFxQXd1UlVDcjRSQmxscDdxbmZ1N29ZZm5tVHFqZWFRT0R1R0M1TGs3VTBlMm8xRUZySnhsRVJKTnh5V0lhMlM5OENuYzdpSnNoZ0x4R2NsRlk2RlFrY3FCdElFdGhLZHY1RFhhNWhwK1pTUG53PS0tZ0kxRTZEOGJBaXA3ZllHQTU3SGxSUT09--5a1fda8dccb7b1500beb06b8ccaf20de89b2a6ea;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 77d4204e-b134-4fd6-a36b-4f8ac1c8c10c
+      X-Runtime:
+      - '0.859412'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"38","type":"bids","attributes":{"amount":80.0,"remaining_amount":80.0,"price":40.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"39","type":"bids","attributes":{"amount":160.0,"remaining_amount":160.0,"price":80.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"41","type":"bids","attributes":{"amount":640.0,"remaining_amount":251.0,"price":160.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"42","type":"bids","attributes":{"amount":2000.0,"remaining_amount":2000.0,"price":1.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"5","type":"orderbooks"}}}},{"id":"34","type":"asks","attributes":{"amount":2.0,"remaining_amount":2.0,"price":200.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"35","type":"asks","attributes":{"amount":2.0,"remaining_amount":2.0,"price":250.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"36","type":"asks","attributes":{"amount":2.0,"remaining_amount":2.0,"price":300.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"38","type":"asks","attributes":{"amount":4.0,"remaining_amount":1.0,"price":2000.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"5","type":"orderbooks"}}}},{"id":"39","type":"asks","attributes":{"amount":4.0,"remaining_amount":4.0,"price":6000.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"5","type":"orderbooks"}}}}],"included":[{"id":"1","type":"orderbooks","attributes":{"code":"btc_usd","base":{"code":"btc","decimals":8},"quote":{"code":"usd","decimals":2}}},{"id":"5","type":"orderbooks","attributes":{"code":"btc_ars","base":{"code":"btc","decimals":8},"quote":{"code":"ars","decimals":2}}}]}'
+    http_version: 
+  recorded_at: Sat, 01 Dec 2018 02:45:18 GMT
+recorded_with: VCR 4.0.0
