@@ -2,9 +2,6 @@ module Bitex
   module Resources
     # Abstract class for Bids and Asks.
     class Order < Private
-      has_one :orderbook
-      has_one :user
-
       # GET /api/orders
       #
       # @return [ResultSet<Order>]
@@ -23,36 +20,25 @@ module Bitex
       # self.cancel(filter: { orderbook_code: :code })
       # self.cancel
 
-
-      # GET /api/<asks|bids>/:id
-      #
-      # @param [String|Integer] id.
-      #
-      # @return [Order]
-      #
-      # .find(id)
-
-      def self.create(orderbook_id:, amount:, price:)
-        new(amount: amount, price: price).tap do |order|
-          # TODO probar con el objeto orderbook completo - a ver q pasa - :)
-          order.relationships.orderbook = Orderbook.new(id: orderbook_id)
-          order.save
-        end
+      # For subclass findes
+      def self.find(id)
+        super(id)[0]
       end
 
-      # POST /api/[asks/bids]/:id/cancel
+      # POST /api/<asks|bids>
       #
-      # This action represents an intention to cancel an [Ask|Bid].
-      # Despite of this endpoint responding with a 204 status, the Ask may not have been cancelled if it was previously matched.
-      # In order to check the status of the ask, you can query all your active orders with the /api/orders endpoint.
+      # @param [Orderbook] orderbook.
+      # @param [Decimal|String] amount.
+      #   The amount of an ask is the amount of Crypto (base currency) to sell.
+      #   E.g: In the BTC/USD market, the ask amount is the amount of BTC to be sold for USD.
+      # @param [Decimal|String] price.
       #
-      # @param [Integer] id.
-      #
-      # #cancel(id)
-
-      # @return [String] resource type name.
-      def self.resource_type
-        name.demodulize.underscore.pluralize
+      # @return [Ask|Bid]
+      def self.create(orderbook:, amount:, price:)
+        new(amount: amount, price: price).tap do |order|
+          order.relationships.orderbook = orderbook
+          order.save
+        end
       end
     end
   end

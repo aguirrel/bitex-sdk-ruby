@@ -11,5 +11,7 @@ module Bitex
     autoload :Transaction, 'bitex/resources/public/transaction'
 
     autoload :Order, 'bitex/resources/private/order'
+    autoload :Ask, 'bitex/resources/private/order/ask'
+    autoload :Bid, 'bitex/resources/private/order/bid'
   end
 end

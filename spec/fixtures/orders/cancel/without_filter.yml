@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/orders/cancel
+    uri: https://sandbox.bitex.la/api/orders/cancel
     body:
       encoding: UTF-8
       string: "{}"

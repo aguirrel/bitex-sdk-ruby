@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/bids
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"15070d695bb8f71284bb41cd3390d3ed"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=OWt4VVFWVDFPOGdYYVBjcEJ5d0t3NGh4VEVIRHZobjRPTTJkbVdkaUZEOXhUbUZVRHNpMURONEUxSEEwbUh3SUtTVzZ1WVNwaVdWSFpGQU5id0tuU25iWXkvR0oxZ05MUEY0NFk5T1ptd1FCV0FYN09CQys1TTd0UERwL3pVTmtiU0JPRzBPZTZQUGJuZW9GdjhQNTYrMjRueXZJTUNMK1N5Z2FTUTBPaWZzPS0tNHczNXJMSjJzSEJjSkRlMC9POS9TUT09--b91d4204df147cd537087ed66fe359172ef89d4b;
+        path=/; HttpOnly
+      X-Request-Id:
+      - e612487d-c97e-4002-9472-d1fcce2f58bc
+      X-Runtime:
+      - '0.950715'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"38","type":"bids","attributes":{"amount":80.0,"remaining_amount":80.0,"price":40.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"39","type":"bids","attributes":{"amount":160.0,"remaining_amount":160.0,"price":80.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"41","type":"bids","attributes":{"amount":640.0,"remaining_amount":251.0,"price":160.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"42","type":"bids","attributes":{"amount":2000.0,"remaining_amount":2000.0,"price":1.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"5","type":"orderbooks"}}}}]}'
+    http_version: 
+  recorded_at: Sat, 01 Dec 2018 14:10:26 GMT
+recorded_with: VCR 4.0.0

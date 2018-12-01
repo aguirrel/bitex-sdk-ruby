@@ -14,7 +14,7 @@ module Bitex
       Public.site = "https://#{'sandbox.' if sandbox}bitex.la/api/"
     end
 
-    [Orderbook, Ticker, Market, Transaction, Candle, Order].each do |resource|
+    [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do

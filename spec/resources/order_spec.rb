@@ -39,6 +39,7 @@ describe Bitex::Resources::Order do
     context 'with filter cancel specific market', vcr: { cassette_name: 'orders/cancel/with_filter' } do
       let(:filter) { { filter: { orderbook_code: 'btc_usd' } } }
 
+      it { is_expected.to be_an(Array) }
       it { is_expected.to be_empty }
     end
 
