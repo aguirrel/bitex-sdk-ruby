@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/cash_deposits
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"04a67994d9b5d2377db3ead4586b5a6c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=TVpoMGp0Y2hHWlBjMEdjRUt4dUJQdzM0NFBqTmdpeHcxK1lXbEk1dFZSaCtRUkphanlpajdtb25HZjVOLzgwaEthNmFxWjhPRW5iZjFTd0hiWFJ6cDFubThpTmFIRG5BVks1Wmo2U2xSUmk4VW1wajlxWFFwTzY2azc1Q0xvMjI1NUtFc2YwZ3R2bnZBK2RNU3RESGJBNnJBZ0ZXNU9veXBZV29acWxGSGJNPS0tNDFYdXpORFZCbXVudDBpZWNjbVVlUT09--6167a41154c4e115a4ac43df167ea43c216978ba;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 488841bd-08d4-42a0-81d4-e56cb58ce78b
+      X-Runtime:
+      - '0.660674'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"5","type":"cash_deposits","attributes":{"status":"done","requested_amount":null,"requested_currency":"USD","deposit_method":"bank","country":null,"clearing_data":null,"amount":49750.0,"fiat":{"attributes":{"id":3,"code":"usd","name":"us_dollar","decimals":2},"id":3,"code":"usd","name":"us_dollar","decimals":2},"gross_amount":50000.0,"cost":0.0,"fee":250.0,"net_amount":49750.0,"created_at":"2018-11-30T14:52:40.222Z"},"relationships":{"funding_receipt":{"data":null}}},{"id":"6","type":"cash_deposits","attributes":{"status":"done","requested_amount":null,"requested_currency":"USD","deposit_method":"bank","country":null,"clearing_data":null,"amount":985049.005,"fiat":{"attributes":{"id":4,"code":"ars","name":"argentine_peso","decimals":2},"id":4,"code":"ars","name":"argentine_peso","decimals":2},"gross_amount":1000000.0,"cost":10001.0,"fee":4949.995,"net_amount":985049.005,"created_at":"2018-11-30T22:14:53.247Z"},"relationships":{"funding_receipt":{"data":null}}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 05:31:46 GMT
+recorded_with: VCR 4.0.0
