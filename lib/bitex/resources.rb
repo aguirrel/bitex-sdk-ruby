@@ -23,7 +23,9 @@ module Bitex
     autoload :BuyingBot, 'bitex/resources/private/trading_bot/buying_bot'
     autoload :SellingBot, 'bitex/resources/private/trading_bot/selling_bot'
 
-    autoload :CashDeposit, 'bitex/resources/private/cash_deposit'
+    autoload :Deposit, 'bitex/resources/private/deposit'
+    autoload :CashDeposit, 'bitex/resources/private/deposit/cash_deposit'
+    autoload :CoinDeposit, 'bitex/resources/private/deposit/coin_deposit'
     autoload :CashDepositInstruction, 'bitex/resources/private/cash_deposit_instruction'
     autoload :CashWallet, 'bitex/resources/private/cash_wallet'
   end

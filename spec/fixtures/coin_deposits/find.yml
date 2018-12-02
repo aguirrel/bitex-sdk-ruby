@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/coin_deposits/7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"526d276474ddc6434f3b89e6ed7b576b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=U2tKNDk1d1l2dVpKZ0ZlcVdXSkNDeXJwNlAybDZlTG5QS3duZC91NjV5Vi9qVmlZMnFzclVITlZSdTV6OStvUlphOUJpTFRSMWMyWDY5UWRzRzNCMENYeG1FUGI2cW04aGJ2K25TdzJHcjRuV3dkQXo4OVpsKytSZGl4emJxVWpiQzEwbndxMTZ1eU1SY0FwSDZaenB4UUp3cUx6MVlFUjJpZHhVU3pJYk1FPS0tOE9BKzNPdXBGTWl1UFJuYUx4eGdZUT09--dcfee6a8795f51207bdc374577ed9b50bf6a746f;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 8d9e911f-ac91-41b2-b4b2-0d8f6c655280
+      X-Runtime:
+      - '0.516394'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"7","type":"coin_deposits","attributes":{"address":{"public_address":"mrxMVFpSxVTsdjxF2QSj2CrRvM8rMGBrkq","payment_id":null,"auto_sell":false},"coin":"btc","amount":321.0,"created_at":"2018-11-30T14:57:59.018Z"}}}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 13:22:55 GMT
+recorded_with: VCR 4.0.0

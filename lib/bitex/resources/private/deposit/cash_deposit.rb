@@ -1,6 +1,6 @@
 module Bitex
   module Resources
-    class CashDeposit < Private
+    class CashDeposit < Deposit
       # cost: is the amount taken from your deposit by third-party institutions (such as banks and/or the government)
       # fee: is the amount taken by the local digital wallet associated to your Bitex account.
       # amount: is the amount received, which is the same as net_amount.
@@ -11,9 +11,8 @@ module Bitex
       # @param [String] from.
       #
       # @return [ResultSet<CashDeposit>]
-      def self.all(from: nil)
-        from.present? ? where(from: from).all : super()
-      end
+      #
+      # .all(from: 'YYYY-MM-DD')
 
       # GET /api/cash_deposits/:id
       #
@@ -21,9 +20,7 @@ module Bitex
       #
       # @return [CashDeposit]
       #
-      def self.find(id)
-        super(id)[0]
-      end
+      # .find(id)
     end
   end
 end
