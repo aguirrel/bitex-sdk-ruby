@@ -26,7 +26,11 @@ module Bitex
     autoload :Deposit, 'bitex/resources/private/deposit'
     autoload :CashDeposit, 'bitex/resources/private/deposit/cash_deposit'
     autoload :CoinDeposit, 'bitex/resources/private/deposit/coin_deposit'
+
     autoload :CashDepositInstruction, 'bitex/resources/private/cash_deposit_instruction'
-    autoload :CashWallet, 'bitex/resources/private/cash_wallet'
+
+    autoload :Wallet, 'bitex/resources/private/wallet'
+    autoload :CashWallet, 'bitex/resources/private/wallet/cash_wallet'
+    autoload :CoinWallet, 'bitex/resources/private/wallet/coin_wallet'
   end
 end

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/coin_wallets?filter%5Bid%5D=usd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"eb640f13e7c8f173ffac648ed16e910c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=L0pObGdsdUN5Qkp6TjgybUZHT0VFU1JsNko3K2lkbzB2SEw0NEJZSUJpZDh2c3VabUdsZDFNRE16QnY3QUhkRmdacmpROTlxZGpQUm1BYnJQOU5NMktnM3FoRFZZY2R2aS9FWWRKRjh6a2RaUnJLYUhSN1hPZ1lCc0lBQkFsZWh4ZGRoL0dKTm1tbW53M0RJY250SlI2bElCa3phaW8vdmg5Y2V2MExyejdFPS0tWmRjRUU1eFVrUTh5bEtBWG1Tc0ZXUT09--75198d27731a36730ad938c09eb03dc8f92b2127;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 3d8ddc07-68c7-49ca-b5bf-e0f54a8cc699
+      X-Runtime:
+      - '0.251940'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"81","type":"coin_wallets","attributes":{"balance":322.942525,"available":318.942525,"currency":"btc","address":"mrxMVFpSxVTsdjxF2QSj2CrRvM8rMGBrkq","auto_sell_address":"mrCSzD81b2gZmKVyFVofc6NW9ct4By3nqA"}},{"id":"86","type":"coin_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"bch","address":"bchtest:qpdkl7n9d8vszezn9gdl250jugu0mv00yywfk0uxxj","auto_sell_address":"bchtest:qp6j5hnymrr0jhv88udl7zx8qfjh2wzdqywj3q0957"}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 14:13:10 GMT
+recorded_with: VCR 4.0.0

@@ -1,8 +1,8 @@
 module Bitex
   module Resources
-    # This resource has the user's balances in Fiat currencies.
-    class CashWallet < Private
-      # GET /api/cash_wallet
+    # This resource has the user's balances in fiat currencies.
+    class CashWallet < Wallet
+      # GET /api/cash_wallets
       #
       # @param [String] from.
       #
@@ -10,14 +10,13 @@ module Bitex
       #
       # .all
 
-      # GET /api/cash_wallet/:currency_code
+      # GET /api/cash_wallets/:currency_code
       #
       # @param [String] currency code. Fiat currency code.
       #
       # @return [CashWallet]
-      def self.find(currency_code:)
-        super(id: currency_code)[0]
-      end
+      #
+      # .find(currency_code: currency_code)
     end
   end
 end
