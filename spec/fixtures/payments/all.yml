@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/merchants/payments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"7d360a3da0a63f076a419e2d158a8eba"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=eGJuY2IxdjIrZEhZeFlmYUhTL2hGMCttRnpLUFFDNzFnQkNoRjQvTVlzVnVqanFNWWpZK0t4azBQZmhVelRJdUMrWjFNbDhndHlJMW5aZzZwdzlmQVNTZWVtTnhTbnhxQmdWaGZIWXArdDBEUyt3RnUxNERaaWFNYjJzT1pHQklWN3R6TGtmNkovaG8vbUE0aWduYlBydEF6NnlSbERNbE01RElZb3FkOU5JPS0tWWpjZnVJU1lKdVFRMlhmZkxDNG81dz09--ca1cdb631280d0fef5f633b948e1fe301138ff52;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 9e5d3a21-6138-490f-891d-3c3177adeb17
+      X-Runtime:
+      - '0.780729'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"5","type":"payments","attributes":{"amount":100.0,"callback_url":"https://myawesomesite.com/webhook","confirmed_quantity":0.0,"currency":"btc","customer_reference":"Purchase
+        at My Store","expected_quantity":100.0,"keep":10.0,"kept":null,"last_quoted_on":"2018-12-02T22:22:50.867Z","merchant_reference":"Sale
+        id: 2212","overpaid":null,"quote_valid_until":"2018-12-02T23:22:50.709Z","settlement_amount":null,"settlement_currency":null,"status":"pending","unconfirmed_quantity":0.0,"valid_until":"2018-12-02T23:22:50.709Z"},"relationships":{"address":{"data":{"id":"29","type":"bitcoin_addresses"}},"coin_deposits":{"data":[]}}}],"included":[{"id":"29","type":"bitcoin_addresses","attributes":{"auto_sell":false,"public_address":"mipLWqDPAfr2cAcGC8GFbfLLbcY4sWnxA5"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"payment":{"data":{"id":"5","type":"payments"}}}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 22:35:06 GMT
+recorded_with: VCR 4.0.0

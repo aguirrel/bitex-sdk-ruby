@@ -1,14 +1,10 @@
 require 'spec_helper'
 
-describe Bitex::Payment do
-  let(:client) { Bitex::Client.new(api_key: key, sandbox: true) }
-  let(:resource_name) { described_class.name.demodulize.underscore.pluralize }
-  let(:read_level_key) { 'read_level_key' }
-  let(:write_level_key) { 'write_level_key' }
-
+describe Bitex::Resources::Payment do
   shared_examples_for 'Payment' do
     it { is_expected.to be_a(described_class) }
 
+    its(:type) { is_expected.to eq(resource_name) }
     its(:'attributes.keys') do
       is_expected.to contain_exactly(
         *%w[type amount currency keep callback_url customer_reference merchant_reference id confirmed_quantity expected_quantity
@@ -16,7 +12,29 @@ describe Bitex::Payment do
         valid_until]
       )
     end
-    its(:type) { is_expected.to eq(resource_name) }
+
+    context 'about included resources' do
+      subject { super().address }
+
+      it { is_expected.to be_a(Bitex::Resources::BitcoinAddress) }
+      its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user payment]) }
+    end
+  end
+
+  describe '.all' do
+    subject { client.payments.all }
+
+    context 'with any level key', vcr: { cassette_name: 'payments/all' } do
+      let(:key) { read_level_key }
+
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+
+      context 'taking a sample' do
+        subject { super().sample }
+
+        it_behaves_like 'Payment'
+      end
+    end
   end
 
   describe '.create' do
@@ -38,15 +56,7 @@ describe Bitex::Payment do
     let(:keep) { 10 }
     let(:merchant_reference) { 'Sale id: 2212' }
 
-    context 'with unauthorized key', vcr: { cassette_name: 'payments/create/unauthorized' } do
-      it_behaves_like 'Not enough permissions'
-    end
-
-    context 'with unauthorized level key', vcr: { cassette_name: 'payments/create/unauthorized_key' } do
-      it_behaves_like 'Not enough level permissions'
-    end
-
-    context 'with authorized level key', vcr: { cassette_name: 'payments/create/authorized' } do
+    context 'with authorized level key', vcr: { cassette_name: 'payments/create' } do
       let(:key) { write_level_key }
 
       it_behaves_like 'Payment'
@@ -63,24 +73,14 @@ describe Bitex::Payment do
   describe '.find' do
     subject { client.payments.find(id) }
 
-    let(:id) { 1 }
-
-    context 'with unauthorized key', vcr: { cassette_name: 'payments/find/unauthorized' } do
-      it_behaves_like 'Not enough permissions'
-    end
-
-    context 'with any level key' do
+    context 'with any level key', vcr: { cassette_name: 'payments/find' } do
       let(:key) { read_level_key }
 
-      context 'with non-existent id', vcr: { cassette_name: 'payments/find/non_existent_id' } do
-        it_behaves_like 'Not Found'
-      end
+      let(:id) { '5' }
 
-      context 'with existent id', vcr: { cassette_name: 'payments/find/authorized' } do
-        it_behaves_like 'Payment'
+      it_behaves_like 'Payment'
 
-        its(:id) { is_expected.to eq(id.to_s) }
-      end
+      its(:id) { is_expected.to eq(id) }
     end
   end
 end

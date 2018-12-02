@@ -34,5 +34,12 @@ module Bitex
     autoload :CoinWallet, 'bitex/resources/private/wallet/coin_wallet'
 
     autoload :WithdrawalInstruction, 'bitex/resources/private/withdrawal_instruction'
+
+    autoload :Withdrawal, 'bitex/resources/private/withdrawal'
+    autoload :CashWithdrawal, 'bitex/resources/private/withdrawal/cash_withdrawal'
+    autoload :CoinWithdrawal, 'bitex/resources/private/withdrawal/coin_withdrawal'
+
+    autoload :Payment, 'bitex/resources/private/payment'
+    autoload :BitcoinAddress, 'bitex/resources/private/bitcoin_address'
   end
 end
