@@ -15,7 +15,7 @@ module Bitex
     end
 
     [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot,
-    CashDeposit].each do |resource|
+    CashDeposit, CashDepositInstruction].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do
