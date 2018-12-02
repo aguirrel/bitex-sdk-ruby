@@ -10,9 +10,9 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - write_level_key
+      - write_level
       Version:
-      - 2.0
+      - '2.0'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -33,15 +33,15 @@ http_interactions:
       Cache-Control:
       - no-cache
       Set-Cookie:
-      - _bitex_la_session=NWkrKythdGx1ZVlWV2lGMlB4N05tL3pQWEwxait1ZWRyQUw4RUtpV0lKUkVLY3dMZFNLNjdWTUo3cml6MGZCWGJneXFWNWROMCtVS3FPQU1xVzJoUzZNZmQyb0NteHNaNmY5RHJBOUV6MWxvbHlXZjJZVUk3NDBWSHI2dnZjZS9SV3JuWFBuVUYzSGJmSDcxdHB1Tm0yL2hpUGpLY1U2WWpPRDdFanJLVVd3PS0tcVUrL1JFNi8vdFBMM01tK01XZ1ZHZz09--3fa2d2f6b6d4033e02ede36b5101d08b83cc2a52;
+      - _bitex_la_session=d0RwVElGWkJ3MlllQ0ViNGVvR3dTQ2h5NEJvRi9xN2s5QXl0MjZyYUcyV0F0WXVZRklJZHNzTFNJV1VWdU5RSjdKVFFJOXJ3ZTlmUnJhMlZDMzhETTZ1bGprbXdTV2h5UTNsT1hmQmRoK1l2M1prc3A4NGp1OVVWcnZvZGorZjVGcWh2SUpUaGxBRmttLy8wY0RvUnNDWjIrU2VESlkzdXc1MjhTUW0wZGlNPS0tbGhtbFpKejlVT2pRQXJwYnNSNjljUT09--57c58926e386f25846a5e34c522191a2d9d11579;
         path=/; HttpOnly
       X-Request-Id:
-      - 9a45473d-64f3-4ceb-85d8-183ec22124c7
+      - '0629a0ee-e896-4d99-aff9-4e892c9e3789'
       X-Runtime:
-      - '4.436615'
+      - '13.452586'
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 08 Nov 2018 18:50:40 GMT
+  recorded_at: Sun, 02 Dec 2018 15:11:02 GMT
 recorded_with: VCR 4.0.0

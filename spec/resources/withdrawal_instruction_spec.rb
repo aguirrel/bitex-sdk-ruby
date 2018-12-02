@@ -1,11 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::WithdrawalInstruction do
-  let(:client) { Bitex::Client.new(api_key: key, sandbox: true) }
-  let(:resource_name) { described_class.name.demodulize.underscore.pluralize }
-  let(:read_level_key) { 'read_level_key' }
-  let(:write_level_key) { 'write_level_key_2' }
-
+describe Bitex::Resources::WithdrawalInstruction do
   shared_examples_for 'Withdrawal Instruction' do
     it { is_expected.to be_a(described_class) }
 
@@ -16,19 +11,10 @@ describe Bitex::WithdrawalInstruction do
   describe '.all' do
     subject { client.withdrawal_instructions.all }
 
-    context 'with unauthorized key', vcr: { cassette_name: 'withdrawal_instructions/all/unauthorized' } do
-      it_behaves_like 'Not enough permissions'
-    end
-
     context 'with any level key' do
       let(:key) { read_level_key }
 
-      context 'without previously instructions created', vcr: { cassette_name: 'withdrawal_instructions/all/authorized/empty' } do
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-        it { is_expected.to be_empty }
-      end
-
-      context 'with previously instructions created', vcr: { cassette_name: 'withdrawal_instructions/all/authorized/any' } do
+      context 'with previously instructions created', vcr: { cassette_name: 'withdrawal_instructions/all' } do
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         context 'taking a sample' do
@@ -65,33 +51,8 @@ describe Bitex::WithdrawalInstruction do
 
     let(:payment_body) { body.merge(shared_body_fields) }
 
-    context 'with unauthorized key', vcr: { cassette_name: 'withdrawal_instructions/create/unauthorized' } do
-      let(:method) { 'domestic_bank' }
-      let(:country) { :dont_care }
-      let(:body) do
-        {
-          'account_type' => :dont_care,
-          'address' => :dont_care,
-          'bank' => :dont_care,
-          'bank_account_number' => :dont_care,
-          'cbu' => :dont_care,
-          'cuit' => :dont_care,
-          'currency' => :dont_care
-        }
-      end
-
-      it_behaves_like 'Not enough permissions'
-    end
-
     context 'with authorized key' do
       let(:key) { write_level_key }
-
-      shared_examples_for 'New Withdrawal Instruction' do
-        it_behaves_like 'Withdrawal Instruction'
-
-        its(:label) { is_expected.to eq(label) }
-        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
-      end
 
       context 'with domestic bank', vcr: { cassette_name: 'withdrawal_instructions/create/domestic_bank' } do
         let(:method) { 'domestic_bank' }
@@ -107,7 +68,10 @@ describe Bitex::WithdrawalInstruction do
           }
         end
 
-        it_behaves_like 'New Withdrawal Instruction'
+        it_behaves_like 'Withdrawal Instruction'
+
+        its(:label) { is_expected.to eq(label) }
+        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
       end
 
       context 'with international bank', vcr: { cassette_name: 'withdrawal_instructions/create/international_bank' } do
@@ -128,7 +92,10 @@ describe Bitex::WithdrawalInstruction do
           }
         end
 
-        it_behaves_like 'New Withdrawal Instruction'
+        it_behaves_like 'Withdrawal Instruction'
+
+        its(:label) { is_expected.to eq(label) }
+        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
       end
 
       context 'with third party', vcr: { cassette_name: 'withdrawal_instructions/create/third_party' } do
@@ -136,35 +103,35 @@ describe Bitex::WithdrawalInstruction do
         let(:country) { 'PY' }
         let(:body) { {} }
 
-        it_behaves_like 'New Withdrawal Instruction'
+        it_behaves_like 'Withdrawal Instruction'
+
+        its(:label) { is_expected.to eq(label) }
+        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
       end
     end
   end
 
+  describe '.find' do
+    subject { client.withdrawal_instructions.find(id) }
+
+    context 'with any level key', vcr: { cassette_name: 'withdrawal_instructions/find' } do
+      let(:key) { read_level_key }
+      let(:id) { '13' }
+
+      it_behaves_like 'Withdrawal Instruction'
+
+      its(:id) { is_expected.to eq(id) }
+    end
+  end
+
   describe '.destroy' do
-    subject { client.withdrawal_instructions.destroy(id: id) }
+    subject { client.withdrawal_instructions.new(id: id).destroy }
 
-    let(:id) { 13 }
-
-    context 'with unauthorized key', vcr: { cassette_name: 'withdrawal_instructions/destroy/unauthorized' } do
-      it_behaves_like 'Not enough permissions'
-    end
-
-    context 'with unauthorized level key', vcr: { cassette_name: 'withdrawal_instructions/destroy/unauthorized_key' } do
-      it_behaves_like 'Not enough level permissions'
-    end
-
-    context 'with authorized level key' do
+    context 'with authorized level key', vcr: { cassette_name: 'withdrawal_instructions/destroy' } do
       let(:key) { write_level_key }
+      let(:id) { 13 }
 
-      context 'with non-existent id', vcr: { cassette_name: 'withdrawal_instructions/destroy/non_existent_id' } do
-        it_behaves_like 'Not Found'
-      end
-
-      context 'with existent id', vcr: { cassette_name: 'withdrawal_instructions/destroy/authorized' } do
-
-        it { is_expected.to be_truthy }
-      end
+      it { is_expected.to be_truthy }
     end
   end
 

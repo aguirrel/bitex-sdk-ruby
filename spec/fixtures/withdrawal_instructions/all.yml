@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/withdrawal_instructions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"d024462015ce589f34bf347dcda5e42c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=YnJpRWRtYXQyWTQwVE5qSWdyaWppeitnZWxpemhDY1NjWEZwS0tBckd1VEpaUUtZRWtoejMzVkJ4Y2YxdnF4ZFhOaXpQRmQyUkpqZlQxb25kVW9GNE9KZVU4SG1LbmpOWk4wSkRBUDlhSVVTMnNiRGRja0tmZ0FON2NsUnhlZlVKaDNCWnBqd3dlY1RlQ3FxbGJLUkdtUmFhZ1k0a2dVNWNUTTA2aGVYWWU0PS0tTkFMYUpPKzBTazhVejNNZ0dwMnl2dz09--dbd36df1b5ec5ba19f007223f7f67f76359775bf;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 0f669bca-fd55-4b64-87f1-de2ea6a65f59
+      X-Runtime:
+      - '0.236103'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"12","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"city":"Dimension
+        C-132","country":"PY","currency":"USD","further_instructions":"A further instructions","name":"Rick
+        Sanchez","payment_method":"third_party","phone":"1122334455"}}},{"id":"13","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
+        address","bank":"hsbc","bank_account_number":"12345678","cbu":"1234567812345678","cuit":"20112233344552","city":"Dimension
+        C-132","country":"AR","currency":"USD","further_instructions":"A further instructions","name":"Rick
+        Sanchez","payment_method":"domestic_bank","phone":"1122334455"}}},{"id":"14","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
+        address","bank":"bco_chile","bank_account_number":"12345678","bank_address":"a
+        bank address","bank_city":"a bank city","bank_country":"CL","bank_postal_code":"AABBCC","bank_swift":"BANKUS66","postal_code":"XXYYZZ","city":"Dimension
+        C-132","country":"CL","currency":"USD","further_instructions":"A further instructions","name":"Rick
+        Sanchez","payment_method":"international_bank","phone":"1122334455"}}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 15:08:10 GMT
+recorded_with: VCR 4.0.0
