@@ -42,5 +42,7 @@ module Bitex
     autoload :Payment, 'bitex/resources/private/payment'
     autoload :BitcoinAddress, 'bitex/resources/private/bitcoin_address'
     autoload :Pos, 'bitex/resources/private/pos'
+
+    autoload :ApiKey, 'bitex/resources/private/api_key'
   end
 end

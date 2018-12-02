@@ -16,7 +16,7 @@ module Bitex
 
     [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot,
     CashDeposit, CoinDeposit, CashDepositInstruction, CashWallet, CoinWallet, WithdrawalInstruction, CashWithdrawal,
-    CoinWithdrawal, Payment, Pos].each do |resource|
+    CoinWithdrawal, Payment, Pos, ApiKey].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do
