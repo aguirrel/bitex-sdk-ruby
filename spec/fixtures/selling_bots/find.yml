@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev.bitex.la:3000/api/selling_bots/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"64cf94a5889bc211fbdd6f330f7ddb49"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=cFI3aWxFdGd6ekUvMHVkVDZraEhTYnZjL0drL0tHaGdLNGk5VW5ZSkQ4VzNkeUQxeE1sTkxLNWZvdEtaNnIydklLZzRWQ3JSMW9RTkhtZEkycTZ6cThhZktDdGIwczdXVUU1YUhnT0phZXJ1OXVzd1U1QVFpNzlERzhOT0tTeW1QMGFEekpsanpLa0RjN0kwOHdWSGlnVEwzUTc0OVBlaGk4U2t2eGFsMlFnPS0taFNSclJVc1U0bXJWOFFhQmR3U2NrZz09--c589425c3c500d007badfcfdc838efe79008ec81;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 2fd7b10e-c7de-4e30-99fd-cc903a5f0b13
+      X-Runtime:
+      - '0.456226'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"5","type":"selling_bots","attributes":{"amount":100000.0,"remaining_amount":100000.0,"chunk_size":5000.0,"eta":"2018-12-02T03:45:57.432Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 03:17:32 GMT
+recorded_with: VCR 4.0.0

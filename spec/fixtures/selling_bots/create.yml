@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://dev.bitex.la:3000/api/selling_bots
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"selling_bots","relationships":{"orderbook":{"data":{"type":"orderbooks","id":1}}},"attributes":{"type":"selling_bots","amount":100000}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - write_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"64cf94a5889bc211fbdd6f330f7ddb49"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=VW9RS3FZUjV6YXVJY3d4Si9PYk9rZHFoVHp5eHIrOUxOVXNHdDArU1pRWUc2RlhlSUpGaEYzZnJ2UytRN1JGQVk3MTF3Q0RSM20raWNNUDBGNGFxL0tmVlFyM1NnMzFPZS96ZmhNejdWb0VGQitIUXdkOGhhVmhOWWVFSkx6MHE1SDNQaTVlbWlxbExyeWE5YVlMWS9EdzNQNzVkejJEb0lrd2RNSGsrUWkwPS0tUnRyRXBIY0EybytRQnlJQ0ZRdDlZdz09--54e6ec3996815fde63653b48b68f16d399aaf6e7;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 362ebea5-b599-40a3-b619-7c9af0997e17
+      X-Runtime:
+      - '1.839732'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"5","type":"selling_bots","attributes":{"amount":100000.0,"remaining_amount":100000.0,"chunk_size":5000.0,"eta":"2018-12-02T03:45:57.432Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 03:15:57 GMT
+recorded_with: VCR 4.0.0

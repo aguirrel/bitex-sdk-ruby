@@ -11,10 +11,10 @@ module Bitex
     end
 
     def setup_environment(sandbox)
-       Public.site = "https://#{'sandbox.' if sandbox}bitex.la/api/"
+      Public.site = "https://#{'sandbox.' if sandbox}bitex.la/api/"
     end
 
-    [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell].each do |resource|
+    [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do
