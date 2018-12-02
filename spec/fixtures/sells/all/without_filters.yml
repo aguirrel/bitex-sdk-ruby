@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/sells
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"9caa5e40eb0fe5acef5d74a26f3ba6fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=UDVqR3E1MUNJc1lGYzIvY2ZCdjdxMlZyVU9IUEcrMkpJdWxkeW1rVENXZnZUNm9jQlhrNUI0My9FbkZhd2hTcStqVU4xVUt3R3lJQzNlbmxmRnpuOUZScTZITW8yc0pFWXBOQVdjSFdrY3ZudE9HemJEVnk1MFFzdXQ5RXVCamdTZ1Jhd1JOUmxWTHpSRWRLWUF3WWpjc3lrdEFROStDVzh4UUhDUVlnTUcwPS0tcFM2UWcxTU5Qc0RyK044TW03SDMvUT09--bdc122237e4ae4c03164e3af8d1021cfb0e00d48;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 0b1bf728-1f57-4220-bc77-1d2978cb8303
+      X-Runtime:
+      - '0.268996'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"42","type":"sells","attributes":{"created_at":"2018-11-30T22:23:13.836Z","coin_amount":3.0,"cash_amount":5985.0,"fee":15.0,"price":2000.0,"fee_currency":"ARS","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"5","type":"orderbooks"}},"order":{"data":{"id":"38","type":"asks"}}}},{"id":"41","type":"sells","attributes":{"created_at":"2018-11-30T22:22:46.584Z","coin_amount":2.0,"cash_amount":1995.0,"fee":5.0,"price":1000.0,"fee_currency":"ARS","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"5","type":"orderbooks"}},"order":{"data":{"id":"37","type":"asks"}}}},{"id":"40","type":"sells","attributes":{"created_at":"2018-11-30T22:22:31.312Z","coin_amount":2.0,"cash_amount":1995.0,"fee":5.0,"price":1000.0,"fee_currency":"ARS","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"5","type":"orderbooks"}},"order":{"data":{"id":"37","type":"asks"}}}},{"id":"39","type":"sells","attributes":{"created_at":"2018-11-30T21:53:40.966Z","coin_amount":2.0,"cash_amount":299.25,"fee":0.75,"price":150.0,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"33","type":"asks"}}}},{"id":"38","type":"sells","attributes":{"created_at":"2018-11-30T21:53:40.935Z","coin_amount":0.89,"cash_amount":88.7775,"fee":0.2225,"price":100.0,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"32","type":"asks"}}}},{"id":"37","type":"sells","attributes":{"created_at":"2018-11-30T21:53:24.698Z","coin_amount":1.11,"cash_amount":110.7225,"fee":0.2775,"price":100.0,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"32","type":"asks"}}}},{"id":"34","type":"sells","attributes":{"created_at":"2018-11-30T21:51:49.193Z","coin_amount":2.0,"cash_amount":100.149,"fee":0.251,"price":50.2,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"31","type":"asks"}}}}],"included":[{"id":"5","type":"orderbooks","attributes":{"code":"btc_ars","base":{"code":"btc","decimals":8},"quote":{"code":"ars","decimals":2}}},{"id":"1","type":"orderbooks","attributes":{"code":"btc_usd","base":{"code":"btc","decimals":8},"quote":{"code":"usd","decimals":2}}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 00:19:00 GMT
+recorded_with: VCR 4.0.0

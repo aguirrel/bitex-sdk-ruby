@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/trades?filter%5Bdays%5D=10&filter%5Borderbook_code%5D=btc_usd&limit=5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"916b1aa330d796706e693f9b8736e37b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=eXNmODdqQjNUeHpPa2d1QjYyaTg5SDJwNmdwa1g4RlhveUw4Uy96Tnk0WHJRbGQ4dHFvNnZTVFZ0Ry9wUkVHMThqS05zQjlwVWNKS3dpblc0c1BQN2lkYkNhRTY3RlM3eUE2RTBpOW02SkdpOWc2bFdBTjdLZGdYNXE5ZjlFUUVoM3MrckhZbzZ2QXZjWFNyTGNLQy95cThTV285bDkvTURIVE1Ta1AzL1NvPS0tbE9obWdjVzhJbThIdjYwR2lEMFIxQT09--54f111e18aa7852d0fd6b854cd9f6e3b63183209;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 56091cf8-6d86-4f7f-9a18-5c664299b8ce
+      X-Runtime:
+      - '0.252573'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"39","type":"buys","attributes":{"created_at":"2018-11-30T21:53:40.966Z","coin_amount":1.995,"cash_amount":300.0,"fee":0.005,"price":150.0,"fee_currency":"BTC","fee_decimals":8},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"41","type":"bids"}}}},{"id":"39","type":"sells","attributes":{"created_at":"2018-11-30T21:53:40.966Z","coin_amount":2.0,"cash_amount":299.25,"fee":0.75,"price":150.0,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"33","type":"asks"}}}},{"id":"38","type":"buys","attributes":{"created_at":"2018-11-30T21:53:40.935Z","coin_amount":0.887775,"cash_amount":89.0,"fee":0.002225,"price":100.0,"fee_currency":"BTC","fee_decimals":8},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"41","type":"bids"}}}},{"id":"38","type":"sells","attributes":{"created_at":"2018-11-30T21:53:40.935Z","coin_amount":0.89,"cash_amount":88.7775,"fee":0.2225,"price":100.0,"fee_currency":"USD","fee_decimals":2},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"32","type":"asks"}}}},{"id":"37","type":"buys","attributes":{"created_at":"2018-11-30T21:53:24.698Z","coin_amount":1.107225,"cash_amount":111.0,"fee":0.002775,"price":100.0,"fee_currency":"BTC","fee_decimals":8},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}},"order":{"data":{"id":"40","type":"bids"}}}}],"included":[{"id":"1","type":"orderbooks","attributes":{"code":"btc_usd","base":{"code":"btc","decimals":8},"quote":{"code":"usd","decimals":2}}}]}'
+    http_version: 
+  recorded_at: Sat, 01 Dec 2018 22:32:55 GMT
+recorded_with: VCR 4.0.0
