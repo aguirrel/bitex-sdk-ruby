@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dev.bitex.la:3000/api/cash_deposit_instructions
+    uri: https://sandbox.bitex.la/api/cash_deposit_instructions
     body:
       encoding: US-ASCII
       string: ''

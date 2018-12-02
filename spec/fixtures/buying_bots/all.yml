@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dev.bitex.la:3000/api/buying_bots
+    uri: https://sandbox.bitex.la/api/buying_bots
     body:
       encoding: US-ASCII
       string: ''

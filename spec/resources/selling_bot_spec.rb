@@ -12,17 +12,15 @@ describe Bitex::Resources::SellingBot do
   describe '.all' do
     subject { client.selling_bots.all }
 
-    context 'with any level key' do
+    context 'with any level key', vcr: { cassette_name: 'selling_bots/all' } do
       let(:key) { read_level_key }
 
-      context 'enough funds', vcr: { cassette_name: 'selling_bots/all' } do
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-        context 'taking a sample' do
-          subject { super().sample }
+      context 'taking a sample' do
+        subject { super().sample }
 
-          it_behaves_like 'Selling Bot'
-        end
+        it_behaves_like 'Selling Bot'
       end
     end
   end

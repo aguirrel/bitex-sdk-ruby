@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dev.bitex.la:3000/api/selling_bots
+    uri: https://sandbox.bitex.la/api/selling_bots
     body:
       encoding: US-ASCII
       string: ''
@@ -33,19 +33,19 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"e0234245cb00aa260ccfa99a9a0b235e"
+      - W/"542679c4845af4fc117adafae90b476c"
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
-      - _bitex_la_session=c3dlNEtEaXdtRFBOMDhsMkRtYlNPTUxxbEp1bm4rOE9XajYrRmlITDNTZWlta2NXZmJOcnBEU1puOGI2UUdkbExSeURYOEZEbExsbzdZbmN2b01VWUZLaEtQdmx4c0VzWmIxTEFpQ3JDOFZCeHRaMlh1bnM2QWRmVUF6bGZLYW0rWXJTWVQyVHhaek5YWmo3ZkZtSUFRQXE5ZDVtQ1lGUFVkaUhSTlVRdXhRPS0tRTNuTzhiQjBSNEpFdEd0VTl2bWl5UT09--482d76839bde1390589bea419b3b50493d36c708;
+      - _bitex_la_session=cmtsdzdUZUM3WGRoTFF5RU5BaU94UGV5aFNXWDladVFncEcxcklBSWN2a094WG91YTc4cVBURG0zbVh2czU1Vys3YU93UktyV2RMdGRyd2lFcnFkZkVVRk5zUWRHM0lyNktwd2d1eHZkV0JBaUlHNUNTRFRMc3V6QlZpVmVXTDZyblM3c1pJSnk0MVUrT25Kd0ZUemNqblZvSEtBRmJiZzVEU0kwTTdZL0ZjPS0tWkZVN0h1cVhvKy9FY01ZOGZTQjhkdz09--067a158da7b10439a26e1a2f59ebf1b1fd95ba74;
         path=/; HttpOnly
       X-Request-Id:
-      - 218cfe3a-8f0b-4b02-afb0-d1dc8894cb68
+      - 4fb511e6-2347-47aa-8771-fd7bd78a2d2c
       X-Runtime:
-      - '0.243631'
+      - '0.725078'
     body:
       encoding: UTF-8
-      string: '{"data":[]}'
-    http_version: 
-  recorded_at: Sun, 02 Dec 2018 03:11:19 GMT
+      string: '{"data":[{"id":"3","type":"selling_bots","attributes":{"amount":100.0,"remaining_amount":100.0,"chunk_size":5.0,"eta":"2018-12-02T03:44:27.204Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"4","type":"selling_bots","attributes":{"amount":100.0,"remaining_amount":100.0,"chunk_size":5.0,"eta":"2018-12-02T03:45:03.133Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"5","type":"selling_bots","attributes":{"amount":100000.0,"remaining_amount":100000.0,"chunk_size":5000.0,"eta":"2018-12-02T03:45:57.432Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"6","type":"selling_bots","attributes":{"amount":1000.0,"remaining_amount":1000.0,"chunk_size":50.0,"eta":"2018-12-02T03:48:36.056Z","executing":true,"to_cancel":true},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}]}'
+    http_version:
+  recorded_at: Sun, 02 Dec 2018 12:52:48 GMT
 recorded_with: VCR 4.0.0
