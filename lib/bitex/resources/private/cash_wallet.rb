@@ -9,6 +9,15 @@ module Bitex
       # @return [ResultSet<CashWallet>]
       #
       # .all
+
+      # GET /api/cash_wallet/:currency_code
+      #
+      # @param [String] currency code. Fiat currency code.
+      #
+      # @return [CashWallet]
+      def self.find(currency_code:)
+        super(id: currency_code)[0]
+      end
     end
   end
 end

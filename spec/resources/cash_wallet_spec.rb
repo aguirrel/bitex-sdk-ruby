@@ -23,4 +23,16 @@ describe Bitex::Resources::CashWallet do
       end
     end
   end
+
+  describe '.find' do
+    subject { client.cash_wallets.find(currency_code: currency_code)}
+
+    context 'with any level key', vcr: { cassette_name: 'cash_wallet/find' } do
+      let(:key) { read_level_key }
+
+      let(:currency_code) { 'usd' }
+
+      it_behaves_like 'Cash Wallet'
+    end
+  end
 end

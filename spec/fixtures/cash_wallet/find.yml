@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/cash_wallets?filter%5Bid%5D=usd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - read_level
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Etag:
+      - W/"0d312262df5f632b8b0327edb54b7456"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - _bitex_la_session=WWNLdVdGSXlLWkttMnQ4WVlyZVh6UlhlbHZRZEo2Vk9oS2M1Yjl0Mm0vTG5VWjg2U0g2OHBYaXRIMkRITkVSdzhISjk1eGl0bVJLNGxKNUgxU0Q1TkpORklYRllQWURoalh5blNnNm4zYXdQSXhlTVBIRzFzRk96VlJqblNVQVk5SW5idWpoOXJoY3FhdTFySDBReFc5Mzk0Sm5wUG1wcEVpeFpjZ3UrUXdZPS0tREU4bjF2TjdLbWJPN3RLMDZnWDVJZz09--de2e78d7657f1d44139c83617b6a64201e516a6a;
+        path=/; HttpOnly
+      X-Request-Id:
+      - 4ffc0b0b-9d8a-442a-8ac7-3e9080d461a8
+      X-Runtime:
+      - '6.144194'
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"usd","type":"cash_wallets","attributes":{"balance":49444.89,"available":47444.89,"currency":"usd"}},{"id":"ars","type":"cash_wallets","attributes":{"balance":985024.0,"available":985024.0,"currency":"ars"}},{"id":"uyu","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"uyu"}},{"id":"clp","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"clp"}},{"id":"pyg","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"pyg"}}]}'
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 13:07:00 GMT
+recorded_with: VCR 4.0.0
