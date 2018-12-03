@@ -16,7 +16,7 @@ module Bitex
       # @return JsonApiClient::ResultSet. It has the server response data, and all transactions parsed to json api.
       def self.all(orderbook: nil, from: nil)
         filters = {}.tap do |params|
-          params.merge!(from: from) if from.present?
+          params[:from] = from if from.present?
           params.merge!(orderbook_code: orderbook.code) if orderbook.present?
         end
 
