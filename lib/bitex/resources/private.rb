@@ -2,7 +2,6 @@ module Bitex
   module Resources
     # Generic base resource for private Bitex resources.
     class Private < Public
-
       protected
 
       def self.build_connection(options = {})
