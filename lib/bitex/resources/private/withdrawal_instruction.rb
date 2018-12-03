@@ -7,7 +7,7 @@ module Bitex
       #
       # These instructions are created along with the Cash Withdrawal if it does not exist previously.
       #
-      # @return [Array<WithdrawalInstruction>].
+      # @return [ResultSet<WithdrawalInstruction>].
       #
       # .all
 

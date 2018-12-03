@@ -7,7 +7,7 @@ module Bitex
       #
       # @param [String] from. Date from which to take the withdrawals. Fromat is ISO 8601 (YYYY-MM-DD)
       #
-      # @return [Array<CashWithdrawal|CoinWithdrawal>].
+      # @return [ResultSet<CashWithdrawal|CoinWithdrawal>].
       def self.all(from: nil)
         from.present? ? where(from: from).all : super()
       end

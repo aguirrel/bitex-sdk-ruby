@@ -5,7 +5,7 @@ module Bitex
       #
       # Get all Buying Bots.
       #
-      # @return [Array<BuyingBot>]
+      # @return [ResultSet<BuyingBot>]
       #
       # .all
 
