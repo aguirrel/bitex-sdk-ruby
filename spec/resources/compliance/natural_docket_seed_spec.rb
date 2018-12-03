@@ -42,7 +42,7 @@ describe Bitex::Resources::Compliance::NaturalDocketSeed do
     let(:job_description) { 'science, absolute reality' }
     let(:politically_exposed_reason) { 'I´m a rockstar' }
 
-    context 'with authorized level key', vcr: { cassette_name: 'Compliance/natural_docket_seeds/create/authorized' } do
+    context 'with authorized level key', vcr: { cassette_name: 'compliance/natural_docket_seeds/create' } do
       let(:key) { write_level_key }
 
       it_behaves_like 'Natural Docket Seed'
