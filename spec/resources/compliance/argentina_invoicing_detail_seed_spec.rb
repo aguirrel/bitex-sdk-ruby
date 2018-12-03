@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Compliance::ArgentinaInvoicingDetailSeed do
-  let(:write_level_key) { 'client3_write_level_key' }
+  let(:write_level_key) { 'write_level' }
 
   shared_examples_for 'Argentinian Invoicing Detail Seed' do
     it { is_expected.to be_a(described_class) }
