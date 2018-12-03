@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/allowance_seeds
+    uri: https://sandbox.bitex.la/api/allowance_seeds
     body:
       encoding: UTF-8
       string: '{"data":{"type":"allowance_seeds","attributes":{"type":"allowance_seeds","kind_code":"usd"}}}'

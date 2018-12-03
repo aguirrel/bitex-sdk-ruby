@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/email_seeds
+    uri: https://sandbox.bitex.la/api/email_seeds
     body:
       encoding: UTF-8
       string: '{"data":{"type":"email_seeds","attributes":{"type":"email_seeds","address":"person@example.com","email_kind_code":"invoicing"}}}'

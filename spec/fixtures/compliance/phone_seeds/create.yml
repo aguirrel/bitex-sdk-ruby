@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/phone_seeds
+    uri: https://sandbox.bitex.la/api/phone_seeds
     body:
       encoding: UTF-8
       string: '{"data":{"type":"phone_seeds","attributes":{"type":"phone_seeds","country":"AR","number":"1234567890","phone_kind_code":"main","has_telegram":true,"has_whatsapp":false,"note":"It´s

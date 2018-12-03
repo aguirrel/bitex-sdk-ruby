@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/identification_seeds
+    uri: https://sandbox.bitex.la/api/identification_seeds
     body:
       encoding: UTF-8
       string: '{"data":{"type":"identification_seeds","attributes":{"type":"identification_seeds","identification_kind_code":"national_id","number":"12345678","issuer":"AR","public_registry_authority":"public

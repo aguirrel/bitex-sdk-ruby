@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://dev.bitex.la:3000/api/domicile_seeds
+    uri: https://sandbox.bitex.la/api/domicile_seeds
     body:
       encoding: UTF-8
       string: '{"data":{"type":"domicile_seeds","attributes":{"type":"domicile_seeds","city":"CABA","country":"AR","floor":"0","postal_code":"1001","street_address":"Balcarce","street_number":"50","state":"zaraza","apartment":"9º
