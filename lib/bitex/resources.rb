@@ -1,4 +1,5 @@
 module Bitex
+  # Here load everyone resources currently supported.
   module Resources
     autoload :Public, 'bitex/resources/public'
 

@@ -1,5 +1,6 @@
 module Bitex
   module Connections
+    # For access to private resources, needs send your API key on header.
     class Private < Public
       cattr_accessor :api_key
 

@@ -1,8 +1,8 @@
 module Bitex
+  # To parse anonymous configured resources.
   class Parser < JsonApiClient::Parsers::Parser
     def self.parse(klass, response)
-      klass = klass.superclass if klass.name.nil?
-      super(klass, response)
+      super(klass.superclass, response)
     end
   end
 end
