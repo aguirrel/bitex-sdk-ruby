@@ -23,4 +23,3 @@ module Bitex
     end
   end
 end
-
