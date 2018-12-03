@@ -6,6 +6,7 @@ module Bitex
         Class.new(self).tap do |anonymous|
           anonymous.connection_class = build_connection(options)
           anonymous.parser = Parser
+          anonymous.site = "https://#{'sandbox.' if options[:sandbox]}bitex.la/api/"
         end
       end
 

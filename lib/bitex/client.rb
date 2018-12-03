@@ -1,18 +1,14 @@
 module Bitex
-  # This client connects via API to Bitex resources.
+  # This client connects via Json API resources.
   class Client
     include Resources
     include Compliance
 
-    attr_reader :api_key
+    attr_reader :api_key, :sandbox
 
     def initialize(api_key: nil, sandbox: false)
       @api_key = api_key
-      setup_environment(sandbox)
-    end
-
-    def setup_environment(sandbox)
-      Public.site = "https://#{'sandbox.' if sandbox}bitex.la/api/"
+      @sandbox = sandbox
     end
 
     [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot,
@@ -22,7 +18,7 @@ module Bitex
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do
-        instance_variable_get("@#{accessor}") || instance_variable_set("@#{accessor}", resource.build(api_key: api_key))
+        instance_variable_get("@#{accessor}") || instance_variable_set("@#{accessor}", resource.build(api_key: api_key, sandbox: sandbox))
       end
     end
   end
