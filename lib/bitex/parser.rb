@@ -1,7 +1,8 @@
 module Bitex
   class Parser < JsonApiClient::Parsers::Parser
-    def parse(klass, response)
-      super(klass.superclas, response)
+    def self.parse(klass, response)
+      klass = klass.superclass if klass.name.nil?
+      super(klass, response)
     end
   end
 end
