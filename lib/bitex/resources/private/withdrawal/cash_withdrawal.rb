@@ -22,7 +22,7 @@ module Bitex
       # @param [WithdrawalInstruction] withdrawal_instruction. Previously created instructions for withdrawal.
       # @param [Integer|String] otp. One Time Password.
       # @param [Float|String] amount. withdrawal amount.
-      # @param [Float|String] fiat. Fiat currency code. 
+      # @param [Float|String] fiat. Fiat currency code.
       #
       # @return [CashWithdrawal]
       def self.create(withdrawal_instruction:, otp:, amount:, currency:)

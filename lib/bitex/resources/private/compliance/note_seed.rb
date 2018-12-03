@@ -2,7 +2,7 @@ module Bitex
   module Resources
     module Compliance
       # pending doc TODO
-      class NoteSeed < Private 
+      class NoteSeed < Private
         # .create(title:, body:)
       end
     end

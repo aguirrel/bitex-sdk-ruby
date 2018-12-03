@@ -26,7 +26,7 @@ module Bitex
       # @params [{}] hash. Subclass responsibility.
       #
       # @return [<CashWithdrawal|CoinWithdrawal>]
-      # 
+      #
       # .create(hash)
     end
   end
