@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bitex.bitex.la/api/movements
+    uri: https://sandbox.bitex.la/api/movements
     body:
       encoding: US-ASCII
       string: ''
