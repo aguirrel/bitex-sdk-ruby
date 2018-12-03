@@ -46,5 +46,6 @@ module Bitex
     autoload :ApiKey, 'bitex/resources/private/api_key'
 
     autoload :Compliance, 'bitex/resources/private/compliance'
+    autoload :Miscellaneous, 'bitex/resources/private/miscellaneous'
   end
 end

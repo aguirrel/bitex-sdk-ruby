@@ -3,6 +3,7 @@ module Bitex
   class Client
     include Resources
     include Compliance
+    include Miscellaneous
 
     attr_reader :api_key, :sandbox
 
@@ -11,10 +12,12 @@ module Bitex
       @sandbox = sandbox
     end
 
-    [Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot,
+    [
+      Orderbook, Ticker, Market, Transaction, Candle, Order, Ask, Bid, Trade, Buy, Sell, BuyingBot, SellingBot,
     CashDeposit, CoinDeposit, CashDepositInstruction, CashWallet, CoinWallet, WithdrawalInstruction, CashWithdrawal,
-    CoinWithdrawal, Payment, Pos, ApiKey, AllowanceSeed, NaturalDocketSeed, IdentificationSeed, NoteSeed,
-    DomicileSeed, EmailSeed, ArgentinaInvoicingDetailSeed, ChileInvoicingDetailSeed, PhoneSeed].each do |resource|
+    CoinWithdrawal, Payment, Pos, ApiKey, AllowanceSeed, NaturalDocketSeed, IdentificationSeed, NoteSeed, DomicileSeed,
+    EmailSeed, ArgentinaInvoicingDetailSeed, ChileInvoicingDetailSeed, PhoneSeed, Movement, Account
+    ].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 
       define_method(accessor) do
