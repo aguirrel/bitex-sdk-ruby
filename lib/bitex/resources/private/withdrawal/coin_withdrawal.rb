@@ -27,7 +27,7 @@ module Bitex
       #
       # @return [CoinWithdrawal]
       def self.create(to_addresses:, label:, otp:, amount:, currency:)
-        new(to_addresses: to_addresses, label: label,  amount: amount, currency: currency).tap do |withdrawal|
+        new(to_addresses: to_addresses, label: label, amount: amount, currency: currency).tap do |withdrawal|
           with_headers('One-Time-Passoword': otp) { withdrawal.save }
         end
       end
