@@ -139,7 +139,7 @@ module Bitex
       end
 
       private_class_method :valid_payment?, :valid_method?, :valid_body?, :domestic_bank_body, :international_bank_body,
-        :third_party_body, :shared_body_bank, :shared_body
+                           :third_party_body, :shared_body_bank, :shared_body
     end
   end
 end
