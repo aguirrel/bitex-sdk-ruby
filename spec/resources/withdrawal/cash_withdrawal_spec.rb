@@ -5,12 +5,10 @@ describe Bitex::Resources::CashWithdrawal do
     it { is_expected.to be_a(described_class) }
 
     its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[withdrawal_instruction funding_receipt]) }
+    its(:'relationships.attributes.keys') { is_expected.to include(*%w[withdrawal_instruction funding_receipt]) }
 
     context 'about included resources' do
-      subject { super().withdrawal_instruction }
-
-      it { is_expected.to be_a(Bitex::Resources::WithdrawalInstruction) }
+      its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::WithdrawalInstruction) }
     end
   end
 
@@ -32,7 +30,7 @@ describe Bitex::Resources::CashWithdrawal do
 
           its(:'attributes.keys') do
             is_expected.to contain_exactly(
-              *%w[type amount id status gross_amount cost fee net_amount country payment_method currency  label created_at]
+              *%w[type amount id status gross_amount cost fee net_amount country payment_method currency label created_at]
             )
           end
         end

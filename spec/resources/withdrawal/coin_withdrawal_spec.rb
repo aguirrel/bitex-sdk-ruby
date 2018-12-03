@@ -5,7 +5,7 @@ describe Bitex::Resources::CoinWithdrawal do
     it { is_expected.to be_a(described_class) }
 
     its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user coin]) }
+    its(:'relationships.attributes.keys') { is_expected.to include(*%w[user coin]) }
   end
 
   describe '.all' do

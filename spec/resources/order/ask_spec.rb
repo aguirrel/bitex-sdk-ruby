@@ -10,7 +10,7 @@ describe Bitex::Resources::Ask do
 
     its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id amount remaining_amount price status]) }
     its(:type) { is_expected.to eq('asks') }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user orderbook]) }
+    its(:'relationships.attributes.keys') { is_expected.to include(*%w[user orderbook]) }
   end
 
   describe '.all' do

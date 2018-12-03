@@ -6,7 +6,7 @@ describe Bitex::Resources::SellingBot do
 
     its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id amount remaining_amount chunk_size eta executing to_cancel]) }
     its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook user]) }
+    its(:'relationships.attributes.keys') { is_expected.to include(*%w[orderbook user]) }
   end
 
   describe '.all' do
