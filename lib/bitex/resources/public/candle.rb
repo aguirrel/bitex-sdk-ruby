@@ -2,7 +2,6 @@ module Bitex
   module Resources
     # For market relationships.
     class Candle < Public
-      # TODO VER que TRADE trae estas dos relaciones
       # /api/candles?filter[orderbook_code]={orderbook_code}&filter[days]={days}&span={span}
       #
       # Get candles for a given market
