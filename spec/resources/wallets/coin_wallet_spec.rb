@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::CoinWallet do
+describe Bitex::Resources::Wallets::CoinWallet do
   shared_examples_for 'Coin Wallet' do
     it { is_expected.to be_a(described_class) }
 
