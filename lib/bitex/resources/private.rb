@@ -5,8 +5,8 @@ module Bitex
       class << self
         protected
 
-        def build_connection(options = {})
-          Class.new(Connections::Private).tap { |connection| connection.api_key = options[:api_key] }
+        def custom_connection(options = {})
+          Connections::Private.tap { |connection| connection.api_key = options[:api_key] }
         end
       end
     end

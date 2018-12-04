@@ -1,5 +1,6 @@
 require 'active_support'
 require 'active_support/core_ext'
+require 'active_support/dependencies'
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'curl'
@@ -8,12 +9,5 @@ require 'json_api_client'
 
 # Bitex library namespace
 module Bitex
-  autoload :VERSION, 'version'
-
-  autoload :Connections, 'bitex/connections'
-  autoload :Resources, 'bitex/resources'
-
-  autoload :Parser, 'bitex/parser'
-
-  autoload :Client, 'bitex/client'
+  ActiveSupport::Dependencies.autoload_paths += %w[lib]
 end
