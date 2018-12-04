@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::CashWithdrawal do
+describe Bitex::Resources::Withdrawals::CashWithdrawal do
   shared_examples_for 'Cash Withdrawal' do
     it { is_expected.to be_a(described_class) }
 
@@ -8,7 +8,7 @@ describe Bitex::Resources::CashWithdrawal do
     its(:'relationships.attributes.keys') { is_expected.to include(*%w[withdrawal_instruction funding_receipt]) }
 
     context 'about included resources' do
-      its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::WithdrawalInstruction) }
+      its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
     end
   end
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::CoinWithdrawal do
+describe Bitex::Resources::Withdrawals::CoinWithdrawal do
   shared_examples_for 'Coin Withdrawal' do
     it { is_expected.to be_a(described_class) }
 

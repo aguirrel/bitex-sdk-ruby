@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::WithdrawalInstruction do
+describe Bitex::Resources::Withdrawals::WithdrawalInstruction do
   shared_examples_for 'Withdrawal Instruction' do
     it { is_expected.to be_a(described_class) }
 
