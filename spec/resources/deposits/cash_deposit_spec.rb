@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::CashDeposit do
+describe Bitex::Resources::Deposits::CashDeposit do
   shared_examples_for 'Cash Deposit' do
     it { is_expected.to be_a(described_class) }
 
