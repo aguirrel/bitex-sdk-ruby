@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::Trade do
+describe Bitex::Resources::Trades::Trade do
   let(:key) { :read_level_key }
 
   shared_examples_for 'Trade' do

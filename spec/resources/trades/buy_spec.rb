@@ -1,25 +1,25 @@
 require 'spec_helper'
 
-describe Bitex::Resources::Sell do
+describe Bitex::Resources::Trades::Buy do
   let(:key) { :read_level_key }
 
-  shared_examples_for 'Sell' do
+  shared_examples_for 'Buy' do
     it { is_expected.to be_a(described_class) }
 
     its(:'attributes.keys') do
       is_expected.to contain_exactly(*%w[type id created_at coin_amount cash_amount fee price fee_currency fee_decimals])
     end
-    its(:type) { is_expected.to eq('buys').or eq('sells') }
+    its(:type) { is_expected.to eq('buys') }
     its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook order]) }
   end
 
   describe '.all' do
-    subject { client.sells.all(orderbook: orderbook, days: days, limit: limit) }
+    subject { client.buys.all(orderbook: orderbook, days: days, limit: limit) }
 
     context 'with any level key' do
       let(:key) { read_level_key }
 
-      context 'without filters', vcr: { cassette_name: 'sells/all/without_filters' } do
+      context 'without filters', vcr: { cassette_name: 'buys/all/without_filters' } do
         let(:orderbook) { nil }
         let(:days) { nil }
         let(:limit) { nil }
@@ -29,7 +29,7 @@ describe Bitex::Resources::Sell do
         context 'taking a sample' do
           subject { super().sample }
 
-          it_behaves_like 'Sell'
+          it_behaves_like 'Buy'
 
           context 'about included resources' do
             subject { super().orderbook }
@@ -39,7 +39,7 @@ describe Bitex::Resources::Sell do
         end
       end
 
-      context 'with filters', vcr: { cassette_name: 'sells/all/with_filters' } do
+      context 'with filters', vcr: { cassette_name: 'buys/all/with_filters' } do
         let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
         let(:days) { 10 }
         let(:limit) { 5 }
@@ -50,7 +50,7 @@ describe Bitex::Resources::Sell do
         context 'taking a sample' do
           subject { super().sample }
 
-          it_behaves_like 'Sell'
+          it_behaves_like 'Buy'
 
           context 'about included resources' do
             subject { super().orderbook }

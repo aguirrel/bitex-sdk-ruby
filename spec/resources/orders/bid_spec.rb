@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::Bid do
+describe Bitex::Resources::Orders::Bid do
   let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
   let(:valid_orderbook_code) { orderbook.code }
   let(:invalid_orderbook_code) { :invalid_orderbook_code }
