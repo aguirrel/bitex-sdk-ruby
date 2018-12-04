@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::Pos do
+describe Bitex::Resources::Merchants::Pos do
   shared_examples_for 'Pos' do
     it { is_expected.to be_a(described_class) }
 

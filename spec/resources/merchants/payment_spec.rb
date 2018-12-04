@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::Payment do
+describe Bitex::Resources::Merchants::Payment do
   shared_examples_for 'Payment' do
     it { is_expected.to be_a(described_class) }
 
@@ -16,7 +16,7 @@ describe Bitex::Resources::Payment do
     context 'about included resources' do
       subject { super().address }
 
-      it { is_expected.to be_a(Bitex::Resources::BitcoinAddress) }
+      it { is_expected.to be_a(Bitex::Resources::Merchants::BitcoinAddress) }
       its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user payment]) }
     end
   end
