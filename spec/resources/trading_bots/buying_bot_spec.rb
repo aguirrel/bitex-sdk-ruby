@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bitex::Resources::BuyingBot do
+describe Bitex::Resources::TradingBots::BuyingBot do
   shared_examples_for 'Buying Bot' do
     it { is_expected.to be_a(described_class) }
 
