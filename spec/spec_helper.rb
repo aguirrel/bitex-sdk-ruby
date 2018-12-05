@@ -15,7 +15,7 @@ Dir[File.expand_path('support/**/*.rb', __dir__)].each { |f| require f }
 
 RSpec.configure do |config|
   config.include(FactoryBot::Syntax::Methods)
-  config.include(SpecHelpers)
+  config.include(Helpers)
 
   config.mock_with(:rspec) do |mocks|
     mocks.yield_receiver_to_any_instance_implementation_blocks = true
