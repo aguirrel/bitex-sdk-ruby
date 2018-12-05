@@ -13,8 +13,8 @@ module Bitex
       # Bots also make sure to prevent executing in low-liquidity conditions: they will not place new orders if the spread
       # between the best Bid and the best Ask is over 10 USD.
       #
-      # Bots do not check or lock funds! If your robot fails to place an order because of insufficient funds or other, then it will
-      # be terminated prematurely. You'll find the termination reason in exit_status.
+      # Bots do not check or lock funds! If your robot fails to place an order because of insufficient funds or other, then it
+      # will be terminated prematurely. You'll find the termination reason in exit_status.
       class TradingBot < Private
         # GET /api/<selling_bots|buying_bots>
         #

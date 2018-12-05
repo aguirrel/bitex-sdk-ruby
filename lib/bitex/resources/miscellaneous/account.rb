@@ -1,5 +1,7 @@
 module Bitex
   module Resources
+    # Experimental endpoint: This endpoint may not be supported in further releases of the API. If your integration relies on it,
+    # please contact us at developers@bitex.la explaining your use case, in order to provide you with better support.
     module Miscellaneous
       # These endpoints give you access general information about your account such as your balances, movements including
       # deposits, withdrawals as well as executed bids and asks, and your list of Compliance Profiles, a collection of all the

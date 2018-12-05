@@ -63,12 +63,13 @@ module Bitex
         #        'santander_ch', 'itau_chile', 'tokio', 'security', 'falabella', 'deutsche', 'ripley', 'rabobank', 'consorcio',
         #        'penta', 'paris', 'bbva_ch', 'desarrollo', 'coopeuch'].
         #
-        # **************************************************************************************************************************
-        # * Important note:                                                                                                        *
-        # *  Provide all the information that is required for the applicable regulations. Some values might be accepted by the API *
-        # *  but the withdrawal will be rejected afterwards in case there is an issue (such as missing or incorrect data).         *
-        # *  Also remember that we can only process withdrawals to bank accounts belonging to the same holder as the Bitex account *
-        # **************************************************************************************************************************
+        # ************************************************************************************************************************
+        # * Important note:                                                                                                      *
+        # *  Provide all the information that is required for the applicable regulations. Some values might be accepted by the   *
+        # *  API but the withdrawal will be rejected afterwards in case there is an issue (such as missing or incorrect data).   *
+        # *  Also remember that we can only process withdrawals to bank accounts belonging to the same holder as the Bitex       *
+        # *  account.                                                                                                            *
+        # ************************************************************************************************************************
         #
         # @return [WithdrawalInstruction]
         def self.create(label:, payment_method:, payment_body:)
@@ -140,7 +141,7 @@ module Bitex
         end
 
         private_class_method :valid_payment?, :valid_method?, :valid_body?, :domestic_bank_body, :international_bank_body,
-          :third_party_body, :shared_body_bank, :shared_body
+                             :third_party_body, :shared_body_bank, :shared_body
       end
     end
   end
