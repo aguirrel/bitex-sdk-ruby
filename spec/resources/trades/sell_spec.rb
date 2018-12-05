@@ -1,63 +1,51 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Trades::Sell do
-  let(:key) { :read_level_key }
-
   shared_examples_for 'Sell' do
     it { is_expected.to be_a(described_class) }
 
+    its(:type) { is_expected.to eq('sells') }
     its(:'attributes.keys') do
       is_expected.to contain_exactly(*%w[type id created_at coin_amount cash_amount fee price fee_currency fee_decimals])
     end
-    its(:type) { is_expected.to eq('buys').or eq('sells') }
     its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook order]) }
+
+    context 'about included resources' do
+      its(:orderbook) { is_expected.to be_a(Bitex::Resources::Orderbook) }
+    end
   end
 
   describe '.all' do
-    subject { client.sells.all(orderbook: orderbook, days: days, limit: limit) }
+    context 'without filters', vcr: { cassette_name: 'sells/all/without_filters' } do
+      subject { build_client(api_key: 'read_level').sells.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'without filters', vcr: { cassette_name: 'sells/all/without_filters' } do
-        let(:orderbook) { nil }
-        let(:days) { nil }
-        let(:limit) { nil }
+      context 'taking a sample' do
+        subject { super().sample }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+        it_behaves_like 'Sell'
+      end
+    end
 
-        context 'taking a sample' do
-          subject { super().sample }
+    context 'with filters', vcr: { cassette_name: 'sells/all/with_filters' } do
+      subject { read_level_client.sells.all(orderbook: orderbook, days: days, limit: limit) }
 
-          it_behaves_like 'Sell'
+      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:days) { 10 }
+      let(:limit) { 5 }
 
-          context 'about included resources' do
-            subject { super().orderbook }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-          end
-        end
+      it 'sends required filters' do
+        expect(URI.decode(subject.uri.query))
+          .to eq("filter[days]=#{days}&filter[orderbook_code]=#{orderbook.code}&limit=#{limit}")
       end
 
-      context 'with filters', vcr: { cassette_name: 'sells/all/with_filters' } do
-        let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-        let(:days) { 10 }
-        let(:limit) { 5 }
+      context 'taking a sample' do
+        subject { super().sample }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-        its(:count) { is_expected.to eq(limit) }
-
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Sell'
-
-          context 'about included resources' do
-            subject { super().orderbook }
-
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-          end
-        end
+        it_behaves_like 'Sell'
       end
     end
   end

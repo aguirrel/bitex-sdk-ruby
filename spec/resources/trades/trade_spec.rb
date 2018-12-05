@@ -1,63 +1,60 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Trades::Trade do
-  let(:key) { :read_level_key }
-
   shared_examples_for 'Trade' do
     it { is_expected.to be_a(described_class) }
 
     its(:'attributes.keys') do
       is_expected.to contain_exactly(*%w[type id created_at coin_amount cash_amount fee price fee_currency fee_decimals])
     end
-    its(:type) { is_expected.to eq('buys').or eq('sells') }
+
     its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook order]) }
+
+    context 'about included resources' do
+      its(:orderbook) { is_expected.to be_a(Bitex::Resources::Orderbook) }
+    end
   end
 
   describe '.all' do
-    subject { client.trades.all(orderbook: orderbook, days: days, limit: limit) }
+    context 'without filters', vcr: { cassette_name: 'trades/all/without_filters' } do
+      subject { read_level_client.trades.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'without filters', vcr: { cassette_name: 'trades/all/without_filters' } do
-        let(:orderbook) { nil }
-        let(:days) { nil }
-        let(:limit) { nil }
-
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Trade'
-
-          context 'about included resources' do
-            subject { super().orderbook }
-
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-          end
-        end
+      it 'about records types' do
+        expect(subject.map(&:type))
+          .to contain_exactly(*%w[buys sells buys sells buys sells buys sells buys sells buys sells buys buys sells buys])
       end
 
-      context 'with filters', vcr: { cassette_name: 'trades/all/with_filters' } do
-        let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-        let(:days) { 10 }
-        let(:limit) { 5 }
+      context 'taking first trade' do
+        subject { super().first }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-        its(:count) { is_expected.to eq(limit) }
+        its(:type) { is_expected.to eq('buys') }
 
-        context 'taking a sample' do
-          subject { super().sample }
+        it_behaves_like 'Trade'
+      end
 
-          it_behaves_like 'Trade'
+      context 'taking second trade' do
+        subject { super().second }
 
-          context 'about included resources' do
-            subject { super().orderbook }
+        its(:type) { is_expected.to eq('sells') }
 
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-          end
-        end
+        it_behaves_like 'Trade'
+      end
+    end
+
+    context 'with filters', vcr: { cassette_name: 'trades/all/with_filters' } do
+      subject { read_level_client.trades.all(orderbook: orderbook, days: days, limit: limit) }
+
+      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:days) { 10 }
+      let(:limit) { 5 }
+
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+
+      it 'sends required filters' do
+        expect(URI.decode(subject.uri.query))
+          .to eq("filter[days]=#{days}&filter[orderbook_code]=#{orderbook.code}&limit=#{limit}")
       end
     end
   end
