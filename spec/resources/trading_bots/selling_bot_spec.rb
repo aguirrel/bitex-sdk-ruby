@@ -10,10 +10,8 @@ describe Bitex::Resources::TradingBots::SellingBot do
   end
 
   describe '.all' do
-    subject { client.selling_bots.all }
-
     context 'with any level key', vcr: { cassette_name: 'selling_bots/all' } do
-      let(:key) { read_level_key }
+      subject { read_level_client.selling_bots.all }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
@@ -25,25 +23,10 @@ describe Bitex::Resources::TradingBots::SellingBot do
     end
   end
 
-  describe '.create' do
-    subject { client.selling_bots.create(amount: amount, orderbook: orderbook) }
-
-    context 'with authorized level key', vcr: { cassette_name: 'selling_bots/create' } do
-      let(:key) { write_level_key }
-      let(:amount) { 100_000 }
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-
-      it_behaves_like 'Selling Bot'
-
-      its(:amount) { is_expected.to eq(amount) }
-    end
-  end
-
   describe '.find' do
-    subject { client.selling_bots.find(id) }
-
     context 'with any level key', vcr: { cassette_name: 'selling_bots/find' } do
-      let(:key) { read_level_key }
+      subject { read_level_client.selling_bots.find(id) }
+
       let(:id) { '5' }
 
       it_behaves_like 'Selling Bot'
@@ -52,11 +35,27 @@ describe Bitex::Resources::TradingBots::SellingBot do
     end
   end
 
-  describe '.cancel' do
-    subject { client.selling_bots.cancel(id: id) }
+  describe '.create' do
+    context 'with authorized level key', vcr: { cassette_name: 'selling_bots/create' } do
+      subject { write_level_client.selling_bots.create(amount: amount, orderbook: orderbook) }
 
+      let(:amount) { 100_000 }
+      let(:orderbook) { Bitex::Resources::Orderbook.new(id: '1', code: 'btc_usd') }
+
+      it_behaves_like 'Selling Bot'
+
+      its(:amount) { is_expected.to eq(amount) }
+
+      it 'your relationships with your orderbook' do
+        expect(subject.relationships.orderbook[:data][:id]).to eq(orderbook.id)
+      end
+    end
+  end
+
+  describe '.cancel' do
     context 'with authorized level key', vcr: { cassette_name: 'selling_bots/cancel' } do
-      let(:key) { write_level_key }
+      subject { write_level_client.selling_bots.cancel(id: id) }
+
       let(:id) { '6' }
 
       it { is_expected.to be_an(Array) }

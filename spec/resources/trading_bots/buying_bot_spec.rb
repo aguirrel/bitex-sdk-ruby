@@ -10,42 +10,23 @@ describe Bitex::Resources::TradingBots::BuyingBot do
   end
 
   describe '.all' do
-    subject { client.buying_bots.all }
+    context 'with any level key', vcr: { cassette_name: 'buying_bots/all' } do
+      subject { read_level_client.buying_bots.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'enough funds', vcr: { cassette_name: 'buying_bots/all' } do
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      context 'taking a sample' do
+        subject { super().sample }
 
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Buying Bot'
-        end
+        it_behaves_like 'Buying Bot'
       end
     end
   end
 
-  describe '.create' do
-    subject { client.buying_bots.create(amount: amount, orderbook: orderbook) }
-
-    context 'with authorized level key', vcr: { cassette_name: 'buying_bots/create' } do
-      let(:key) { write_level_key }
-      let(:amount) { 100_000 }
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-
-      it_behaves_like 'Buying Bot'
-
-      its(:amount) { is_expected.to eq(amount) }
-    end
-  end
-
   describe '.find' do
-    subject { client.buying_bots.find(id) }
-
     context 'with any level key', vcr: { cassette_name: 'buying_bots/find' } do
-      let(:key) { read_level_key }
+      subject { read_level_client.buying_bots.find(id) }
+
       let(:id) { '5' }
 
       it_behaves_like 'Buying Bot'
@@ -54,11 +35,27 @@ describe Bitex::Resources::TradingBots::BuyingBot do
     end
   end
 
-  describe '.cancel' do
-    subject { client.buying_bots.cancel(id: id) }
+  describe '.create' do
+    context 'with authorized level key', vcr: { cassette_name: 'buying_bots/create' } do
+      subject { write_level_client.buying_bots.create(amount: amount, orderbook: orderbook) }
 
+      let(:amount) { 100_000 }
+      let(:orderbook) { Bitex::Resources::Orderbook.new(id: '1', code: 'btc_usd') }
+
+      it_behaves_like 'Buying Bot'
+
+      its(:amount) { is_expected.to eq(amount) }
+
+      it 'your relationships with your orderbook' do
+        expect(subject.relationships.orderbook[:data][:id]).to eq(orderbook.id)
+      end
+    end
+  end
+
+  describe '.cancel' do
     context 'with authorized level key', vcr: { cassette_name: 'buying_bots/cancel' } do
-      let(:key) { write_level_key }
+      subject { write_level_client.buying_bots.cancel(id: id) }
+
       let(:id) { '6' }
 
       it { is_expected.to be_an(Array) }
