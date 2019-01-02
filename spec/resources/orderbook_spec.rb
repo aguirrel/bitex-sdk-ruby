@@ -2,26 +2,20 @@ require 'spec_helper'
 
 describe Bitex::Resources::Orderbook do
   describe '.all', vcr: { cassette_name: 'orderbooks/all' } do
-    subject { client.orderbooks.all }
+    subject { read_level_client.orderbooks.all }
 
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-    context 'taking a sample' do
-      subject { super().sample }
-
-      shared_examples_for 'Pairs' do |pair|
-        subject { super().send(pair).keys }
-
-        it { is_expected.to contain_exactly(*%w[code decimals]) }
-      end
+    context 'taking a btc_usd as sample' do
+      subject { super().find { |sample| sample.code == 'btc_usd' } }
 
       it { is_expected.to be_a(described_class) }
 
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id code base quote]) }
-      its(:type) { is_expected.to eq(resource_name) }
-
-      it_behaves_like 'Pairs', :base
-      it_behaves_like 'Pairs', :quote
+      its(:type) { is_expected.to eq('orderbooks') }
+      its(:id) { is_expected.to eq('1') }
+      its(:code) { is_expected.to eq('btc_usd') }
+      its(:base) { is_expected.to eq({ 'code' => 'btc', 'decimals' => 8 }) }
+      its(:quote) { is_expected.to eq({ 'code' => 'usd', 'decimals' => 2 }) }
     end
   end
 end
