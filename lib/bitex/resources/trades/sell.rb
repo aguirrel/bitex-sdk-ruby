@@ -6,16 +6,16 @@ module Bitex
         #
         # Market where the sells were done.
         #
-        # self.all(orderbook: nil, days: nil, limit: nil)
-        #
         # @param [Orderboook] orderbook.
         # @param [Integer] days. Number of days ago from which the trades were done.
         # @param [Integer] limit. Max amount of sells to list.
         #
-        # GET /api/sells/:id
+        # @return [ResultSet<Sell>]
         #
         # .all(orderbook:, days:, limit:)
 
+        # GET /api/sells/:id
+        #
         # @param[Integer|String] id.
         #
         # @return [Sell]

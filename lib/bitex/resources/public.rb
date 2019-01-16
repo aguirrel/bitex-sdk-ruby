@@ -13,7 +13,33 @@ module Bitex
           end
         end
 
-        protected
+        # @options [Hash]: this argument can give this optionals kwargs
+        #   includes: with tables symbols list
+        #   filters: with kwarg conditional fields. Here send :limit and :span filters
+        def all(*args, **options)
+          query = set_includes(options.delete(:includes)) if options.key?(:includes)
+          query = set_filters(query, options.extract!(:limit, :span)) if options.key?(:limit) || options.key?(:span)
+          query = set_conditions(query, options) if options.any?
+
+          query.present? ? query.all : super()
+        end
+
+        def find(*args)
+          super(*args)[0]
+        end
+
+        def set_includes(tables)
+          includes(tables)
+        end
+
+        def set_filters(query, filters)
+          query.present? ? query.with_params(filters) : with_params(filters)
+        end
+
+        def set_conditions(query, conditions)
+          conditions[:orderbook_code] = conditions.delete(:orderbook).code if conditions.key?(:orderbook)
+          query.present? ? query.where(conditions) : where(conditions)
+        end
 
         def custom_connection(_options = {})
           Connections::Public

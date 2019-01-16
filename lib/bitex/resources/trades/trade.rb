@@ -12,14 +12,6 @@ module Bitex
         # @param [Integer] limit. Max amount of trades to list.
         #
         # @return [<Buy|Sell>]
-        def self.all(orderbook: nil, days: nil, limit: nil)
-          filters = {}.tap do |params|
-            params[:days] = days if days.present?
-            params[:orderbook_code] = orderbook.code if orderbook.present?
-          end
-
-          (limit.present? ? with_params(limit: limit).where(filters) : where(filters)).all
-        end
       end
     end
   end
