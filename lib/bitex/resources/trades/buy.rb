@@ -6,9 +6,10 @@ module Bitex
         #
         # Market where the buys were done.
         #
-        # @param [Orderboook] orderbook.
-        # @param [Integer] days. Number of days ago from which the trades were done.
-        # @param [Integer] limit. Max amount of buys to list.
+        # Optional filters:
+        #   @param [Orderboook] orderbook.
+        #   @param [Integer] days. Number of days ago from which the trades were done.
+        #   @param [Integer] limit. Max amount of buys to list.
         #
         # @return [ResultSet<Sell>]
         #

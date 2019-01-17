@@ -11,7 +11,7 @@ describe Bitex::Resources::Trades::Buy do
         expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_ars btc_pyg btc_usd])
       end
 
-      context 'taking a buy sample' do
+      context 'taking a sample' do
         subject(:sample) { buys.sample }
 
         it_behaves_like 'Trades'
@@ -21,15 +21,17 @@ describe Bitex::Resources::Trades::Buy do
     end
 
     context 'with filters', vcr: { cassette_name: 'buys/all/with_filters' } do
+      before(:each) { Timecop.freeze('2019-01-16') }
+
       subject(:buys) { client.buys.all(orderbook: orderbook, days: 15, limit: 50) }
 
       let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
 
-      it 'retrieves from specific traded orderbooks' do
+      it 'retrieves from specific orderbooks' do
         expect(buys.map(&:orderbook_code).uniq).to eq([orderbook.code])
       end
 
-      it { buys.all? { |trade| expect(trade.created_at.to_time).to be >= 15.days.ago } }
+      it { expect(buys.all? { |buy| buy.created_at.to_time >= 15.days.ago }).to be_truthy }
 
       its(:count) { is_expected.to be <= 50 }
     end

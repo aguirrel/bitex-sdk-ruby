@@ -7,7 +7,7 @@ describe Bitex::Resources::Trades::Trade do
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      it 'retrieves from all traded orderbooks' do
+      it 'retrieves from all orderbooks' do
         expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_ars btc_pyg btc_usd])
       end
 
@@ -29,6 +29,8 @@ describe Bitex::Resources::Trades::Trade do
     end
 
     context 'with filters', vcr: { cassette_name: 'trades/all/with_filters' } do
+      before(:each) { Timecop.freeze('2019-01-16') }
+
       subject(:trades) { client.trades.all(orderbook: orderbook, days: 50, limit: 100) }
 
       let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
@@ -37,7 +39,7 @@ describe Bitex::Resources::Trades::Trade do
         expect(trades.map(&:orderbook_code).uniq).to eq([orderbook.code])
       end
 
-      it { trades.all? { |trade| expect(trade.created_at.to_time).to be >= 50.days.ago } }
+      it { expect(trades.all? { |trade| trade.created_at.to_time >= 50.days.ago }).to be_truthy }
 
       its(:count) { is_expected.to be <= 100 }
     end
