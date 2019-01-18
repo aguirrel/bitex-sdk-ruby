@@ -2,13 +2,15 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/tickers/btc_usd
+    uri: https://bitex.la/api/tickers/btc_usd
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - Faraday v0.9.2
+      Version:
+      - '2.0'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -21,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 10 Oct 2018 14:16:04 GMT
+      - Fri, 18 Jan 2019 17:50:41 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -29,24 +31,22 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d923eb20792802fdd314ebb86bcc63c1a1539180964; expires=Thu, 10-Oct-19
-        14:16:04 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=bjlKSlJITHF3dlFCd2o2eVlEWHZDZDVLdm9YUXI1bVNqaFZyVHRiajFOZUkvTmROclp1amRNNEVnWkNCRERaU2FjRHl3ZlR0cnAwNUtQeVNBVHhsYktMWm5ZSUhDNGhKWHlOc1o4czA4NmxjdDdNM3VGVUoyOGl6V3FhdlJWd2tCaWNNYXNvRTUvaWpXWlZrQVRGMmZHMitpZGNrbi8rWFhCVjZjTXRBNmxCcExEeStybXlRdUswc3hxYU1hODRaLS00eVA1TFVacHVYSlpMQUp5RXpOYnBBPT0%3D--caac0328b757d29914f6dd31de0325874712b869;
-        path=/; secure; HttpOnly
+      - __cfduid=d3b5179205cca3422075d533817ee05c01547833841; expires=Sat, 18-Jan-20
+        17:50:41 GMT; path=/; domain=.bitex.la; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
+      Etag:
+      - W/"2219a078477a3a9b09501746936cc6bb"
       Cache-Control:
-      - no-cache, no-store
-      Csrf-Token:
-      - p9XDfWqXXLYPZmvUsmHMcyRqEEBOcoSks5lmrfTb24NvKyK1wVfqBsPybLFND07BIhwl51bU/O0P3exkrRLwQw==
+      - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a7801dac-8fa3-4d2e-b226-8d1985ae8d43
+      - b6020ecc-fdcf-416c-b16f-ba596807fc04
       X-Runtime:
-      - '0.011688'
+      - '0.010864'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -54,10 +54,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 4679b3e33d6b6809-EZE
+      - 49b2e7c26ae980c4-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"","type":"tickers","attributes":{"last":6491.0,"open":6578.16175881,"high":6615.0,"low":6480.0,"vwap":6543.75067359562,"volume":13.99084058,"bid":6496.79448,"ask":6524.21900781,"price_before_last":6495.0}}}'
+      string: '{"data":{"id":"btc_usd","type":"tickers","attributes":{"last":3606.81984,"open":3610.0,"high":3641.48,"low":3600.0,"vwap":3621.410318159338,"volume":6.81257954,"bid":3598.2336,"ask":3612.0,"price_before_last":3633.44891457}}}'
     http_version: 
-  recorded_at: Wed, 10 Oct 2018 14:16:04 GMT
+  recorded_at: Fri, 18 Jan 2019 17:50:40 GMT
 recorded_with: VCR 4.0.0

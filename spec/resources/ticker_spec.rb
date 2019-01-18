@@ -2,27 +2,28 @@ require 'spec_helper'
 
 describe Bitex::Resources::Ticker do
   describe '.all', vcr: { cassette_name: 'tickers/all' } do
-    subject { client.tickers.all }
+    subject(:tickers) { client.tickers.all }
 
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-    context 'tanking a sample' do
-      subject { super().sample }
+    context 'taking a sample' do
+      subject(:sample) { tickers.sample }
 
-      it { is_expected.to be_a(described_class) }
+      it { is_expected.to be_a(Bitex::Resources::Ticker) }
 
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id price]) }
-      its(:type) { is_expected.to eq(resource_name.singularize) }
+      its(:'attributes.keys') do
+        is_expected.to contain_exactly(*%w[type id last open high low vwap volume bid ask price_before_last])
+      end
+
+      its(:type) { is_expected.to eq('tickers') }
     end
   end
 
-  describe '.find' do
-    let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-    context 'with orderbook code as id', vcr: { cassette_name: 'tickers/find' } do
-      subject { client.tickers.find(orderbook.code) }
+  describe '.find', vcr: { cassette_name: 'tickers/find' } do
+    subject { client.tickers.find('btc_usd') }
 
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id last open high low vwap volume bid ask price_before_last]) }
-      its(:type) { is_expected.to eq(resource_name) }
-    end
+    it { is_expected.to be_a(Bitex::Resources::Ticker) }
+
+    its(:id) { is_expected.to eq('btc_usd') }
   end
 end
