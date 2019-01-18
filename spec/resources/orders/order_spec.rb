@@ -26,26 +26,4 @@ describe Bitex::Resources::Orders::Order do
       its(:type) { is_expected.to eq('asks') }
     end
   end
-
-=begin
-  describe '.cancel' do
-    context 'with authorized level key' do
-      subject { write_level_client.orders.cancel(filter) }
-
-      context 'with filter cancel specific market', vcr: { cassette_name: 'orders/cancel/with_filter' } do
-        let(:filter) { { filter: { orderbook_code: 'btc_usd' } } }
-
-        it { is_expected.to be_an(Array) }
-        it { is_expected.to be_empty }
-      end
-
-      context 'without filter all markets', vcr: { cassette_name: 'orders/cancel/without_filter' } do
-        let(:filter) { { } }
-
-        it { is_expected.to be_an(Array) }
-        it { is_expected.to be_empty }
-      end
-    end
-  end
-=end
 end
