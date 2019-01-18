@@ -40,6 +40,8 @@ describe Bitex::Resources::Trades::Sell do
   describe '.find', vcr: { cassette_name: 'sells/find' } do
     subject { client.sells.find('159865') }
 
+    it { is_expected.to be_a(Bitex::Resources::Trades::Sell) }
+
     its(:id) { is_expected.to eq('159865') }
   end
 end
