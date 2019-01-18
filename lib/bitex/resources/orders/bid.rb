@@ -4,6 +4,15 @@ module Bitex
       # Trading endpoints have everything you need to place and cancel Buy orders,
       # as well as listing your active orders and every trade you make.
       class Bid < Order
+        # GET /api/bids?filter[orderbook_code]={orderbook_code}
+        #
+        # Optional filters:
+        #   @param [Orderbook] orderbook.
+        #
+        # @return [ResultSet<Bid>]
+        #
+        # .all(orderbook:)
+
         # GET /api/bids/:id
         #
         # Possible status:
@@ -25,11 +34,19 @@ module Bitex
         # the Bid may not have been cancelled if it was previously matched.
         # In order to check the status of the bid, you can query all your active orders with the /api/orders endpoint.
         #
-        # @param [Hash] with id: for specific bids.
+        # @param [String] id.
         #
         # @return [nil]
         #
         # self.cancel(id: id)
+
+        # POST /api/bids
+        #
+        # @param [String] orderbook code.
+        # @param [Decimal|String] amount.
+        # @param [Decimal|String] price.
+        #
+        # @return [Bid]
       end
     end
   end

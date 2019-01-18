@@ -21,26 +21,15 @@ module Bitex
         # self.cancel(filter: { orderbook_code: :code })
         # self.cancel
 
-        # For subclass findes
-        def self.find(id)
-          super(id)[0]
-        end
-
         # POST /api/<asks|bids>
         #
-        # @param [Orderbook] orderbook.
+        # @param [String] orderbook code.
         # @param [Decimal|String] amount.
         #   The amount of an ask is the amount of Crypto (base currency) to sell.
         #   E.g: In the BTC/USD market, the ask amount is the amount of BTC to be sold for USD.
         # @param [Decimal|String] price.
         #
         # @return [Ask|Bid]
-        def self.create(orderbook:, amount:, price:)
-          new(amount: amount, price: price).tap do |order|
-            order.relationships.orderbook = orderbook
-            order.save
-          end
-        end
       end
     end
   end

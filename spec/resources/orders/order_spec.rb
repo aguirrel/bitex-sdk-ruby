@@ -1,46 +1,33 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Orders::Order do
-  shared_examples_for 'Order' do
-    it { is_expected.to be_a(described_class) }
+  describe '.all', vcr: { cassette_name: 'orders/all' } do
+    subject(:orders) { client.orders.all }
 
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id amount remaining_amount price status]) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user orderbook]) }
-  end
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-  describe '.all' do
-    context 'with any level key', vcr: { cassette_name: 'orders/all' } do
-      subject { read_level_client.orders.all }
+    it 'retrieves executing orders' do
+      expect(subject.map(&:status).uniq).to eq(['executing'])
+    end
 
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+    context 'taking bid order type' do
+      subject(:bid) { orders.find { |order| order.type == 'bids' } }
 
-      it 'retrieves executing orders' do
-        subject.map(&:status).all? { |status| expect(status).to eq('executing') }
-      end
+      it_behaves_like 'Orders'
 
-      it 'about resources types' do
-        expect(subject.map(&:type))
-          .to contain_exactly(*%w[bids bids bids bids asks asks asks asks asks])
-      end
+      its(:type) { is_expected.to eq('bids') }
+    end
 
-      context 'taking a first order' do
-        subject { super().first }
+    context 'taking ask order type' do
+      subject(:ask) { orders.find { |order| order.type == 'asks' } }
 
-        its(:type) { is_expected.to eq('bids') }
+      it_behaves_like 'Orders'
 
-        it_behaves_like 'Order'
-      end
-
-      context 'taking a fifth order' do
-        subject { super().fifth }
-
-        its(:type) { is_expected.to eq('asks') }
-
-        it_behaves_like 'Order'
-      end
+      its(:type) { is_expected.to eq('asks') }
     end
   end
 
+=begin
   describe '.cancel' do
     context 'with authorized level key' do
       subject { write_level_client.orders.cancel(filter) }
@@ -60,4 +47,5 @@ describe Bitex::Resources::Orders::Order do
       end
     end
   end
+=end
 end
