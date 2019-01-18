@@ -28,11 +28,11 @@ module Bitex
         #   Both the quote and the base currencies are determined by the Orderbook selected.
         #   (e.g. A buying bot with amount = 100 and orderbook = BTC/USD, will spend 100 dollars in buying as much BTC as it can).
         #
-        # @param [Orderbook] orderbook.
+        # @param [String] orderbook_code.
         #
         # @return [BuyingBot]
         #
-        # .create(amount:, orderbook:)
+        # .create(orderbook_code:, amount:)
 
         # POST /api/buying_bots/cancel
         #

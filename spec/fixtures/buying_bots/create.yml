@@ -2,15 +2,15 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/buying_bots
+    uri: https://bitex.la/api/buying_bots
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"buying_bots","relationships":{"orderbook":{"data":{"type":"orderbooks","id":1}}},"attributes":{"type":"buying_bots","amount":100000}}}'
+      string: '{"data":{"type":"buying_bots","attributes":{"type":"buying_bots","orderbook_code":"btc_usd","amount":100}}}'
     headers:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - write_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Fri, 18 Jan 2019 16:04:56 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=daba430342bca6122dea52124dffa8ede1547827495; expires=Sat, 18-Jan-20
+        16:04:55 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=K2RoSy9hTFVIcm1QakJKcEJ3WDZyRjNRK1VRZDJFSHB2Yk9jc0pVZy9pdXRBREpXeXJ1Rjd0QVluYWpXMjN6aVo3N1ZiaFFoMStKK3EzN01qeHpSSDhleDMxUHRJUG5BNDVDUDBlVkpSdG50eFZYVUUxNUZ6dC9JemFUN0NjbngtLSs2UWg1WWhGbXFrR3JCS0RzMk41N0E9PQ%3D%3D--74b5ee538d41b1f225335a2f68336c443a026650;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"54c627de4e8a282b9c1f9bcffe8a13f5"
+      - W/"ab199dfef4b63f11265518bd05461787"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=MEsvY01YNVhQeWZYRldBOW1udHlNZ3pJTWQrVFZQN2VXWXNjZE5RZ1JzM0orMzlVeW15Ym0zL3VoMzN1L2hUTy9DZktKZnE2YzY3NVNlU2oyeTljV3BwUWF6SkNkc1N6ZkZTYVBacXdCUWZtTFhFK1hVMDA3WVk2and5RTRiYS8zeWszaURwWjdrU2txajhCcFpucVlPT0tqdnVHYklPOTRZYm1qeFNnNHV3PS0tNlV6czVtcTVXSC9Ec2twb2ZidGFIdz09--c5721d3c2258bcb1d2ee9823ea25ef96cf8087d8;
-        path=/; HttpOnly
       X-Request-Id:
-      - ca4abc78-9b20-476b-b5a9-c4d2416e1b24
+      - 3807470f-c950-46ae-9f54-89ebb9189f6a
       X-Runtime:
-      - '0.496570'
+      - '0.118786'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49b24cd98e0fbac2-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"6","type":"buying_bots","attributes":{"amount":100000.0,"remaining_amount":100000.0,"chunk_size":5000.0,"eta":"2018-12-02T02:57:49.413Z","executing":true,"to_cancel":false},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1432","type":"buying_bots","attributes":{"amount":100.0,"remaining_amount":100.0,"chunk_size":5.0,"eta":"2019-01-18T16:34:56.092Z","executing":true,"to_cancel":false,"orderbook_code":"btc_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 02:27:49 GMT
+  recorded_at: Fri, 18 Jan 2019 16:04:55 GMT
 recorded_with: VCR 4.0.0

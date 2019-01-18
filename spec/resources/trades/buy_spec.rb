@@ -35,13 +35,13 @@ describe Bitex::Resources::Trades::Buy do
 
       its(:count) { is_expected.to be <= 50 }
     end
+  end
 
-    describe '.find', vcr: { cassette_name: 'buys/find' } do
-      subject { client.buys.find('162689') }
+  describe '.find', vcr: { cassette_name: 'buys/find' } do
+    subject { client.buys.find('162689') }
 
-      it { is_expected.to be_a(Bitex::Resources::Trades::Buy) }
+    it { is_expected.to be_a(Bitex::Resources::Trades::Buy) }
 
-      its(:id) { is_expected.to eq('162689') }
-    end
+    its(:id) { is_expected.to eq('162689') }
   end
 end

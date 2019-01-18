@@ -16,47 +16,7 @@ module Bitex
       # Bots do not check or lock funds! If your robot fails to place an order because of insufficient funds or other, then it
       # will be terminated prematurely. You'll find the termination reason in exit_status.
       class TradingBot < Private
-        # GET /api/<selling_bots|buying_bots>
-        #
-        # Get all Trading Bots.
-        #
-        # @return [ResultSet<SellingBot|BuyingBot>]
-        #
-        # .all
-
-        # GET /api/<selling_bots|buying_bots>/:id
-        #
-        # @param [String|Integer] id.
-        #
-        # @return [SellingBot|BuyingBot]
-        def self.find(id)
-          super(id)[0]
-        end
-
-        # POST /api/<selling_bots|buying_bots>
-        #
-        # @param [Orderbook] orderbook.
-        # @param [Float|String] amount.
-        #
-        # @return [SellingBot|BuyingBot]
-        def self.create(amount:, orderbook:)
-          new(amount: amount).tap do |bot|
-            bot.relationships.orderbook = orderbook
-            bot.save
-          end
-        end
-
         custom_endpoint :cancel, on: :collection, request_method: :post
-        # POST /api/<buying_bots|selling_bots>/cancel
-        #
-        # This action represents an intention to cancel the Trading Bot.
-        # No new orders will be made but if one is already being executed, it could be matched.
-        #
-        # @param [Integer] id.
-        #
-        # @return [SellingBot|BuyingBot]
-        #
-        # .cancel(id: id)
       end
     end
   end
