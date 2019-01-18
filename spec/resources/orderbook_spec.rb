@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe Bitex::Resources::Orderbook do
   describe '.all', vcr: { cassette_name: 'orderbooks/all' } do
-    subject { read_level_client.orderbooks.all }
+    subject(:orderbooks) { client.orderbooks.all }
 
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-    context 'taking a btc_usd as sample' do
-      subject { super().find { |sample| sample.code == 'btc_usd' } }
+    context 'taking a sample' do
+      subject(:sample) { orderbooks.find { |orderbook| orderbook.code == 'btc_usd' } }
 
-      it { is_expected.to be_a(described_class) }
+      it { is_expected.to be_a(Bitex::Resources::Orderbook) }
 
       its(:type) { is_expected.to eq('orderbooks') }
       its(:id) { is_expected.to eq('1') }
