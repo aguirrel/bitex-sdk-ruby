@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/transactions?filter%5Borderbook_code%5D=btc_usd
+    uri: https://bitex.la/api/transactions?filter%5Borderbook_code%5D=btc_usd
     body:
       encoding: US-ASCII
       string: ''
@@ -22,25 +22,42 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 14:00:20 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d8ee883e11e8fcb00b84434c30d10b7d31548079220; expires=Tue, 21-Jan-20
+        14:00:20 GMT; path=/; domain=.bitex.la; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"3cb3a9d2c3ecb8d1c3bfaf691ac421be"
+      - W/"33778fd90ab28b3bc3219fd6a1d2f160"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 65d9e58f-a224-43fe-94af-71956989376c
+      - 5711d5a0-33b8-4305-af0c-f0c0c377c3a3
       X-Runtime:
-      - '2.678403'
+      - '0.006173'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49ca4e78687880e2-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"39","type":"transactions","attributes":{"timestamp":1543614820,"price":150.0,"amount":2.0},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"38","type":"transactions","attributes":{"timestamp":1543614820,"price":100.0,"amount":0.89},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"37","type":"transactions","attributes":{"timestamp":1543614804,"price":100.0,"amount":1.11},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"36","type":"transactions","attributes":{"timestamp":1543614804,"price":100.0,"amount":2.0},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"35","type":"transactions","attributes":{"timestamp":1543614804,"price":100.0,"amount":0.49},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}},{"id":"34","type":"transactions","attributes":{"timestamp":1543614709,"price":50.2,"amount":2.0},"relationships":{"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}],"included":[{"id":"1","type":"orderbooks","attributes":{"code":"btc_usd","base":{"code":"btc","decimals":8},"quote":{"code":"usd","decimals":2}}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"163395","type":"transactions","attributes":{"timestamp":1548076172,"price":3539.622501,"amount":0.00009999,"orderbook_code":"btc_usd"}},{"id":"163390","type":"transactions","attributes":{"timestamp":1548075874,"price":3567.5539397,"amount":0.00280304,"orderbook_code":"btc_usd"}}]}'
     http_version: 
-  recorded_at: Fri, 30 Nov 2018 22:26:10 GMT
+  recorded_at: Mon, 21 Jan 2019 14:00:21 GMT
 recorded_with: VCR 4.0.0

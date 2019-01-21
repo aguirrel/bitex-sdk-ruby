@@ -17,19 +17,25 @@ module Bitex
         #   includes: with tables symbols list
         #   filters: with kwarg conditional fields. Here send :limit and :span filters
         def all(*args, **options)
-          query = set_includes(options.delete(:includes)) if options.key?(:includes)
-          query = set_filters(query, options.extract!(:limit, :span)) if options.key?(:limit) || options.key?(:span)
-          query = set_conditions(query, options) if options.any?
+          return super() unless options.any?
 
-          query.present? ? query.all : super()
+          build_query(options).all
         end
 
-        def find(*args)
-          super(*args)[0]
+        def find(*args, **options)
+          return super(*args)[0] unless options.any?
+
+          build_query(options).find(*args)[0]
+        end
+
+        def build_query(options)
+          query = set_includes(options.delete(:includes)) if options.key?(:includes)
+          query = set_filters(query, options.extract!(:limit, :span)) if options.key?(:limit) || options.key?(:span)
+          options.any? ? set_conditions(query, options) : query
         end
 
         def set_includes(tables)
-          includes(tables)
+          includes(*tables)
         end
 
         def set_filters(query, filters)
