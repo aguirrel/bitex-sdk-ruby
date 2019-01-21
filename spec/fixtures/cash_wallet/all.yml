@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/cash_wallets
+    uri: https://bitex.la/api/cash_wallets
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - read_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 20:08:35 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4c02d2d0d2ad442d4ed969abdeefade61548101314; expires=Tue, 21-Jan-20
+        20:08:34 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=dStxY1lLbFNyeS9IMndRYk44UitoczBScjE5bm1URURFVDI4NENJbk4wTXNjeHo0YzZ2NWxDTW93eGNqZi9wYmppd2dYSXd6clpraTJqYlBLS1Bma0pOV09SZEJCSi9rNldlODRXbVlXQXN5RXY5UFNUMnhmVFo5S3hVQzZxclQtLXBLeXdFMUlSVE5TMEVYQmR4TTExeUE9PQ%3D%3D--de80dbadb782977567079d5cf820aba8e3edbde7;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"0d312262df5f632b8b0327edb54b7456"
+      - W/"0daa456b454cdb64469140c75bfdefce"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=VDhwR2RZUGdCZ1lLbHNXVVBVajhXajFQVU53UzFJZXQrT1J2UlZZNWhCdllrdW1QRFFBMWFuNjlqRHkwVE02a3gvNnVoWGdTZEprYzhUb2MxczNIQVUrdmR1cDkyZTZoa0FXNEY4Ymx2dG9weHFCVkVlek9mTS9RdmJFV0k1OGZPRFJtaWlldzM5ZjJJUWZkS2l5c3I5VHFjMVRpMWtmajlpdXZBK1ZmbHJFPS0tRHFPM0ZhTjNoTEZtZWtOZHhyS3Vidz09--a8d1720a345b0e2ff6c521c081bf271b94d8b39a;
-        path=/; HttpOnly
       X-Request-Id:
-      - 431a5d92-58a2-43dd-8478-aea615f94006
+      - 9cfaec15-239e-45cd-85e6-433494c4b2d2
       X-Runtime:
-      - '0.849765'
+      - '0.202721'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cc69e06e05bace-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"usd","type":"cash_wallets","attributes":{"balance":49444.89,"available":47444.89,"currency":"usd"}},{"id":"ars","type":"cash_wallets","attributes":{"balance":985024.0,"available":985024.0,"currency":"ars"}},{"id":"uyu","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"uyu"}},{"id":"clp","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"clp"}},{"id":"pyg","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"pyg"}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"usd","type":"cash_wallets","attributes":{"balance":264.0,"available":244.0,"currency":"usd"}},{"id":"ars","type":"cash_wallets","attributes":{"balance":874.18,"available":874.18,"currency":"ars"}},{"id":"uyu","type":"cash_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"uyu"}},{"id":"clp","type":"cash_wallets","attributes":{"balance":17.77,"available":17.77,"currency":"clp"}},{"id":"pyg","type":"cash_wallets","attributes":{"balance":347227.84,"available":347227.84,"currency":"pyg"}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 12:48:33 GMT
+  recorded_at: Mon, 21 Jan 2019 20:08:34 GMT
 recorded_with: VCR 4.0.0

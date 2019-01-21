@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/coin_wallets
+    uri: https://bitex.la/api/coin_wallets
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - read_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 20:15:57 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=ddb32283ccf358421eacf1d8a6ac14a641548101757; expires=Tue, 21-Jan-20
+        20:15:57 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=bVFwczJFY2RGMW9xQmFpZXN3UEFwUVZEcW5IV0pjNGcrQWVYRFBFVjZDblNTbE1zNVc2dUFFcHdYaGN2dkg3aEFRdHlVdS9WS2x4RGVXUm53VUV4Mnl2N3Mvb3ZkMm82UkZveEs0WUZFTGw5YTVXNjgxanZocVNsMlJwTjlibkctLUcwK2ZpSVhqb1ZoTFdQVW41Mk9VWWc9PQ%3D%3D--d38183889b915991199192bb9f6b84775b857bc4;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"eb640f13e7c8f173ffac648ed16e910c"
+      - W/"18e1a85b47c59778482d9ac601412a6d"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=TjZxNWJTTHJDUnF3UEdlbjU3MWNJcXAraDlCODFySGpZVzhIUG5ET2hFdHFMR1hRV0hwZFErMEIxYWswWnp4U0htQk5UT1dpWXBSRExBMyttaE5zVWh2cWFLWXpYS1BuUXdjM0RQL28ybDdjWHlBNExJdklGMHIzQndCTTJRbmI5ZTNZNUwxczJFdzNJOXB4QnZpOFY5RFV6TUlDNENSR3lndEFvZXYwQzFvPS0tUXVHazVSRVIzQXJtVlJZdUg2WEZCZz09--f72fc965972205621fac5a106043554655c8fddd;
-        path=/; HttpOnly
       X-Request-Id:
-      - 8cbb22ce-9e9a-4ae3-b833-0b81e190ce24
+      - eeeb2d5b-8b1e-4f72-b01d-dafbe29fc431
       X-Runtime:
-      - '0.240867'
+      - '0.207262'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cc74afbfd480b2-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"81","type":"coin_wallets","attributes":{"balance":322.942525,"available":318.942525,"currency":"btc","address":"mrxMVFpSxVTsdjxF2QSj2CrRvM8rMGBrkq","auto_sell_address":"mrCSzD81b2gZmKVyFVofc6NW9ct4By3nqA"}},{"id":"86","type":"coin_wallets","attributes":{"balance":0.0,"available":0.0,"currency":"bch","address":"bchtest:qpdkl7n9d8vszezn9gdl250jugu0mv00yywfk0uxxj","auto_sell_address":"bchtest:qp6j5hnymrr0jhv88udl7zx8qfjh2wzdqywj3q0957"}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"3194","type":"coin_wallets","attributes":{"balance":0.01034418,"available":0.00834418,"currency":"btc","address":"1GvKbT2Jpgh3PM14awmEUVpQwCAaUx6Tqw","auto_sell_address":"1EZ3QhJNKYgUv2FEcNViFPvX54xTXmyxGG"}},{"id":"341956","type":"coin_wallets","attributes":{"balance":0.53079464,"available":0.53079464,"currency":"bch","address":"bitcoincash:qp5f5avjqlfpnvj90err940azvd08rx3lgz8v03lyk","auto_sell_address":""}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 14:13:10 GMT
+  recorded_at: Mon, 21 Jan 2019 20:15:57 GMT
 recorded_with: VCR 4.0.0
