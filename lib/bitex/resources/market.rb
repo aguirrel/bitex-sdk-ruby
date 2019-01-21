@@ -17,10 +17,9 @@ module Bitex
       # @param [Symbol] orderbook_code. Values: :btc_usd, :btc_ars, :bch_usd, :btc_pyg, :btc_clp, :btc_uyu
       # @param [Array<Symbol>] resources. Values:  [:bids, :asks, :candles, :transactions]
       #
-      # @return JsonApiClient::ResultSet. It has the server response data, and in its only element, market parsed to json api.
-      def self.find(orderbook, *resources)
-        includes(*resources).find(orderbook.code)[0]
-      end
+      # @return [Market]
+      #
+      # .find(orderbook_code, includes:)
     end
   end
 end

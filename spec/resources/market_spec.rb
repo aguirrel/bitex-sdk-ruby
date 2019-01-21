@@ -1,78 +1,79 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Market do
-  let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-
-  shared_examples_for 'Market' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id]) }
-    its(:id) { is_expected.to eq(orderbook.code.to_s) }
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[candles transactions bids asks]) }
-  end
-
   describe '.find' do
     context 'without resources parameters', vcr: { cassette_name: 'markets/find' } do
-      subject { client.markets.find(orderbook) }
+      subject(:market) { client.markets.find('btc_usd') }
 
-      it_behaves_like 'Market'
+      it { is_expected.to be_a(Bitex::Resources::Market) }
+
+      its(:id) { is_expected.to eq('btc_usd') }
+      its(:type) { is_expected.to eq('markets') }
 
       context 'included data by default' do
-        it { expect(subject.bids.sample).to be_a(Bitex::Resources::OrderGroup) }
-        it { expect(subject.asks.sample).to be_a(Bitex::Resources::OrderGroup) }
-        it { expect(subject.candles.sample).to be_a(Bitex::Resources::Candle) }
-        it { expect(subject.transactions.sample).to be_a(Bitex::Resources::Transaction) }
+        its(:'asks.sample') { is_expected.to be_a(Bitex::Resources::OrderGroup) }
+        its(:'bids.sample') { is_expected.to be_a(Bitex::Resources::OrderGroup) }
+        its(:'candles.sample') { is_expected.to be_a(Bitex::Resources::Candle) }
+        its(:'transactions.sample') { is_expected.to be_a(Bitex::Resources::Transaction) }
       end
     end
 
-    context 'with valid resources' do
-      context 'about included resources' do
-        subject { client.markets.find(orderbook, resource) }
+    context 'about included resources' do
+      subject { client.markets.find('btc_usd', includes: resource) }
 
-        context 'asks', vcr: { cassette_name: 'markets/with_resources/asks' } do
-          let(:resource) { :asks }
+      context 'asks', vcr: { cassette_name: 'markets/with_resources/asks' } do
+        let(:resource) { :asks }
 
-          it_behaves_like 'Market'
+        it { is_expected.to be_a(Bitex::Resources::Market) }
 
-          it { expect(subject.asks).to be_any }
-          it { expect(subject.bids).to be_empty }
-          it { expect(subject.candles).to be_empty }
-          it { expect(subject.transactions).to be_empty }
-        end
+        its(:asks) { is_expected.to be_any }
+        its(:bids) { is_expected.to be_empty }
+        its(:candles) { is_expected.to be_empty }
+        its(:transactions) { is_expected.to be_empty }
+      end
 
-        context 'bids', vcr: { cassette_name: 'markets/with_resources/bids' } do
-          let(:resource) { :bids }
+      context 'bids', vcr: { cassette_name: 'markets/with_resources/bids' } do
+        let(:resource) { :bids }
 
-          it_behaves_like 'Market'
+        it { is_expected.to be_a(Bitex::Resources::Market) }
 
-          it { expect(subject.asks).to be_empty }
-          it { expect(subject.bids).to be_any }
-          it { expect(subject.candles).to be_empty }
-          it { expect(subject.transactions).to be_empty }
-        end
+        its(:asks) { is_expected.to be_empty}
+        its(:bids) { is_expected.to be_any }
+        its(:candles) { is_expected.to be_empty }
+        its(:transactions) { is_expected.to be_empty }
+      end
 
-        context 'candles', vcr: { cassette_name: 'markets/with_resources/candles' } do
-          let(:resource) { :candles }
+      context 'candles', vcr: { cassette_name: 'markets/with_resources/candles' } do
+        let(:resource) { :candles }
 
-          it_behaves_like 'Market'
+        it { is_expected.to be_a(Bitex::Resources::Market) }
 
-          it { expect(subject.asks).to be_empty }
-          it { expect(subject.bids).to be_empty }
-          it { expect(subject.candles).to be_any }
-          it { expect(subject.transactions).to be_empty }
-        end
+        its(:asks) { is_expected.to be_empty}
+        its(:bids) { is_expected.to be_empty }
+        its(:candles) { is_expected.to be_any }
+        its(:transactions) { is_expected.to be_empty }
+      end
 
-        context 'transactions', vcr: { cassette_name: 'markets/with_resources/transactions' } do
-          let(:resource) { :transactions }
+      context 'transactions', vcr: { cassette_name: 'markets/with_resources/transactions' } do
+        let(:resource) { :transactions }
 
-          it_behaves_like 'Market'
+        it { is_expected.to be_a(Bitex::Resources::Market) }
 
-          it { expect(subject.asks).to be_empty }
-          it { expect(subject.bids).to be_empty }
-          it { expect(subject.candles).to be_empty }
-          it { expect(subject.transactions).to be_any }
-        end
+        its(:asks) { is_expected.to be_empty}
+        its(:bids) { is_expected.to be_empty }
+        its(:candles) { is_expected.to be_empty }
+        its(:transactions) { is_expected.to be_any }
+      end
+
+      context 'multiple resources', vcr: { cassette_name: 'markets/with_resources/multiple' } do
+        let(:resource) { [:asks, :bids] }
+
+        it { is_expected.to be_a(Bitex::Resources::Market) }
+
+        its(:asks) { is_expected.to be_any }
+        its(:bids) { is_expected.to be_any }
+        its(:candles) { is_expected.to be_empty }
+        its(:transactions) { is_expected.to be_empty }
       end
     end
   end
