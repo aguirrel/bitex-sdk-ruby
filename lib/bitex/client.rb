@@ -19,7 +19,7 @@ module Bitex
 
       Resources::Wallets::CashWallet, Resources::Wallets::CoinWallet,
 
-      Resources::Deposits::CashDepositInstruction, Resources::Deposits::CashDeposit, Resources::Deposits::CoinDeposit,
+      Resources::Deposits::CashDeposit, Resources::Deposits::CoinDeposit,
       Resources::Withdrawals::WithdrawalInstruction, Resources::Withdrawals::CashWithdrawal,
       Resources::Withdrawals::CoinWithdrawal,
 
