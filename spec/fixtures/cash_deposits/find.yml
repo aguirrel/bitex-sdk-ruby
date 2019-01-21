@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/cash_deposits/5
+    uri: https://bitex.la/api/cash_deposits/24177
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - read_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 19:34:24 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=de8de31240bb2ce6cbf82e66b6f8749211548099227; expires=Tue, 21-Jan-20
+        19:33:47 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=TUxudGRPTzRWWHFhaXZicWZ1TnRmdHNibnR2Qy9rdGdaYUJjNjJmTXVMNTZkL24vdkhBajhLcmsrcC9zZEovZXNjYlhjUnZRbTA1MFFyVThUcmd2L3dHcE1qbjNnd2NrL1ZDRnA3RkZ6UnMxS1FwM0ZwcGNKT1F2dW5oaFRMMlEtLVVMOFREamUrbUlwME9mcEV6OVRRMEE9PQ%3D%3D--6a17e2a8df5fb0253918aa73e3e4ed016f0ff2a9;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"f89564e22294217d7395d13031cce644"
+      - W/"177b809ef903c45107edb33eae052ccc"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=VWFwMXNsZUdldmZyUlhKSkc4ZmJCZlIyN2JGekY0dzIxb1Z1NGF3V0NLTHBReWdnTm9MN3M3SmIzSEMxZDJpWVJjNDA0TVJTWE8wUnZJcHdGbndVMUQwNjVDYkpweXlzRlFQNzNoVWMxYW44UnlBUjl3YXY4R3pNc2xpS3EzMG9scDBxNHRlaUtmOHJNUG5mNWZLYk5sMzBwM3VkcUwzNnVKbjY5Qk5KSGxrPS0tU2oyZ2xxcUhtbUFRUlhsbDYrNFVMUT09--982fcd6730fc9dd6398c68a4c26aa0a16c3574c2;
-        path=/; HttpOnly
       X-Request-Id:
-      - 51952d78-9cf2-4623-99ac-7826e7a10617
+      - aa97a449-d13b-4e2a-90e0-d9149b60dca0
       X-Runtime:
-      - '0.440123'
+      - '36.562264'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cc36ebcd10bae0-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"5","type":"cash_deposits","attributes":{"status":"done","requested_amount":null,"requested_currency":"USD","deposit_method":"bank","country":null,"clearing_data":null,"amount":49750.0,"fiat":{"attributes":{"id":3,"code":"usd","name":"us_dollar","decimals":2},"id":3,"code":"usd","name":"us_dollar","decimals":2},"gross_amount":50000.0,"cost":0.0,"fee":250.0,"net_amount":49750.0,"created_at":"2018-11-30T14:52:40.222Z"},"relationships":{"funding_receipt":{"data":null}}}}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"24177","type":"cash_deposits","attributes":{"status":"done","requested_amount":null,"requested_currency":"USD","deposit_method":"bank","country":null,"clearing_data":null,"amount":500.0,"fiat_code":"USD","gross_amount":500.0,"cost":0.0,"fee":0.0,"net_amount":500.0,"created_at":"2019-01-07T20:03:53.617Z"},"relationships":{"funding_receipt":{"data":null}}}}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 05:51:20 GMT
+  recorded_at: Mon, 21 Jan 2019 19:34:23 GMT
 recorded_with: VCR 4.0.0

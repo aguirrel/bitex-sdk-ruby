@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/coin_deposits/7
+    uri: https://bitex.la/api/coin_deposits/2920
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - read_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 19:57:07 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dded4795ba2f472d94f1557dd6125402c1548100627; expires=Tue, 21-Jan-20
+        19:57:07 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=d2krMjRPbHh0UGFOMXJxd29vM1BoK2VBZml6VDkwTXI0c1BXVWYzWjJtZmtXU3pWUStPTnJQVERGQkpCTnIxQ1pzVUJqQWhkM3BRZjcxcHZTZTBCT0hsM0w3ckhld0FVdGJYMkdsNnVrajlKeWRLR0pmTnE4cTc5RjN6TWNmaFMtLUVUTk5FZk9kYm5sOWlMZWJRWFk4THc9PQ%3D%3D--69d2b0ca25fcb6d8d45751f2393637acd3e4bc4d;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"526d276474ddc6434f3b89e6ed7b576b"
+      - W/"7aca9f620b66d078b16e662a4499486e"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=U2tKNDk1d1l2dVpKZ0ZlcVdXSkNDeXJwNlAybDZlTG5QS3duZC91NjV5Vi9qVmlZMnFzclVITlZSdTV6OStvUlphOUJpTFRSMWMyWDY5UWRzRzNCMENYeG1FUGI2cW04aGJ2K25TdzJHcjRuV3dkQXo4OVpsKytSZGl4emJxVWpiQzEwbndxMTZ1eU1SY0FwSDZaenB4UUp3cUx6MVlFUjJpZHhVU3pJYk1FPS0tOE9BKzNPdXBGTWl1UFJuYUx4eGdZUT09--dcfee6a8795f51207bdc374577ed9b50bf6a746f;
-        path=/; HttpOnly
       X-Request-Id:
-      - 8d9e911f-ac91-41b2-b4b2-0d8f6c655280
+      - 61238337-dbe6-4885-b171-b1788e02f6e2
       X-Runtime:
-      - '0.516394'
+      - '0.197446'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cc591a8cb080ca-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"7","type":"coin_deposits","attributes":{"address":{"public_address":"mrxMVFpSxVTsdjxF2QSj2CrRvM8rMGBrkq","payment_id":null,"auto_sell":false},"coin":"btc","amount":321.0,"created_at":"2018-11-30T14:57:59.018Z"}}}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"2920","type":"coin_deposits","attributes":{"coin":"btc","amount":0.00285,"created_at":"2015-09-03T14:51:12.000Z"},"relationships":{"address":{"data":{"id":"38500","type":"bitcoin_addresses"}}}}}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 13:22:55 GMT
+  recorded_at: Mon, 21 Jan 2019 19:57:07 GMT
 recorded_with: VCR 4.0.0
