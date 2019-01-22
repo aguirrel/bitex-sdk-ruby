@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/withdrawal_instructions
+    uri: https://bitex.la/api/withdrawal_instructions
     body:
       encoding: UTF-8
       string: '{"data":{"type":"withdrawal_instructions","attributes":{"type":"withdrawal_instructions","label":"label","body":{"account_type":"savings","address":"a
@@ -13,7 +13,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - write_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -27,31 +27,47 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 20:37:54 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d30869719b7413d62407a54074c97a64b1548103074; expires=Tue, 21-Jan-20
+        20:37:54 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=TWs5RkI5aWROekVPeVRQNEMvdnpZQmhuRGswemF3VnQzaVZtdmVoRGlFN3d5eWlmVFJrMWRQNjdXbTlRRUoxc0RvYWZsMW9GMFBlWGgxanJQNW1FL3IyOVE3Q3NkK3Qrc3lkSm4wc0RlL1hNdnFEZFFTYWorKzdKMUIwMVdxcXktLWxRbUFSNDYzRWJhVGx4Mk9hWW96K2c9PQ%3D%3D--3bec31f6cc5fef2cef7001591dc67f593962ac9b;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"5cda57674d122bc9e5dc5a073ffd1088"
+      - W/"cb34a57bc21806875036940c1f7dd742"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=QTIzTXAza1JHMnhVeHBqU0tVWUJEQStzWmFGVVYwME4wbml2UlNlTmcxT0R6TElCMVBObkplSHA1eklUK09sT3NHL2xhbjUraDlrWDA0M3hGOWFUYU9RTzZ4MnJEQkh1SHB2cElzWE96cDFtZTBIRUZPWE9qZ3grZ0l3QVd4WGM3Y0xVeGtSL2M5eTBxMVNQNm1rYm1YT3JYQW9IUTkwVTBIa1UwNndwRnBNPS0tWUJSc1NjZExnMDNUNk9ZSk44RHAvZz09--e6074579e9cc503511db4426ba1d79d630ff24aa;
-        path=/; HttpOnly
       X-Request-Id:
-      - dd13b17a-3ea7-478a-9d1a-cc9c892b898d
+      - 711c252c-9fe2-4813-a1d4-adeee00e68e9
       X-Runtime:
-      - '0.250911'
+      - '0.081418'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cc94d8af02bada-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"19","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"15414","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
         address","bank":"hsbc","bank_account_number":"12345678","cbu":"1234567812345678","cuit":"20112233344552","city":"Dimension
         C-132","country":"AR","currency":"USD","further_instructions":"A further instructions","name":"Rick
         Sanchez","payment_method":"domestic_bank","phone":"1122334455"}}}}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 15:13:18 GMT
+  recorded_at: Mon, 21 Jan 2019 20:37:54 GMT
 recorded_with: VCR 4.0.0

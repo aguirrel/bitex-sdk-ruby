@@ -1,28 +1,18 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Withdrawals::WithdrawalInstruction do
-  shared_examples_for 'Withdrawal Instruction' do
-    it { is_expected.to be_a(described_class) }
+  describe '.all', vcr: { cassette_name: 'withdrawal_instructions/all' } do
+    subject(:instructions) { client.withdrawal_instructions.all }
 
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type label body id schema]) }
-    its(:type) { is_expected.to eq(resource_name) }
-  end
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-  describe '.all' do
-    subject { client.withdrawal_instructions.all }
+    context 'taking a sample' do
+      subject(:sample) { instructions.sample }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
 
-      context 'with previously instructions created', vcr: { cassette_name: 'withdrawal_instructions/all' } do
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Withdrawal Instruction'
-        end
-      end
+      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type label body id schema]) }
+      its(:type) { is_expected.to eq('withdrawal_instructions') }
     end
   end
 
@@ -51,88 +41,74 @@ describe Bitex::Resources::Withdrawals::WithdrawalInstruction do
 
     let(:payment_body) { body.merge(shared_body_fields) }
 
-    context 'with authorized key' do
-      let(:key) { write_level_key }
+    shared_examples_for 'Newest Withdrawal Instruction' do
+      it { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
 
-      context 'with domestic bank', vcr: { cassette_name: 'withdrawal_instructions/create/domestic_bank' } do
-        let(:method) { 'domestic_bank' }
-        let(:country) { 'AR' }
-        let(:body) do
-          {
-           'account_type' => 'savings',
-           'address' => 'a address',
-           'bank' => 'hsbc',
-           'bank_account_number' => '12345678',
-           'cbu' => '1234567812345678',
-           'cuit' => '20112233344552'
-          }
-        end
+      its(:label) { is_expected.to eq(label) }
+      its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
+    end
 
-        it_behaves_like 'Withdrawal Instruction'
-
-        its(:label) { is_expected.to eq(label) }
-        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
+    context 'with domestic bank', vcr: { cassette_name: 'withdrawal_instructions/create/domestic_bank' } do
+      let(:method) { 'domestic_bank' }
+      let(:country) { 'AR' }
+      let(:body) do
+        {
+          'account_type' => 'savings',
+          'address' => 'a address',
+          'bank' => 'hsbc',
+          'bank_account_number' => '12345678',
+          'cbu' => '1234567812345678',
+          'cuit' => '20112233344552'
+        }
       end
 
-      context 'with international bank', vcr: { cassette_name: 'withdrawal_instructions/create/international_bank' } do
-        let(:method) { 'international_bank' }
-        let(:country) { 'CL' }
-        let(:body) do
-          {
-           'account_type' => 'savings',
-           'address' => 'a address',
-           'bank' => 'bco_chile',
-           'bank_account_number' => '12345678',
-           'bank_address' => 'a bank address',
-           'bank_city' => 'a bank city',
-           'bank_country' => 'CL',
-           'bank_postal_code' => 'AABBCC',
-           'bank_swift' => 'BANKUS66',
-           'postal_code' => 'XXYYZZ'
-          }
-        end
+      it_behaves_like 'Newest Withdrawal Instruction'
+    end
 
-        it_behaves_like 'Withdrawal Instruction'
-
-        its(:label) { is_expected.to eq(label) }
-        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
+    context 'with international bank', vcr: { cassette_name: 'withdrawal_instructions/create/international_bank' } do
+      let(:method) { 'international_bank' }
+      let(:country) { 'CL' }
+      let(:body) do
+        {
+          'account_type' => 'savings',
+          'address' => 'a address',
+          'bank' => 'bco_chile',
+          'bank_account_number' => '12345678',
+          'bank_address' => 'a bank address',
+          'bank_city' => 'a bank city',
+          'bank_country' => 'CL',
+          'bank_postal_code' => 'AABBCC',
+          'bank_swift' => 'BANKUS66',
+          'postal_code' => 'XXYYZZ'
+        }
       end
 
-      context 'with third party', vcr: { cassette_name: 'withdrawal_instructions/create/third_party' } do
-        let(:method) { 'third_party' }
-        let(:country) { 'PY' }
-        let(:body) { {} }
+      it_behaves_like 'Newest Withdrawal Instruction'
+    end
 
-        it_behaves_like 'Withdrawal Instruction'
+    context 'with third party', vcr: { cassette_name: 'withdrawal_instructions/create/third_party' } do
+      let(:method) { 'third_party' }
+      let(:country) { 'PY' }
+      let(:body) { {} }
 
-        its(:label) { is_expected.to eq(label) }
-        its(:body) { is_expected.to eq(body.merge(shared_body_fields)) }
-      end
+      it_behaves_like 'Newest Withdrawal Instruction'
     end
   end
 
-  describe '.find' do
-    subject { client.withdrawal_instructions.find(id) }
+  describe '.find', vcr: { cassette_name: 'withdrawal_instructions/find' } do
+    subject { client.withdrawal_instructions.find('15416') }
 
-    context 'with any level key', vcr: { cassette_name: 'withdrawal_instructions/find' } do
-      let(:key) { read_level_key }
-      let(:id) { '13' }
+    it { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
 
-      it_behaves_like 'Withdrawal Instruction'
-
-      its(:id) { is_expected.to eq(id) }
-    end
+    its(:id) { is_expected.to eq('15416') }
   end
 
-  describe '.destroy' do
-    subject { client.withdrawal_instructions.new(id: id).destroy }
+  describe '.destroy', vcr: { cassette_name: 'withdrawal_instructions/destroy' } do
+    subject { instruction.destroy }
 
-    context 'with authorized level key', vcr: { cassette_name: 'withdrawal_instructions/destroy' } do
-      let(:key) { write_level_key }
-      let(:id) { 13 }
+    let(:instruction) { client.withdrawal_instructions.new(id: '15415') }
 
-      it { is_expected.to be_truthy }
-    end
+    it { is_expected.to be_truthy }
   end
 
   describe '.valid_payment?' do

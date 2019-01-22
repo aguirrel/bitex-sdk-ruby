@@ -23,13 +23,13 @@ module Bitex
         # @param [String] to_addresses. Address to withdraw.
         # @param [Integer|String] otp. One Time Password.
         # @param [Float|String] amount. withdrawal amount.
-        # @param [String] currency. Currently, the possible crypto currencies values are 'btc' and 'bch'.
+        # @param [String] coin_code. Currently, the possible crypto currencies values are 'btc' and 'bch'.
         # @param [String] label.
         #
         # @return [CoinWithdrawal]
-        def self.create(to_addresses:, label:, otp:, amount:, currency:)
-          new(to_addresses: to_addresses, label: label, amount: amount, currency: currency).tap do |withdrawal|
-            with_headers('One-Time-Passoword': otp) { withdrawal.save }
+        def self.create(to_addresses:, label:, amount:, coin_code:, otp:)
+          new(to_addresses: to_addresses, label: label, amount: amount, coin_code: coin_code).tap do |withdrawal|
+            with_headers('One-Time-Password': otp) { withdrawal.save }
           end
         end
       end

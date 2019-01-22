@@ -1,78 +1,60 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Withdrawals::CoinWithdrawal do
-  shared_examples_for 'Coin Withdrawal' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to include(*%w[user coin]) }
-  end
-
   describe '.all' do
-    subject { client.coin_withdrawals.all(from: from) }
+    context 'without filters', vcr: { cassette_name: 'coin_withdrawals/all/without_filters' } do
+      subject(:withdrawals) { client.coin_withdrawals.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'without filters', vcr: { cassette_name: 'coin_withdrawals/all/without_filters' } do
-        let(:from) { nil }
+      context 'taking a sample' do
+        subject(:sample) { withdrawals.sample }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+        it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 
-        context 'taking a sample' do
-          subject { super().sample }
+        its(:type) { is_expected.to eq('coin_withdrawals') }
+        its(:'relationships.attributes.keys') { is_expected.to contain_exactly('user') }
 
-          it_behaves_like 'Coin Withdrawal'
-
-          its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type to_addresses label amount id status]) }
-        end
+        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type coin_code id to_addresses label amount status]) }
       end
+    end
 
-      context 'with filters', vcr: { cassette_name: 'coin_withdrawals/all/with_filters' } do
-        let(:from) { '2018-01-01' }
+    context 'with filters', vcr: { cassette_name: 'coin_withdrawals/all/with_filters_dev' } do
+      subject(:withdrawals) { client.coin_withdrawals.all(from: str_date) }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      let(:str_date) { '2019-01-01' }
 
-        context 'taking a sample' do
-          subject { super().sample }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-          it_behaves_like 'Coin Withdrawal'
-
-          its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type to_addresses label amount id status]) }
-        end
+      it 'retrieves from specified date' do
+        expect(withdrawals.all? { |withdrawal| Date.strptime(withdrawal.created_at, '%FT') >= str_date.to_date }).to be_truthy
       end
     end
   end
 
-  describe '.find' do
-    subject { client.coin_withdrawals.find(id) }
+  describe '.find', vcr: { cassette_name: 'coin_withdrawals/find' } do
+    subject { client.coin_withdrawals.find('68743') }
 
-    context 'with any level key', vcr: { cassette_name: 'coin_withdrawals/find' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 
-      let(:id) { 4 }
-
-      it_behaves_like 'Coin Withdrawal'
-
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type to_addresses label amount id status]) }
-    end
+    its(:id) { is_expected.to eq('68743') }
   end
 
-  describe '.create' do
-    subject { client.coin_withdrawals.create(to_addresses: to_addresses, label: label, amount: amount, currency: currency, otp: otp) }
+  describe '.create', vcr: { cassette_name: 'coin_withdrawals/create' } do
+    subject { client.coin_withdrawals.create(to_addresses: to_addresses, label: label, amount: amount, coin_code: coin_code, otp: otp) }
 
-    context 'with authorized level key', vcr: { cassette_name: 'coin_withdrawals/create' } do
-      let(:key) { write_level_key }
+    let(:amount) { 0.001 }
+    let(:label) { 'api-test' }
+    let(:to_addresses) { '1Me52PH47zLTituf92KGx1ZGQWV2vnEtBd' }
+    let(:coin_code) { 'btc' }
+    let(:otp) { '544943' }
 
-      let(:to_addresses) { 'mszEUK9E6E7n4SNcrjYH8Fr7ZTGP9n3dRb' }
-      let(:label) { 'Trezor' }
-      let(:amount) { 1_000 }
-      let(:currency) { :btc }
-      let(:otp) { '111111' }
+    it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 
-      it_behaves_like 'Coin Withdrawal'
-
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type to_addresses label amount currency id status]) }
-    end
+    its(:amount) { is_expected.to eq(amount) }
+    its(:coin_code) { is_expected.to eq(coin_code) }
+    its(:status) { is_expected.to eq('received') }
+    its(:label) { is_expected.to eq(label) }
+    its(:to_addresses) { is_expected.to eq(to_addresses) }
   end
 end

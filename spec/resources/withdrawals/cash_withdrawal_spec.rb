@@ -1,98 +1,64 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Withdrawals::CashWithdrawal do
-  shared_examples_for 'Cash Withdrawal' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to include(*%w[withdrawal_instruction funding_receipt]) }
-
-    context 'about included resources' do
-      its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
-    end
-  end
-
   describe '.all' do
-    subject { client.cash_withdrawals.all(from: from) }
+    context 'without filters', vcr: { cassette_name: 'cash_withdrawals/all/without_filters' } do
+      subject(:withdrawals) { client.cash_withdrawals.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'without filters', vcr: { cassette_name: 'cash_withdrawals/all/without_filters' } do
-        let(:from) { nil }
+      context 'taking a sample' do
+        subject(:sample) { withdrawals.sample }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+        it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }
 
-        context 'taking a sample' do
-          subject { super().sample }
+        its(:type) { is_expected.to eq('cash_withdrawals') }
+        its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[withdrawal_instruction funding_receipt]) }
 
-          it_behaves_like 'Cash Withdrawal'
+        context 'about included resources' do
+          its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
+        end
 
-          its(:'attributes.keys') do
-            is_expected.to contain_exactly(
-              *%w[type amount id status gross_amount cost fee net_amount country payment_method currency label created_at]
-            )
-          end
+        its(:'attributes.keys') do
+          is_expected.to contain_exactly(
+            *%w[type fiat_code amount id status gross_amount cost fee net_amount country payment_method label created_at]
+          )
         end
       end
+    end
 
-      context 'with filters', vcr: { cassette_name: 'cash_withdrawals/all/with_filters' } do
-        let(:from) { '2018-01-01' }
+    context 'with filters', vcr: { cassette_name: 'cash_withdrawals/all/with_filters_dev' } do
+      subject(:withdrawals) { client.cash_withdrawals.all(from: str_date) }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      let(:str_date) { '2018-01-01' }
 
-        context 'taking a sample' do
-          subject { super().sample }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-          it_behaves_like 'Cash Withdrawal'
-
-          its(:'attributes.keys') do
-            is_expected.to contain_exactly(
-              *%w[type amount id status gross_amount cost fee net_amount country payment_method currency  label created_at]
-            )
-          end
-        end
+      it 'retrieves from specified date' do
+        expect(withdrawals.all? { |withdrawal| Date.strptime(withdrawal.created_at, '%FT') >= str_date.to_date }).to be_truthy
       end
     end
   end
 
-  describe '.find' do
-    subject { client.cash_withdrawals.find(id) }
+  describe '.find', vcr: { cassette_name: 'cash_withdrawals/find' } do
+    subject { client.cash_withdrawals.find('28787') }
 
-    context 'with any level key', vcr: { cassette_name: 'cash_withdrawals/find' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }
 
-      let(:id) { '2' }
-
-      it_behaves_like 'Cash Withdrawal'
-
-      its(:id) { is_expected.to eq(id) }
-      its(:'attributes.keys') do
-        is_expected.to contain_exactly(
-          *%w[type amount id status gross_amount cost fee net_amount country payment_method currency  label created_at]
-        )
-      end
-    end
+    its(:id) { is_expected.to eq('28787') }
   end
 
-  describe '.create' do
-    subject { client.cash_withdrawals.create(withdrawal_instruction: withdrawal_instruction, amount: amount, currency: currency, otp: otp) }
+  describe '.create', vcr: { cassette_name: 'cash_withdrawals/create' } do
+    subject { client.cash_withdrawals.create(withdrawal_instruction: withdrawal_instruction, amount: amount, fiat_code: fiat_code, otp: otp) }
 
-    context 'with authorized level key', vcr: { cassette_name: 'cash_withdrawals/create' } do
-      let(:key) { write_level_key }
+    let(:withdrawal_instruction) { client.withdrawal_instructions.new(id: '15234') }
+    let(:amount) { 150 }
+    let(:fiat_code) { 'ars' }
+    let(:otp) { '635198' }
 
-      let(:withdrawal_instruction) { client.withdrawal_instructions.new(id: 14) }
-      let(:amount) { 1_000 }
-      let(:currency) { :ars }
-      let(:otp) { '111111' }
+    it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }
 
-      it_behaves_like 'Cash Withdrawal'
-
-      its(:'attributes.keys') do
-        is_expected.to contain_exactly(
-          *%w[type amount fiat id status gross_amount cost fee net_amount country payment_method currency  label created_at]
-        )
-      end
-    end
+    its(:amount) { is_expected.to eq(amount) }
+    its(:fiat_code) { is_expected.to eq(fiat_code) }
   end
 end

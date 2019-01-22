@@ -26,10 +26,10 @@ module Bitex
         # @param [Float|String] fiat. Fiat currency code.
         #
         # @return [CashWithdrawal]
-        def self.create(withdrawal_instruction:, otp:, amount:, currency:)
-          new(amount: amount, fiat: currency).tap do |withdrawal|
+        def self.create(withdrawal_instruction:, amount:, fiat_code:, otp:)
+          new(amount: amount, fiat_code: fiat_code).tap do |withdrawal|
             withdrawal.relationships.withdrawal_instruction = withdrawal_instruction
-            with_headers('One-Time-Passoword': otp) { withdrawal.save }
+            with_headers('One-Time-Password': otp) { withdrawal.save }
           end
         end
       end

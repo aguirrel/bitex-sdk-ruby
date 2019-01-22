@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/cash_withdrawals
+    uri: https://bitex.la/api/cash_withdrawals
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"cash_withdrawals","relationships":{"withdrawal_instruction":{"data":{"type":"withdrawal_instructions","id":14}}},"attributes":{"type":"cash_withdrawals","amount":1000,"fiat":"ars"}}}'
+      string: '{"data":{"type":"cash_withdrawals","relationships":{"withdrawal_instruction":{"data":{"type":"withdrawal_instructions","id":"15234"}}},"attributes":{"type":"cash_withdrawals","amount":150,"fiat_code":"ars"}}}'
     headers:
       User-Agent:
       - Faraday v0.9.2
-      One-Time-Passoword:
-      - '111111'
+      One-Time-Password:
+      - '635198'
       Authorization:
-      - write_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -26,32 +26,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Tue, 22 Jan 2019 14:59:45 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d7228913a3bde0b469f067a534442a6891548169162; expires=Wed, 22-Jan-20
+        14:59:22 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=anp0WXltbmpCckNUejRIR05Wa1BYS2VSMzBOUkV2eWdhcDlIOERQUlo2UHNXaDd1bTQ1TnZsYUh3OU1sQU9jYWRDWTNtQTE2cDQzditVZmRrVFljS1BCZzNnQlNOdCsyRDVmUlRYdWlDZWdaR2oxc1dtK0xadVU0UTExeEVIa3UtLWVzTUhNYzdiejhTSEp2T2hQcDZ1d0E9PQ%3D%3D--140bef65e49846577860ac7764d371680090ac27;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"c2a4b9906e5d25054c2238b7f2063879"
+      - W/"77e0e0ad4690cffa006993120448009a"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=d1NhNFMwQmZzMmhsOEZIUzJncUNMam9zeDNsODhrQndOeGxFbFpQZkFuUVVxbG1LcHNuS0s4RnhydFdIVmxKZHNtaGdRTjZTK0lrYXBJaWo3OVBrb1N4aDZ5RGdUSlVBUEtQV3hlTmhURFppTk9OQldXRUt3TXpRNnc2MlZTVC9GUXhvQnlMaEoyMmhvSUp2b3ZaV25YVkdXRVNMMDZCRCtWMzFDV3FjVVNzPS0tVTB4djF0Vkp3SjFDWjRZU1kyTVB6Zz09--a7ab09906e21a4601c65cfd1630aae102c16cd82;
-        path=/; HttpOnly
       X-Request-Id:
-      - 3917b48e-ad73-496b-aeaa-a89256f5a433
+      - 4b625ad8-f743-40d2-9aa4-86f210085d60
       X-Runtime:
-      - '0.797010'
+      - '23.226692'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49d2e2503a318100-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"2","type":"cash_withdrawals","attributes":{"status":"received","amount":1000.0,"gross_amount":1000.0,"cost":0.0,"fee":0.0,"net_amount":1000.0,"country":"CL","payment_method":"international_bank","currency":"USD","label":"label","created_at":"2018-12-02T17:26:42.996Z"},"relationships":{"withdrawal_instruction":{"data":{"id":"14","type":"withdrawal_instructions"}},"funding_receipt":{"data":null}}},"included":[{"id":"14","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
-        address","bank":"bco_chile","bank_account_number":"12345678","bank_address":"a
-        bank address","bank_city":"a bank city","bank_country":"CL","bank_postal_code":"AABBCC","bank_swift":"BANKUS66","postal_code":"XXYYZZ","city":"Dimension
-        C-132","country":"CL","currency":"USD","further_instructions":"A further instructions","name":"Rick
-        Sanchez","payment_method":"international_bank","phone":"1122334455"}}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"29559","type":"cash_withdrawals","attributes":{"status":"received","amount":150.0,"gross_amount":150.0,"cost":0.0,"fee":0.0,"net_amount":150.0,"country":"AR","payment_method":"third_party","fiat_code":"ars","label":"pase","created_at":"2019-01-22T14:59:22.544Z"},"relationships":{"withdrawal_instruction":{"data":{"id":"15234","type":"withdrawal_instructions"}},"funding_receipt":{"data":null}}},"included":[{"id":"15234","type":"withdrawal_instructions","attributes":{"label":"pase","schema":"bitex","body":{"country":"AR","payment_method":"third_party","name":"-","city":"-","phone":"-","further_instructions":"-","currency":"ARS"}}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 17:26:43 GMT
+  recorded_at: Tue, 22 Jan 2019 14:59:45 GMT
 recorded_with: VCR 4.0.0
