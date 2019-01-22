@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/merchants/payments
+    uri: https://bitex.la/api/merchants/payments
     body:
       encoding: UTF-8
       string: '{"data":{"type":"payments","attributes":{"type":"payments","amount":100,"currency":1,"keep":10,"callback_url":"https://myawesomesite.com/webhook","customer_reference":"Purchase
@@ -11,7 +11,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - write_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -25,30 +25,46 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Tue, 22 Jan 2019 16:01:26 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d1b0ce075e0c97e8dd236c60df037eaec1548172885; expires=Wed, 22-Jan-20
+        16:01:25 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=MFNSeGtoMURaNjR6c3J0dmE3YWFMSWgvaWxEWnY2WjMvWXlKclM4RjBMWjl4ODdLSDVYRE9zcDh1NDQ2WGR1UVl1RTNucnRzY29SdDZHYWV2VmoyNzJucWsvZW4zS25VYWluWWo5YW1wZW5kL3JSR2ZWQmgwREpDbjJvWFR6bXBLVkt4Qk11WjVZMFNxQ1U4bkYza0FiMzl2Z2tvaVJHbDczR0c1TjIzSUhFPS0tQVFveGRYbE54alhoS2lnSUpxZTI2dz09--ba5315b91e46d160738bd851984863df87c651d7;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"527119d37a5fa1b19afc76e5120de1e3"
+      - W/"d6dcdce17bdb450e518146c0e8ebbce7"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=anUycHcwdVhxVnJ3TTBQOW45bjM5VUxQSnBvWmxORSt1TGhsSzVBUEFNWWJQV2NGbW5BWXJGancwOFJjZksra0xTbW9VcTR1bmFPNUEydDh1SS8ySUJvMjVJdVBjdjNqdE5CbndPbTJWOEp2N3BqZUhZUWhGbWRPek1ud1VXVmRSYmtyNWdLdTVlMGRPWGFpcUl0OUhlMDdFeVc1NmtPcUJnYmY1T3lqRGdBPS0tM3VZaFpDVEwxOXB5dGNJaEQrNE01Zz09--2ded7a13920f35193d5e6e32e67abaa6e7d43a13;
-        path=/; HttpOnly
       X-Request-Id:
-      - '0595ff4b-54a5-45f5-8f3c-6efd623f4cd1'
+      - 6154ecee-a5fd-4ff6-8afa-40faa5a5fe46
       X-Runtime:
-      - '2.871504'
+      - '0.680433'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49d33d3669ae80a6-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"5","type":"payments","attributes":{"amount":100.0,"callback_url":"https://myawesomesite.com/webhook","confirmed_quantity":0.0,"currency":"btc","customer_reference":"Purchase
-        at My Store","expected_quantity":100.0,"keep":10.0,"kept":null,"last_quoted_on":"2018-12-02T22:22:50.867Z","merchant_reference":"Sale
-        id: 2212","overpaid":null,"quote_valid_until":"2018-12-02T23:22:50.709Z","settlement_amount":null,"settlement_currency":null,"status":"pending","unconfirmed_quantity":0.0,"valid_until":"2018-12-02T23:22:50.709Z"},"relationships":{"address":{"data":{"id":"29","type":"bitcoin_addresses"}},"coin_deposits":{"data":[]}}},"included":[{"id":"29","type":"bitcoin_addresses","attributes":{"auto_sell":false,"public_address":"mipLWqDPAfr2cAcGC8GFbfLLbcY4sWnxA5"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"payment":{"data":{"id":"5","type":"payments"}}}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1506","type":"payments","attributes":{"amount":100.0,"callback_url":"https://myawesomesite.com/webhook","confirmed_quantity":0.0,"currency_code":"btc","customer_reference":"Purchase
+        at My Store","expected_quantity":100.0,"keep":10.0,"kept":null,"last_quoted_on":"2019-01-22T16:01:26.576Z","merchant_reference":"Sale
+        id: 2212","overpaid":null,"quote_valid_until":"2019-01-22T17:01:26.525Z","settlement_amount":null,"settlement_currency":null,"status":"pending","unconfirmed_quantity":0.0,"valid_until":"2019-01-22T17:01:26.525Z"},"relationships":{"address":{"data":{"id":"7037","type":"bitcoin_addresses"}},"coin_deposits":{"data":[]}}},"included":[{"id":"7037","type":"bitcoin_addresses","attributes":{"auto_sell":false,"public_address":"moDdTpGuVibtgLwicgWDThKAviRgnsSeX5"},"relationships":{"user":{"data":{"id":"523","type":"users"}},"payment":{"data":{"id":"1506","type":"payments"}}}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 22:22:51 GMT
+  recorded_at: Tue, 22 Jan 2019 16:01:26 GMT
 recorded_with: VCR 4.0.0
