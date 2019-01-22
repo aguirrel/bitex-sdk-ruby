@@ -1,14 +1,16 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://bitex.la/api/api_keys/184
+    method: post
+    uri: https://bitex.la/api/api_keys
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"data":{"type":"api_keys","attributes":{"type":"api_keys","fund_account":true,"payments":true,"api_keys":true}}}'
     headers:
       User-Agent:
       - Faraday v0.9.2
+      One-Time-Password:
+      - '009353'
       Authorization:
       - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
@@ -21,11 +23,11 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Date:
-      - Tue, 22 Jan 2019 19:02:37 GMT
+      - Tue, 22 Jan 2019 18:55:15 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +35,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dbf7d04b858c6911593728d79f25574371548183757; expires=Wed, 22-Jan-20
-        19:02:37 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=emE5WlBQTkFidXVsSGo3U2dsbG04YlRqS1Z4VitVOS9zbjhLMUFwdVdoWFFKSUd2d2JoVytTZVpOWTRIMXBqVHJmOURCZklNVVQ5a2VPV0Z3MWtlQnFEWHcvUytBd1hzbGxpcGpPMFFVT0xIOTZUTGUrSFRKOEoxVUNDbzlUZjYtLWg5VEJFeXdIcTYyYjlGK2xFS0c5TEE9PQ%3D%3D--335eeb829ad8289d56fd53efa278b79defbc873b;
+      - __cfduid=de93d2263fac190b5179de1e213d079441548183314; expires=Wed, 22-Jan-20
+        18:55:14 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=QlM0ZllpK2FGcjBjaU9IaGtYWmpoYThPSi85czBlZnFFTzkwZ3ZFUWRURXpoMEVpemxDbWNCOUJzcklPR0F4YWlSQXAwQ2FOZEkwVVNvbmhoTGZEUE9OeWs0ZWk0eDMvbmxqQnFVeU50RUtRL2h6dlRkL3d2TTloWVpBTEtwS0gtLU1sZkJDc3ZjQTFQaWVMRnRIc0FJeWc9PQ%3D%3D--1e41d163b5b8112a366781a54849f282abbcac83;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -48,9 +50,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 59b12508-4ee2-4ac2-8c03-11b565a016f2
+      - e0fcdc96-f825-4830-99a7-6261a1c7446a
       X-Runtime:
-      - '0.187652'
+      - '0.240930'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -58,10 +60,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d446a20878bafe-SCL
+      - 49d43bd3e95880dc-SCL
     body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"184","type":"api_keys","attributes":{"token":"bf5cd9831577960ab5b59acb72c5fd375954ff6ae9bfd8e23ead4b297ffca02cc29fb882f66a9459","fund_account":true,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":true,"compliance":false,"api_keys":true}}}'
+      encoding: UTF-8
+      string: '{"data":{"id":"184","type":"api_keys","attributes":{"token":"your_token","fund_account":true,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":true,"compliance":false,"api_keys":true}}}'
     http_version: 
-  recorded_at: Tue, 22 Jan 2019 19:02:37 GMT
+  recorded_at: Tue, 22 Jan 2019 18:55:15 GMT
 recorded_with: VCR 4.0.0

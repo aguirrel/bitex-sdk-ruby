@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/api_keys
+    uri: https://bitex.la/api/api_keys
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - read_level
+      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
       Version:
       - '2.0'
       Content-Type:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Tue, 22 Jan 2019 18:23:18 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dfa40aac34f4420dbba4ff46561f20fbd1548181397; expires=Wed, 22-Jan-20
+        18:23:17 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=Uk1lR1NoMGxOSTZQa0I2VEZHMThESnpHV1dpc0doN1FtUW9kT1RXR21XVHd0bTVTNG1GUzdJYWlnNnErZ2E3VDZvTjBsU0NSQUJoNVBOMWZRUzBHQ0svZ01vS0RtdUIrNks2Mmo3OWZHQlRuQTBnaEI2TXBHZTNodVdsOXp5bHQtLXpseXFrTWRrTlhKQU9iM3IvYjN3a0E9PQ%3D%3D--727c84aca4f21df0531a3340ce514d68faf4f52b;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"22cb5440245eb5fd9ab5114ef04139e2"
+      - W/"53181681246b8e76887d3d71b1f09f72"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=Zm5oR3EzeDRuNDFNTlduWnU5L050Z3RpZEVsZVZ3UDJCbHo3SGg2ZGJWM2NjSVBmZWtCM1ZUMHZQWXlPeXFXUnJBRCtPaWgvRXlMcUpRZXhLQUJFcHZKWjhoajI0YThkeDB3ZkdZdTNzRmQ1UkpTK1p2QUcwRkNlQ0tTelM2YWlWNlRDRmVOeHVteDkxQjBPQlBRVldTSEZCSEY0TmJhVkFOZW9CVndEb0djPS0tSnhncUpUUWdURlQzcWVWeS9jdGRqQT09--df4ea0e4a617c8acfe874993adb170746f24a9c1;
-        path=/; HttpOnly
       X-Request-Id:
-      - 9fe3ad73-17b0-4045-8f04-59a2ff993f7a
+      - 97d7dc4f-8e56-4969-b1d3-cf527db623f4
       X-Runtime:
-      - '0.665450'
+      - '0.238322'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49d40d051aeb80d0-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"31","type":"api_keys","attributes":{"write":false,"token":"**********************************************************************read_level"}},{"id":"32","type":"api_keys","attributes":{"write":true,"token":"**********************************************************************rite_level"}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"176","type":"api_keys","attributes":{"token":"********************5a13b214a2","fund_account":false,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":false,"compliance":false,"api_keys":false}},{"id":"177","type":"api_keys","attributes":{"token":"********************a304080bcc","fund_account":false,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":false,"compliance":false,"api_keys":false}},{"id":"178","type":"api_keys","attributes":{"token":"********************26d39934ee","fund_account":false,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":false,"compliance":false,"api_keys":false}},{"id":"181","type":"api_keys","attributes":{"token":"********************8ddf61f7cd","fund_account":false,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":false,"compliance":false,"api_keys":false}},{"id":"182","type":"api_keys","attributes":{"token":"********************07ace49c36","fund_account":false,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":false,"compliance":false,"api_keys":false}},{"id":"183","type":"api_keys","attributes":{"token":"********************8e9edd78ab","fund_account":true,"create_withdrawal":true,"get_withdrawal":true,"get_balances":true,"trading":true,"payments":true,"compliance":true,"api_keys":true}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 23:42:45 GMT
+  recorded_at: Tue, 22 Jan 2019 18:23:18 GMT
 recorded_with: VCR 4.0.0

@@ -1,80 +1,70 @@
 require 'spec_helper'
 
 describe Bitex::Resources::ApiKey do
-  shared_examples_for 'Api Key' do
-    it { is_expected.to be_a(described_class) }
+  describe '.all', vcr: { cassette_name: 'api_keys/all' } do
+    subject(:api_keys) { client.api_keys.all }
 
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type write id token]) }
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:id) { is_expected.to be_present }
-    its(:token) { is_expected.to be_present }
-    its(:write) { is_expected.to be_boolean }
-  end
+    context 'taking a sample' do
+      subject(:sample) { api_keys.sample }
 
-  describe '.all' do
-    subject { client.api_keys.all }
+      it { is_expected.to be_a(Bitex::Resources::ApiKey) }
 
-    context 'with any level key', vcr: { cassette_name: 'api_keys/all' } do
-      let(:key) { read_level_key }
-
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
-
-      context 'taking a sample' do
-        subject { super().sample }
-
-        it_behaves_like 'Api Key'
-      end
-    end
-  end
-
-  describe '.find' do
-    subject { client.api_keys.find(id) }
-
-    context 'with any level key', vcr: { cassette_name: 'api_keys/find' } do
-      let(:key) { read_level_key }
-
-      let(:id) { 31 }
-
-      it_behaves_like 'Api Key'
-    end
-  end
-
-  describe '.create' do
-    subject { client.api_keys.create(permissions: permission, otp: code) }
-
-    context 'with authorized level key' do
-      let(:key) { write_level_key }
-
-      let(:code) { '984176' }
-
-      context 'a new read level', vcr: { cassette_name: 'api_keys/create/read_level' } do
-        let(:permission) { { write: false } }
-
-        it_behaves_like 'Api Key'
-
-        its(:write) { is_expected.to be_falsey }
+      its(:'attributes.keys') do
+        is_expected.to contain_exactly(
+          *%w[type id token fund_account create_withdrawal get_withdrawal get_balances trading payments compliance api_keys]
+        )
       end
 
-      context 'a new write level', vcr: { cassette_name: 'api_keys/create/write_level' } do
-        let(:permission) { { write: true } }
-
-        it_behaves_like 'Api Key'
-
-        its(:write) { is_expected.to be_truthy }
-      end
+      its(:type) { is_expected.to eq('api_keys') }
     end
   end
 
-  describe '.destroy' do
-    subject { client.api_keys.new(id: id).destroy }
+  describe '.find', vcr: { cassette_name: 'api_keys/find' } do
+    subject { client.api_keys.find('184') }
 
-    context 'with authorized level key', vcr: { cassette_name: 'api_keys/destroy' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::ApiKey) }
 
-      let(:id) { 34 }
+    its(:id) { is_expected.to eq('184') }
+  end
 
-      it { is_expected.to be_truthy }
-    end
+  describe '.create', vcr: { cassette_name: 'api_keys/create' } do
+   subject do
+     client.api_keys.create(
+       permissions: {
+         fund_account: fund_account_permission,
+         payments: payments_permission,
+         api_keys: api_keys_permission
+       },
+       otp: otp
+     )
+   end
+
+   let(:api_keys_permission) { true }
+   let(:fund_account_permission) { true }
+   let(:payments_permission) { true }
+
+   let(:otp) { '009353' }
+
+   it { is_expected.to be_a(Bitex::Resources::ApiKey) }
+
+   its(:id) { is_expected.to be_present }
+   its(:token) { is_expected.to be_present }
+
+   its(:api_keys) { is_expected.to eq(api_keys_permission) }
+   its(:fund_account) { is_expected.to eq(fund_account_permission) }
+   its(:payments) { is_expected.to eq(payments_permission) }
+   its(:create_withdrawal) { is_expected.to be_falsey }
+   its(:get_withdrawal) { is_expected.to be_falsey }
+   its(:get_balances) { is_expected.to be_falsey }
+   its(:trading) { is_expected.to be_falsey }
+   its(:compliance) { is_expected.to be_falsey }
+  end
+
+  describe '.destroy', vcr: { cassette_name: 'api_keys/destroy' } do
+    subject { client.api_keys.new(id: '184').destroy }
+
+    it { is_expected.to be_truthy }
   end
 end
