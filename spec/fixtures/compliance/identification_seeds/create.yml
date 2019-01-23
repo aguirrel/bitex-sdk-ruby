@@ -12,7 +12,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Authorization:
-      - write_level_key
+      - 68736233ac5ee1bb57cd69b241a97be564d3f6b2d1ca2fa7702c3872063d54d7554a6c9e81ba44fc
       Version:
       - '2.0'
       Content-Type:
@@ -26,28 +26,44 @@ http_interactions:
       code: 201
       message: Created
     headers:
+      Date:
+      - Tue, 22 Jan 2019 19:49:27 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dd667990624a3f0150a2d1ada86fd59e21548186565; expires=Wed, 22-Jan-20
+        19:49:25 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=LzR5cXFZS3BFYXVPTjV3OEdwc0dRSWljN0h2SUNVa2lxdVdHc0VkeGw2SFcra3hSd3E5dTRabEc2dE00ajdWdzBPTWJRQU5FUHlVNlFZaTlnc0FNcGt1MnRvTEwxOTJFOGVFRjRDY0JFSVJCWkJhRkR6OW5HamdEbm5ydEp6TnBUSFV4dUVoNzBLTFRWOTRZQ3dwNjY2SjNHcnYzNUNjeFk5czRtOGltU2xjPS0tdTl2RjI2alAwZ3czSVZYMEI0ZjZWUT09--3e8fae1cc1a2015f1be623c0c57d8b1b46410a8a;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"081a0cd853b7b8a4fc04f9b2459eaa5e"
+      - W/"9debd35e6a657826f122bb2faa3322fb"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=djVFQUMyQjBkQ1pHdGhvbGxSTnVrdDNVSVUzdlYvWTNleVlKR3RLc3A2bXluMEIxSElEZjh6Vk1oQ1dWOGVybWNqSkN6SWNDTGhkaE5QWTZCQTBxWWkyTzloVHViSG9PQTNPU29zcXJFVkRuTmt4NTdiSGtaOGMweUNXZHk3RE5mc2cwWkRGSGtJQi9MNnB3cGwxc001R1Q1NFVEVWp0bHhhT2lmRUc4d0I0PS0tdnpWbjB0blJiMVZOVndJR0thYXdjdz09--67d9b4db87a1eb5c4ae9933dc338abc63f93106a;
-        path=/; HttpOnly
       X-Request-Id:
-      - 88a21626-3ea1-4eae-8d86-8a5ffe4aa1ad
+      - db56cb34-46ef-41f1-9084-84d07d9a6253
       X-Runtime:
-      - '0.796195'
+      - '1.451832'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49d48b32fc9880fa-SCL
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"2","type":"identification_seeds","attributes":{"identification_kind_code":"national_id","number":"12345678","issuer":"AR","public_registry_authority":null,"public_registry_book":null,"public_registry_extra_data":null,"created_at":"2018-12-03T00:33:58.000Z","updated_at":"2018-12-03T00:33:58.000Z"},"relationships":{"issue":{"data":{"id":"2","type":"issues"}},"attachments":{"data":[]}}}}'
+      string: '{"data":{"id":"2701","type":"identification_seeds","attributes":{"identification_kind_code":"national_id","number":"12345678","issuer":"AR","public_registry_authority":null,"public_registry_book":null,"public_registry_extra_data":null,"created_at":"2019-01-22T19:49:27.000Z","updated_at":"2019-01-22T19:49:27.000Z"},"relationships":{"issue":{"data":{"id":"1435","type":"issues"}},"attachments":{"data":[]}}}}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 00:33:58 GMT
+  recorded_at: Tue, 22 Jan 2019 19:49:27 GMT
 recorded_with: VCR 4.0.0

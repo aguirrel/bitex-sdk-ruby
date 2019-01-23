@@ -1,15 +1,7 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Compliance::DomicileSeed do
-  let(:write_level_key) { 'write_level' }
-
-  shared_examples_for 'Domicile Seed' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id city country floor postal_code street_address street_number state apartment created_at updated_at]) }
-  end
-
-  describe '.create' do
+  describe '.create', vcr: { cassette_name: 'compliance/domicile_seeds/create' } do
     subject do
       client.domicile_seeds.create(
         city: city,
@@ -32,19 +24,20 @@ describe Bitex::Resources::Compliance::DomicileSeed do
     let(:state) { 'zaraza' }
     let(:apartment) { '9º B' }
 
-    context 'with authorized level key', vcr: { cassette_name: 'compliance/domicile_seeds/create' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::DomicileSeed) }
 
-      it_behaves_like 'Domicile Seed'
+    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id city country floor postal_code street_address street_number state apartment created_at updated_at]) }
 
-      its(:city) { is_expected.to eq(city) }
-      its(:country) { is_expected.to eq(country) }
-      its(:floor) { is_expected.to eq(floor) }
-      its(:postal_code) { is_expected.to eq(postal_code) }
-      its(:street_address) { is_expected.to eq(street_address) }
-      its(:street_number) { is_expected.to eq(street_number) }
-      its(:state) { is_expected.to eq(state) }
-      its(:apartment) { is_expected.to eq(apartment) }
-    end
+    its(:type) { is_expected.to eq('domicile_seeds') }
+    its(:id) { is_expected.to be_present }
+
+    its(:city) { is_expected.to eq(city) }
+    its(:country) { is_expected.to eq(country) }
+    its(:floor) { is_expected.to eq(floor) }
+    its(:postal_code) { is_expected.to eq(postal_code) }
+    its(:street_address) { is_expected.to eq(street_address) }
+    its(:street_number) { is_expected.to eq(street_number) }
+    its(:state) { is_expected.to eq(state) }
+    its(:apartment) { is_expected.to eq(apartment) }
   end
 end

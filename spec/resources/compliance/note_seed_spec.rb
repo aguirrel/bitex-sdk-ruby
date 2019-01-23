@@ -1,27 +1,20 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Compliance::NoteSeed do
-  let(:write_level_key) { 'write_level' }
-
-  shared_examples_for 'Note Seed' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id title body created_at updated_at]) }
-  end
-
-  describe '.create' do
+  describe '.create', vcr: { cassette_name: 'compliance/note_seeds/create' } do
     subject { client.note_seeds.create(title: title, body: body) }
 
     let(:title) { 'Identification note' }
     let(:body) { 'These are custom notes' }
 
-    context 'with authorized level key', vcr: { cassette_name: 'compliance/note_seeds/create' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::NoteSeed) }
 
-      it_behaves_like 'Note Seed'
+    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id title body created_at updated_at]) }
 
-      its(:title) { is_expected.to eq(title) }
-      its(:body) { is_expected.to eq(body) }
-    end
+    its(:type) { is_expected.to eq('note_seeds') }
+    its(:id) { is_expected.to be_present }
+
+    its(:title) { is_expected.to eq(title) }
+    its(:body) { is_expected.to eq(body) }
   end
 end

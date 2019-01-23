@@ -1,15 +1,7 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Compliance::PhoneSeed do
-  let(:write_level_key) { 'write_level' }
-
-  shared_examples_for 'Phone Seed' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id country number phone_kind_code has_telegram has_whatsapp note created_at updated_at]) }
-  end
-
-  describe '.create' do
+  describe '.create', vcr: { cassette_name: 'compliance/phone_seeds/create' } do
     subject do
       client.phone_seeds.create(
         country: country,
@@ -32,17 +24,18 @@ describe Bitex::Resources::Compliance::PhoneSeed do
         'You have no idea what prison is like here!'
     end
 
-    context 'with authorized level key', vcr: { cassette_name: 'compliance/phone_seeds/create' } do
-      let(:key) { write_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::PhoneSeed) }
 
-      it_behaves_like 'Phone Seed'
+    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id country number phone_kind_code has_telegram has_whatsapp note created_at updated_at]) }
 
-      its(:country) { is_expected.to eq(country) }
-      its(:number) { is_expected.to eq(number) }
-      its(:phone_kind_code) { is_expected.to eq(phone_kind_code) }
-      its(:has_telegram) { is_expected.to eq(has_telegram) }
-      its(:has_whatsapp) { is_expected.to eq(has_whatsapp) }
-      its(:note) { is_expected.to eq(note) }
-    end
+    its(:type) { is_expected.to eq('phone_seeds') }
+    its(:id) { is_expected.to be_present }
+
+    its(:country) { is_expected.to eq(country) }
+    its(:number) { is_expected.to eq(number) }
+    its(:phone_kind_code) { is_expected.to eq(phone_kind_code) }
+    its(:has_telegram) { is_expected.to eq(has_telegram) }
+    its(:has_whatsapp) { is_expected.to eq(has_whatsapp) }
+    its(:note) { is_expected.to eq(note) }
   end
 end
