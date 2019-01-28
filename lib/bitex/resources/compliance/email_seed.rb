@@ -1,7 +1,7 @@
 module Bitex
   module Resources
     module Compliance
-      class EmailSeed < Seed 
+      class EmailSeed < Seed
         # POST /api/email_seeds
         #
         # @param [Integer] id. Impersonated user id.
