@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.bitex.la/api/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"webhooks","attributes":{"url":"https://webhooktest.com"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Jan 2019 20:22:32 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dabc3023f74529357beae6767dd662f8c1548361350; expires=Fri, 24-Jan-20
+        20:22:30 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=OVlPck9CUTBqbWRHRnlhbFRFS0RGUHd3SE1mVkFWZUVFUlhETnJ5Vy9jNHEvSXQyMXd1UWlDRW8wQ0gxVFptQzNjUEl6d1hLZjVsUVY0bFYzWEpIVkRuNmhkMDdNV0NlbDRHYk0yRjBsUXhRT0ZiSEVBMDExZkZwTmVQWkRIcDZMaVJmOGU0aXI4emMyK3VEOU9ldjI2d054WmxTM1N6Zm1YWFdrYStGZmZBPS0ta2dGdTdFZnZkWkM0TU85aVF5eklPdz09--5fc23ec1c09b94504ae53644493b0c05f666689b;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"4839bfd544902a7911feb8892142d6af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 00ba4110-5a6a-49c7-ba57-4c9d06f7bed3
+      X-Runtime:
+      - '1.121071'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49e536683cd580fa-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1548361352","type":"webhooks","attributes":{"url":"https://webhooktest.com"}}}'
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 20:22:31 GMT
+recorded_with: VCR 4.0.0
