@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Bitex::Resources::Compliance::AllowanceSeed do
   describe '.create', vcr: { cassette_name: 'compliance/allowance_seed/create' } do
-    subject { client.allowance_seeds.create(kind_code: 'usd') }
+    subject { client.allowance_seeds.create(601, kind_code: 'usd') }
 
     it { is_expected.to be_a(Bitex::Resources::Compliance::AllowanceSeed) }
 

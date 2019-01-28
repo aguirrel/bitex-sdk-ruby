@@ -1,9 +1,17 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
-      class AllowanceSeed < Private
-        # .create(kind_code:)
+      class AllowanceSeed < Seed
+        # POST /api/allowance_seed
+        #
+        # @param [Integer] id. Impersonated user id.
+        #
+        # @param attrs [Hash]:
+        #   @param [String] kind_code.
+        #
+        # @return [AllowanceSeed]
+        #
+        # .create(id, **attrs)
       end
     end
   end
