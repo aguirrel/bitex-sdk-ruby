@@ -5,12 +5,13 @@ http_interactions:
     uri: https://sandbox.bitex.la/api/email_seeds
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"email_seeds","attributes":{"type":"email_seeds","address":"person@example.com","email_kind_code":"invoicing"}}}'
+      string: '{"data":{"type":"email_seeds","attributes":{"address":"sdk+invoicing@whitelabeler.com","email_kind_code":"invoicing"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 68736233ac5ee1bb57cd69b241a97be564d3f6b2d1ca2fa7702c3872063d54d7554a6c9e81ba44fc
+      - your_magic_api_key;
+        user=601
       Version:
       - '2.0'
       Content-Type:
@@ -25,7 +26,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Jan 2019 19:47:32 GMT
+      - Mon, 28 Jan 2019 20:50:07 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +34,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d11f61eec68db1c505128a16b7cbb93f61548186450; expires=Wed, 22-Jan-20
-        19:47:30 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=RlRHOWdFdk1OYSt3clBIS0FDYXY4SnBhVmNLK3RFZlJxYlRiTnYxanBDaGw3MDY3L0huWTdoSys2WmZQdHMvL2NCcDBCM25KYllUT0JEa280c2k0ZmQzN05SaDBMSVcrUlhwRlFZUm1JcGlFZ0l4SzJwSm1IbjVVVW92THovQ3ZTQTJvdis3U05JcFBqcC9vWlFrbWtBcnV0ejBzWEM4R1BydXFFYUZNbHJrPS0tQXVFS1djbTJTOFJWQS9FTG1TMEdqQT09--7937f3b204edbd54f7c54ea0e0c91d2ddc86e262;
+      - __cfduid=d2f59ce5bf89b458a6eee20115a51bc691548708607; expires=Tue, 28-Jan-20
+        20:50:07 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=U1lxSzUzZFRFam1Zd1NocmRwL2ZiNlVTM0U4MUhNZ2FGZmtVekM2MnJjQjlKcWd5Z0hlTThMbHNaYWc2bXVsV05ZNjFwQWlhUjU1anFLWEdzZUpiSW5YT2RPc016c0xtenhyRzRIRWx1MGtoTmJlQWVlQkh4Y2FJSkZEcXd3eGIyUWE1blNLbjAyQ1IycVZtOHprc3hQQ0FCWmlpRUxNRDdVTnlUQWQxYjBNPS0tcTFPUW1QQm0xN2ZNb3pFbStKcmR6dz09--7e6b464966ccb420f784cc1b78bd35d7b9dc3d30;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -44,13 +45,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"ef6df526f0eb5bb31b62b9ab6896ab95"
+      - W/"3d875794b2f434ffe3c3d1eb73a7cad2"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1833dbfc-0d48-4af1-8901-d2363b7691b5
+      - ad30b5b5-bf40-4435-8475-8c9e2f2fd3f0
       X-Runtime:
-      - '1.868898'
+      - '0.320158'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -58,10 +59,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d48862c84e80e2-SCL
+      - 4a06545ab949bafe-SCL
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"207","type":"email_seeds","attributes":{"address":"person@example.com","email_kind_code":"invoicing","created_at":"2019-01-22T19:47:32.000Z","updated_at":"2019-01-22T19:47:32.000Z"},"relationships":{"issue":{"data":{"id":"1435","type":"issues"}},"attachments":{"data":[]}}}}'
+      string: '{"data":{"id":"214","type":"email_seeds","attributes":{"address":"sdk+invoicing@whitelabeler.com","email_kind_code":"invoicing","created_at":"2019-01-28T20:50:07.000Z","updated_at":"2019-01-28T20:50:07.000Z"},"relationships":{"issue":{"data":{"id":"1521","type":"issues"}},"attachments":{"data":[]}}}}'
     http_version: 
-  recorded_at: Tue, 22 Jan 2019 19:47:33 GMT
+  recorded_at: Mon, 28 Jan 2019 20:50:07 GMT
 recorded_with: VCR 4.0.0
