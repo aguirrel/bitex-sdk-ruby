@@ -4,6 +4,12 @@ module Bitex
     class Private < Public
       cattr_accessor :api_key
 
+      # To compose authorization with api key and user id
+      def self.authorize_with_user(id)
+        with_headers(Authorization: "#{api_key}\; user=#{id}") { yield }
+      end
+      def_delegator self, :authorize_with_user
+
       class << self
         def build(options = {})
           super(options).tap do |anonymous|
