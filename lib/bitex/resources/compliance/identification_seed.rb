@@ -1,7 +1,7 @@
 module Bitex
   module Resources
     module Compliance
-      class IdentificationSeed < Private
+      class IdentificationSeed < Seed
         # POST /api/identification_seeds
         #
         # The identification should be checked by an attachment demonstrating its validity.
