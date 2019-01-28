@@ -5,13 +5,14 @@ http_interactions:
     uri: https://sandbox.bitex.la/api/note_seeds
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"note_seeds","attributes":{"type":"note_seeds","title":"Identification
+      string: '{"data":{"type":"note_seeds","attributes":{"title":"Identification
         note","body":"These are custom notes"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 68736233ac5ee1bb57cd69b241a97be564d3f6b2d1ca2fa7702c3872063d54d7554a6c9e81ba44fc
+      - your_magic_api_key;
+        user=601
       Version:
       - '2.0'
       Content-Type:
@@ -26,7 +27,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Jan 2019 19:56:09 GMT
+      - Mon, 28 Jan 2019 20:33:22 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -34,9 +35,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=de555bf1eefbb48993da747f41bd6a1bf1548186968; expires=Wed, 22-Jan-20
-        19:56:08 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=RzkySGwvNkwrTDRPWkxFS214MG9zS3ZiaHhXRlk2dnpXWWR0ekxWc1V3SXZUUEgxUEZ1ak5ISWlqdzc3OEJwSUUxSjZwT0JoSzRJeHJmR0RLbFdacjRyc2dubGEvMTlQYThlNkxZQlVFWll0QldVRU1oejJkS0tiZnVtVG9VSWpyTk5Bc0tqYlZ1MWZOc1lLTTg2YXpWaC9icnFYMzBmbEhETlMvMkJvbVVRPS0tcXc3TlBPMWpibGxQZExFWnUyOW4rQT09--2db83e3401a1b05692bf16c6eee69f622ce0ffa0;
+      - __cfduid=d9711090b52e7ce6988f8045fef4c11ad1548707600; expires=Tue, 28-Jan-20
+        20:33:20 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=VmRCMmoxL25Sa2d4ZFIyMUlBSi8zV0Y2NWVONTQ2VmZnRXFtaVZTQTkwTkdkTTRoY2Y3aVNNWGhXVUJNb3F1YS9LV0RUcnREdFRnbjF5WmdtU0U2eCszeWJ0QTN4Tk13Tk5hQVBpRkJ1MFY2Lzl6VitUZnk4dzhjMHFicE9LTjNBYmREbUlnYXRMT1BMdnBuSEtBbTN6WVQwU2w0WFk3cDNFTFAwRlYwVDhnPS0tSmk1cDZ5VDZKMUpWQ3krN1VxRGMxUT09--3cd873c8d94f2fb00f90b1551e3c1bbff045238c;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -45,13 +46,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"ec26b3cefae96dc91e431707b144ba65"
+      - W/"4f8b0cb669003deede0e4ae443656135"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 933d7e62-ff7c-4f02-ab68-6bc93afe229b
+      - 5bb686fb-5e29-4b75-b28a-28bde6f2527a
       X-Runtime:
-      - '0.401194'
+      - '1.863871'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -59,11 +60,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d4950a786abace-SCL
+      - 4a063bc42b6bbb04-SCL
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"351","type":"note_seeds","attributes":{"title":"Identification
-        note","body":"These are custom notes","created_at":"2019-01-22T19:56:09.000Z","updated_at":"2019-01-22T19:56:09.000Z"},"relationships":{"issue":{"data":{"id":"1435","type":"issues"}},"attachments":{"data":[]}}}}'
+      string: '{"data":{"id":"353","type":"note_seeds","attributes":{"title":"Identification
+        note","body":"These are custom notes","created_at":"2019-01-28T20:33:21.000Z","updated_at":"2019-01-28T20:33:21.000Z"},"relationships":{"issue":{"data":{"id":"1521","type":"issues"}},"attachments":{"data":[]}}}}'
     http_version: 
-  recorded_at: Tue, 22 Jan 2019 19:56:09 GMT
+  recorded_at: Mon, 28 Jan 2019 20:33:21 GMT
 recorded_with: VCR 4.0.0
