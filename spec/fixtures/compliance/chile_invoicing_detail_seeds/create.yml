@@ -5,12 +5,13 @@ http_interactions:
     uri: https://sandbox.bitex.la/api/chile_invoicing_detail_seeds
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"chile_invoicing_detail_seeds","attributes":{"type":"chile_invoicing_detail_seeds","ciudad":"Santiago","comuna":"Chile","giro":"2332","tax_id":"12053214-6","vat_status_code":"consumidor_final"}}}'
+      string: '{"data":{"type":"chile_invoicing_detail_seeds","attributes":{"ciudad":"Santiago","comuna":"Chile","giro":"2332","tax_id":"12053214-6","vat_status_code":"consumidor_final"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 68736233ac5ee1bb57cd69b241a97be564d3f6b2d1ca2fa7702c3872063d54d7554a6c9e81ba44fc
+      - 7fc6c5f9a4b7be2c4912c43d76310f49ae4dcfb1a58999f500c1edc082a7ce57eed20fb19a9d99a7;
+        user=601
       Version:
       - '2.0'
       Content-Type:
@@ -25,7 +26,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 22 Jan 2019 19:43:24 GMT
+      - Mon, 28 Jan 2019 21:09:43 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +34,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dffc2b5d6430c47f95e0c47aec59504f81548186202; expires=Wed, 22-Jan-20
-        19:43:22 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=eG1CQm8wOUFhUXdMYVM4QXRYV2RoVDBhMWpPdzJ6ZnU5OEZSUmR4ME9zUXJvUnpPVFdWRHNaYXVZR0lGV252cGhGT3gyMWRRQmw0Z1FoclE2SE9ZWGZQS212S2NwNWwybWF5bVdXVGxhQXU2NFpMa0xmL3Z2MmxoQ0lDdytOM3RlM1hGU25oWDJROERTNjgwVUNPVEZVdHNIQk9YamVBbGt6MHR1cUZYQXdrPS0tRXYyaDMzejIwZEc0TGdhamllNFRKZz09--1022a3589bef3108a2287eaee973c35a6a163399;
+      - __cfduid=da27ff5bf65e81a187cf3ceded8922ee21548709781; expires=Tue, 28-Jan-20
+        21:09:41 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=R2lUMHBEQVp5ZG53Mi9VMCtEOHJoazB0bFBiSjYyYkhrUkk3UjNraldkTUpCZWJOaHRYV2s4YmVTZkdleWF3SEpoUEpNYlltV1U5UndrMmdybzNoR3VUdGNwdnRNY1dSbE9EdU9UYi91aFhCN2J4MTR2WHNLektDdDdIVHNmR0dEOS85ZjI3SHBoNnhwL28xcXRUWU1jY1hpSEhlL1l3RkFIMUhXbEZaSUJRPS0tWDJKb3RLRHVWclZOR1B3bVBqczh1dz09--a7dd20034b3d77ec6c385a5ee2b21516ef3a417b;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -44,13 +45,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"7d9f646eb8edb16b85deba9cbd9a7b99"
+      - W/"5e68e401a02181a94d3116aa705d8a90"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - acc7d731-d458-45ce-ab43-276a82c73dd3
+      - 7c44980e-f155-428e-b584-66e77b149a0a
       X-Runtime:
-      - '1.729771'
+      - '1.925903'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -58,10 +59,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d482555bac80f4-SCL
+      - 4a067103997cbab0-SCL
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"14","type":"chile_invoicing_detail_seeds","attributes":{"vat_status_code":"consumidor_final","tax_id":"12053214-6","giro":"2332","ciudad":"Santiago","comuna":"Chile","created_at":"2019-01-22T19:43:24.000Z","updated_at":"2019-01-22T19:43:24.000Z"},"relationships":{"issue":{"data":{"id":"1435","type":"issues"}},"attachments":{"data":[]}}}}'
+      string: '{"data":{"id":"16","type":"chile_invoicing_detail_seeds","attributes":{"vat_status_code":"consumidor_final","tax_id":"12053214-6","giro":"2332","ciudad":"Santiago","comuna":"Chile","created_at":"2019-01-28T21:09:43.000Z","updated_at":"2019-01-28T21:09:43.000Z"},"relationships":{"issue":{"data":{"id":"1521","type":"issues"}},"attachments":{"data":[]}}}}'
     http_version: 
-  recorded_at: Tue, 22 Jan 2019 19:43:24 GMT
+  recorded_at: Mon, 28 Jan 2019 21:09:42 GMT
 recorded_with: VCR 4.0.0

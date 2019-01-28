@@ -15,7 +15,7 @@ module Bitex
         #   @param [String] tax_id_kind_code.
         #   @param [String] vat_status_code.
         #
-        # @return [NoteSeed]
+        # @return [ArgentinaInvoicingDetailSeed]
         #
         # .create(id, **attrs)
       end
