@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Deposits::CashDepositInstruction do
-  describe '.all', vcr: { cassette_name: 'cash_deposit_instructions/all/without_filters' } do
+  describe '.all', vcr: { cassette_name: 'cash_deposit_instructions/all' } do
     subject(:deposit_instructions) { client.cash_deposit_instructions.all }
 
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
