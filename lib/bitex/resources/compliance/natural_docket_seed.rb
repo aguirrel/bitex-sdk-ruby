@@ -4,13 +4,13 @@ module Bitex
       class NaturalDocketSeed < Private
         # POST /api/natural_docket_seeeds
         #
-        # @params [String] :first_name
-        # @params [String] :last_name
-        # @params [String] :nationality
-        # @params [String] :gender_code
-        # @params [String] :marital_status_code
-        # @params [Boolean] :politically_exposed
-        # @params [String] :birth_date ISO 8601 (YYYY-MM-DD)
+        # @param [String] :first_name
+        # @param [String] :last_name
+        # @param [String] :nationality
+        # @param [String] :gender_code
+        # @param [String] :marital_status_code
+        # @param [Boolean] :politically_exposed
+        # @param [String] :birth_date ISO 8601 (YYYY-MM-DD)
         #
         # @return [NaturalDocketSeed]
         def self.create(id, **attrs)

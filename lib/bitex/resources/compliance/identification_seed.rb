@@ -1,10 +1,19 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
       class IdentificationSeed < Private
-        # .create(identification_kind_code:, number:, issuer:, public_registry_authority:, public_registry_book:,
-        #   public_registry_extra_data:)
+        # POST /api/identification_seeds
+        #
+        # The identification should be checked by an attachment demonstrating its validity.
+        #
+        # @param [String] identification_kind_code.
+        # @param [String] issuer.
+        # @param [Integer] number.
+        #
+        # @return [IdentificationSeed]
+        def self.create(id, **attrs)
+          authorize_with_user(id) { super(**attrs) }
+        end
       end
     end
   end
