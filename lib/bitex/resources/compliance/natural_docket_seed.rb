@@ -1,10 +1,21 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
       class NaturalDocketSeed < Private
-        # .create(first_name:, last_name:, nationality:, gender_code:, marital_status_code:, politically_exposed:, birth_date:,
-        #   job_title:, job_description:, politically_exposed_reason:)
+        # POST /api/natural_docket_seeeds
+        #
+        # @params [String] :first_name
+        # @params [String] :last_name
+        # @params [String] :nationality
+        # @params [String] :gender_code
+        # @params [String] :marital_status_code
+        # @params [Boolean] :politically_exposed
+        # @params [String] :birth_date ISO 8601 (YYYY-MM-DD)
+        #
+        # @return [NaturalDocketSeed]
+        def self.create(id, **attrs)
+          authorize_with_user(id) { super(**attrs) }
+        end
       end
     end
   end
