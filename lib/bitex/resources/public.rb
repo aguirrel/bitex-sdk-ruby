@@ -2,7 +2,11 @@ module Bitex
   module Resources
     # Generic base resource for public Bitex resources.
     class Public < JsonApiClient::Resource
+      extend Forwardable
+
       include Connections
+
+      attr_accessor :meta
 
       class << self
         def build(options = {})
@@ -55,6 +59,12 @@ module Bitex
           (name || superclass.name).demodulize.underscore
         end
       end
+
+      def update_attributes(attrs = {})
+        self.meta = attrs.delete(:meta)
+        super(attrs)
+      end
+      def_delegator self, :with_headers
     end
   end
 end

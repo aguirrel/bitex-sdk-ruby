@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://sandbox.bitex.la/api/users/600
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":600,"type":"users","attributes":{"email":"another@whitelabeler.com","password":"updatedpassword","password_confirmation":"updatedpassword","do_not_mail":true}},"meta":{"current_password":"newpassword"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key;
+        user=600
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Jan 2019 15:35:54 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d3587aaf8e39439036c15b9878a7dd0621548689752; expires=Tue, 28-Jan-20
+        15:35:52 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=Si9BazVzaWVFN2lUMG1tR0FIU0VibUZOaVN4eXdENEFtWm1tRFBUY2gwWElMb0ozdFdQWWxnOGN6VnlLMW9DaVNWOG50OG1VaitzZnR2QUJrSVV0dk5Mdy9jQ2cwakVMY1pycEZ3UkhkcDY3VWdYWWN3ekJ5WkJ2MFV6cDV3WGNsOUwwNXlvSWxoeWZnTTNNS0MwOXlrbGJvUzk2K0EwaHVVeHJmUUI4OXlNPS0tTEt4SG4wWlFkdzVHcVY1aTBtWjU5UT09--c43bec003ba25fdd627c99b9d19691b153819124;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"4fb4242c63276de1cc9c3ff2c5e8e2d0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 97018022-944b-45bf-856a-d1105ac63bd0
+      X-Runtime:
+      - '0.783366'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4a04880aafc1bae0-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"600","type":"users","attributes":{"name":"person@whitelabeler.com","email":"person@whitelabeler.com","kyc_accepted":false,"otp_enabled":false,"do_not_email":false,"trezor_login_enabled":false}}}'
+    http_version: 
+  recorded_at: Mon, 28 Jan 2019 15:35:53 GMT
+recorded_with: VCR 4.0.0

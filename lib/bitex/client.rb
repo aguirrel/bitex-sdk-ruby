@@ -19,6 +19,7 @@ module Bitex
 
       Resources::Wallets::CashWallet, Resources::Wallets::CoinWallet,
 
+      Resources::Deposits::CashDepositInstruction,
       Resources::Deposits::CashDeposit, Resources::Deposits::CoinDeposit,
       Resources::Withdrawals::WithdrawalInstruction, Resources::Withdrawals::CashWithdrawal,
       Resources::Withdrawals::CoinWithdrawal,
@@ -31,8 +32,10 @@ module Bitex
       Resources::Compliance::NoteSeed, Resources::Compliance::DomicileSeed, Resources::Compliance::EmailSeed,
       Resources::Compliance::PhoneSeed,
       Resources::Compliance::ArgentinaInvoicingDetailSeed, Resources::Compliance::ChileInvoicingDetailSeed,
+      Resources::Compliance::Issue,
 
-      Resources::Miscellaneous::Account, Resources::Miscellaneous::Movement
+      Resources::Miscellaneous::Account, Resources::Miscellaneous::Movement,
+      Resources::User, Resources::Webhook
     ].each do |resource|
       accessor = resource.name.demodulize.underscore.downcase.pluralize
 

@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.bitex.la/api/users
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"users","attributes":{"email":"user+test123@sample.com","password":"password"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Jan 2019 18:18:44 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=ddff30b1a6bac8a260a1b9900a89797b21548353920; expires=Fri, 24-Jan-20
+        18:18:40 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=TWRsVHBlKzM5RzlzQnNwWDJHTWNweVlEM0xEZ1ljcXhuMWhRRmJhcFRTZ1VEc04zR1FYcHZaaE5oSTNOWVVqWERDb29uSVhsUG5xMHdJTXp3MDVaemZSbCtyN2FMd016Q2ZWUy9mMU1DZmNwMHdwQUpOdE43VlYvaWN5ZE56NmJka1dWQmdHSTJhdG45NEJEZWJNOTEyRS9kQlBmZGloTGlhVjRrYWVrK3BFPS0tbTQzWERkNTBlQUtGakJBS0M1V0IvUT09--b881cc91947cec4373b38d75dbd7cc721f837541;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"e31a817f1d048ed63b799f316e8fe14b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c131660c-ab58-49b4-b675-007909ad75e9
+      X-Runtime:
+      - '3.566596'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49e481047c9e80f4-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"594","type":"users","attributes":{"name":"user+test123@sample.com","email":"user+test123@sample.com","kyc_accepted":false,"otp_enabled":false,"do_not_email":false,"trezor_login_enabled":false}}}'
+    http_version: 
+  recorded_at: Thu, 24 Jan 2019 18:18:44 GMT
+recorded_with: VCR 4.0.0

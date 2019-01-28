@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/users/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key;
+        user=600
+      Version:
+      - '2.0'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Jan 2019 15:32:30 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da760cb4974ec1db07f9159bd5b9aebce1548689549; expires=Tue, 28-Jan-20
+        15:32:29 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=L3dVZUVHTWFsK1lnRmxJTWRmaTdIUk0yS3MrRU5xTnN0QW11dTI0Y3ZXZTEycy9zdmFYSndVWXpJYUZRd2FqWjlvZmx1YnpKTGM5Sm9pMnU4b2hGSlM2d2M3SEJkZXRnN3p1eks3b05RcWJUTlA0R0FTdlBUL0VBakszL1NnRlkvcmZ3MGl2REFKQUozVGRRY3ZMUTRVd1VxUG9yb2hxM0UxVSsxOVBzZHB3PS0tSFdWVE9qdTZnYnZiSXFnWllmYVgrUT09--cc62e54c3bafe8d9a15861c66b16f263575adb10;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"4fb4242c63276de1cc9c3ff2c5e8e2d0"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8640af5c-c843-47f1-b6bf-b05ad9a64a3b
+      X-Runtime:
+      - '0.638760'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4a048312283180e2-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"600","type":"users","attributes":{"name":"person@whitelabeler.com","email":"person@whitelabeler.com","kyc_accepted":false,"otp_enabled":false,"do_not_email":false,"trezor_login_enabled":false}}}'
+    http_version: 
+  recorded_at: Mon, 28 Jan 2019 15:32:29 GMT
+recorded_with: VCR 4.0.0
