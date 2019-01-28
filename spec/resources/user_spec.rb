@@ -43,20 +43,4 @@ describe Bitex::Resources::User  do
       its(:type) { is_expected.to eq('users') }
     end
   end
-
-  describe '#update', vcr: { cassette_name: 'users/update' } do
-    subject(:updated) {
-      user.update(
-        email: 'another@whitelabeler.com',
-        password: 'updatedpassword',
-        password_confirmation: 'updatedpassword',
-        do_not_mail: true,
-        meta: { current_password: 'newpassword' }
-      )
-    }
-
-    let(:user) { client.users.new(id: 600).tap { |user| user.mark_as_persisted! } }
-
-    it { is_expected.to be_truthy }
-  end
 end
