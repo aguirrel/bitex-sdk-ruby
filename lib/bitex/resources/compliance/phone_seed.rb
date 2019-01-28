@@ -1,9 +1,22 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
-      class PhoneSeed < Private
-        # .create(country:, number:, phone_kind_code:, has_telegram:, has_whatsapp:, note:)
+      class PhoneSeed < Seed
+        # POST /api/phone_seed
+        #
+        # @param [Integer] id. Impersonated user id.
+        #
+        # @param attrs [Hash]:
+        #   @param [String] country.
+        #   @param [String] number.
+        #   @param [String] phone_kind_code.
+        #   @param [String] has_telegram.
+        #   @param [String] has_whatsapp.
+        #   @param [String] note.
+        #
+        # @return [PhoneSeed]
+        #
+        # .create(id, **attrs)
       end
     end
   end
