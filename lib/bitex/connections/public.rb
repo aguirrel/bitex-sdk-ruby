@@ -9,7 +9,7 @@ module Bitex
       protected
 
       def custom_headers(headers = {})
-        headers.merge(version: VERSION)
+        headers.merge(version: '2.1')
       end
     end
   end
