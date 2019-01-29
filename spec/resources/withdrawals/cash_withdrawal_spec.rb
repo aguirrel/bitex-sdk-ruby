@@ -27,7 +27,7 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
       end
     end
 
-    context 'with filters', vcr: { cassette_name: 'cash_withdrawals/all/with_filters_dev' } do
+    context 'with filters', vcr: { cassette_name: 'cash_withdrawals/all/with_filters' } do
       subject(:withdrawals) { client.cash_withdrawals.all(from: str_date) }
 
       let(:str_date) { '2018-01-01' }
@@ -51,10 +51,10 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
   describe '.create', vcr: { cassette_name: 'cash_withdrawals/create' } do
     subject { client.cash_withdrawals.create(withdrawal_instruction: withdrawal_instruction, amount: amount, fiat_code: fiat_code, otp: otp) }
 
-    let(:withdrawal_instruction) { client.withdrawal_instructions.new(id: '15234') }
+    let(:withdrawal_instruction) { client.withdrawal_instructions.new(id: '299') }
     let(:amount) { 150 }
     let(:fiat_code) { 'ars' }
-    let(:otp) { '635198' }
+    let(:otp)  { '062346' }
 
     it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }
 

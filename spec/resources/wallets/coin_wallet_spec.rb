@@ -12,7 +12,6 @@ describe Bitex::Resources::Wallets::CoinWallet do
       it { is_expected.to be_a(Bitex::Resources::Wallets::CoinWallet) }
 
       its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id balance available currency address auto_sell_address]) }
-      its(:type) { is_expected.to eq(resource_name) }
     end
   end
 

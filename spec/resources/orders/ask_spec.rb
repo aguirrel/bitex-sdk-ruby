@@ -45,12 +45,12 @@ describe Bitex::Resources::Orders::Ask do
   end
 
   describe '.create', vcr: { cassette_name: 'asks/create' } do
-    subject { client.asks.create(orderbook_code: 'bch_usd', amount: 0.1, price: 130) }
+    subject { client.asks.create(orderbook_code: 'bch_usd', amount: 3, price: 150) }
 
     it { is_expected.to be_a(Bitex::Resources::Orders::Ask) }
 
     its(:orderbook_code) { is_expected.to eq('bch_usd') }
-    its(:amount) { is_expected.to eq(0.1) }
-    its(:price) { is_expected.to eq(130) }
+    its(:amount) { is_expected.to eq(3) }
+    its(:price) { is_expected.to eq(150) }
   end
 end

@@ -1,40 +1,41 @@
 require 'spec_helper'
 
-=begin
 describe Bitex::Resources::Compliance::Issue do
-  let(:read_level_key) { 'client2_read_level_key' }
+  describe '.current', vcr: { cassette_name: 'compliance/issues/current' } do
+    subject(:issues) { client.issues.current(601) }
 
-  shared_examples_for 'Issue' do
-    it { is_expected.to be_a(described_class) }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::Issue) }
 
     its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id state created_at updated_at]) }
 
-    context 'about relationships' do
-      subject { super().relationships }
+    its(:id) { is_expected.to be_present }
+    its(:type) { is_expected.to eq('issues') }
 
-      its(:person) { is_expected.to be_present }
-      its(:natural_docket_seed) { is_expected.to be_present }
-      its(:legal_entity_docket_seed) { is_expected.to be_present }
-      its(:argentina_invoicing_detail_seed) { is_expected.to be_present }
-      its(:chile_invoicing_detail_seed) { is_expected.to be_present }
-      its(:identification_seeds) { is_expected.to be_present }
-      its(:domicile_seeds) { is_expected.to be_present }
-      its(:phone_seeds) { is_expected.to be_present }
-      its(:email_seeds) { is_expected.to be_present }
-      its(:allowance_seeds) { is_expected.to be_present }
-      its(:observations) { is_expected.to be_present }
-      its(:note_seeds) { is_expected.to be_present }
-    end
+    its(:person) { is_expected.to be_a(Bitex::Resources::Compliance::Person) }
+    its(:natural_docket_seed) { is_expected.to be_a(Bitex::Resources::Compliance::NaturalDocketSeed) }
+    its(:legal_entity_docket_seed) { is_expected.to be_nil }
+    its(:argentina_invoicing_detail_seed) { is_expected.to be_a(Bitex::Resources::Compliance::ArgentinaInvoicingDetailSeed) }
+    its(:chile_invoicing_detail_seed) { is_expected.to be_a(Bitex::Resources::Compliance::ChileInvoicingDetailSeed) }
+    its(:'identification_seeds.sample') { is_expected.to be_a(Bitex::Resources::Compliance::IdentificationSeed) }
+    its(:'domicile_seeds.sample') { is_expected.to be_a(Bitex::Resources::Compliance::DomicileSeed) }
+    its(:'phone_seeds.sample') { is_expected.to be_a(Bitex::Resources::Compliance::PhoneSeed) }
+    its(:'email_seeds.sample') { is_expected.to be_a(Bitex::Resources::Compliance::EmailSeed) }
+    its(:'allowance_seeds.sample') { is_expected.to be_a(Bitex::Resources::Compliance::AllowanceSeed) }
+
+    its(:observations) { is_expected.to be_empty }
+    its(:note_seeds) { is_expected.to be_empty }
   end
 
-  describe '.current' do
-    subject { client.issues.current }
+  describe '.complete', vcr: { cassette_name: 'compliance/issues/complete' } do
+    subject { client.issues.complete(601) }
 
-    context 'with any level key', vcr: { cassette_name: 'compliance/issues/current' } do
-      let(:key) { read_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::Issue) }
 
-      it_behaves_like 'Issue'
-    end
+    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id state]) }
+
+    its(:id) { is_expected.to be_present }
+    its(:type) { is_expected.to eq('issues') }
+
+    its(:state) { is_expected.to eq('new') }
   end
 end
-=end

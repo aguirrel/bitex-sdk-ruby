@@ -4,7 +4,7 @@ describe Bitex::Resources::Compliance::Attachment do
   describe '.create', vcr: { cassette_name: 'compliance/attachments/create' } do
     subject(:attachment) do
       client.attachments.create(
-        601,
+        602,
         document: base64_enconded_file,
         document_file_name: 'id_front.jpg',
         document_content_type: 'image/jpeg',
@@ -13,7 +13,7 @@ describe Bitex::Resources::Compliance::Attachment do
       )
     end
 
-    let(:identification_seed) { client.identification_seeds.new(id: '2705') }
+    let(:identification_seed) { client.identification_seeds.new(id: '2707') }
     let(:base64_enconded_file) do
       image_file = File.open('spec/fixtures/compliance/attachments/image.jpg')
       "data:image/jpg\;base64,#{Base64.strict_encode64(image_file.read)}"

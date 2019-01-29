@@ -45,7 +45,7 @@ describe Bitex::Resources::ApiKey do
    let(:fund_account_permission) { true }
    let(:payments_permission) { true }
 
-   let(:otp) { '009353' }
+   let(:otp) { '826641' }
 
    it { is_expected.to be_a(Bitex::Resources::ApiKey) }
 

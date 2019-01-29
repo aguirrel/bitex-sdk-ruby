@@ -19,7 +19,7 @@ describe Bitex::Resources::Withdrawals::CoinWithdrawal do
       end
     end
 
-    context 'with filters', vcr: { cassette_name: 'coin_withdrawals/all/with_filters_dev' } do
+    context 'with filters', vcr: { cassette_name: 'coin_withdrawals/all/with_filters' } do
       subject(:withdrawals) { client.coin_withdrawals.all(from: str_date) }
 
       let(:str_date) { '2019-01-01' }
@@ -45,9 +45,9 @@ describe Bitex::Resources::Withdrawals::CoinWithdrawal do
 
     let(:amount) { 0.001 }
     let(:label) { 'api-test' }
-    let(:to_addresses) { '1Me52PH47zLTituf92KGx1ZGQWV2vnEtBd' }
+    let(:to_addresses) { 'mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev' }
     let(:coin_code) { 'btc' }
-    let(:otp) { '544943' }
+    let(:otp) { '614686' }
 
     it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 

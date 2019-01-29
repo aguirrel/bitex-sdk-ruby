@@ -17,7 +17,6 @@ describe Bitex::Resources::Merchants::Pos do
     its(:'attributes.keys') do
       is_expected.to contain_exactly(*%w[type id merchant_keep merchant_logo merchant_name merchant_site merchant_slug])
     end
-    its(:type) { is_expected.to eq(resource_name) }
 
     its(:merchant_keep) { is_expected.to eq(keep) }
     its(:merchant_logo) { is_expected.to eq(logo) }

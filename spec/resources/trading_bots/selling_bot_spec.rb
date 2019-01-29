@@ -9,7 +9,13 @@ describe Bitex::Resources::TradingBots::SellingBot do
     context 'taking a sample' do
       subject(:sample) { selling_bots.sample }
 
-      it_behaves_like 'Trading Bots'
+      it { is_expected.to be_a(Bitex::Resources::TradingBots::SellingBot) }
+
+      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code amount remaining_amount chunk_size eta executing to_cancel]) }
+
+      its(:type) { is_expected.to eq('selling_bots') }
+
+      its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user]) }
     end
   end
 

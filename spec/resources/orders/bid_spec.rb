@@ -47,12 +47,12 @@ describe Bitex::Resources::Orders::Bid do
   end
 
   describe '.create', vcr: { cassette_name: 'bids/create' } do
-    subject { client.bids.create(orderbook_code: 'bch_usd', amount: 0.1, price: 130) }
+    subject { client.bids.create(orderbook_code: 'bch_usd', amount: 3, price: 150) }
 
     it { is_expected.to be_a(Bitex::Resources::Orders::Bid) }
 
     its(:orderbook_code) { is_expected.to eq('bch_usd') }
-    its(:amount) { is_expected.to eq(0.1) }
-    its(:price) { is_expected.to eq(130) }
+    its(:amount) { is_expected.to eq(3) }
+    its(:price) { is_expected.to eq(150) }
   end
 end
