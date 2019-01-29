@@ -6,7 +6,7 @@ module Bitex
 
       include Connections
 
-      attr_accessor :meta
+      def_delegator self, :with_headers
 
       class << self
         def build(options = {})
@@ -59,12 +59,6 @@ module Bitex
           (name || superclass.name).demodulize.underscore
         end
       end
-
-      def update_attributes(attrs = {})
-        self.meta = attrs.delete(:meta)
-        super(attrs)
-      end
-      def_delegator self, :with_headers
     end
   end
 end
