@@ -32,7 +32,7 @@ module Bitex
       Resources::Compliance::NoteSeed, Resources::Compliance::DomicileSeed, Resources::Compliance::EmailSeed,
       Resources::Compliance::PhoneSeed,
       Resources::Compliance::ArgentinaInvoicingDetailSeed, Resources::Compliance::ChileInvoicingDetailSeed,
-      Resources::Compliance::Issue,
+      Resources::Compliance::Issue, Resources::Compliance::Attachment,
 
       Resources::Miscellaneous::Account, Resources::Miscellaneous::Movement,
       Resources::User, Resources::Webhook
