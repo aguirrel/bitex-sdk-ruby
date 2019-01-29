@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bitex.la/api/api_keys/184
+    uri: https://sandbox.bitex.la/api/api_keys/184
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:

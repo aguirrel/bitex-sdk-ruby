@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: https://bitex.la/api/asks
+    uri: https://sandbox.bitex.la/api/asks
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"asks","attributes":{"type":"asks","orderbook_code":"bch_usd","amount":0.1,"price":130}}}'
+      string: '{"data":{"type":"asks","attributes":{"orderbook_code":"bch_usd","amount":3,"price":150}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 18 Jan 2019 14:06:32 GMT
+      - Thu, 24 Jan 2019 15:40:35 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +33,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d85a3f19ca5a83faff49b0f97044a42791547820392; expires=Sat, 18-Jan-20
-        14:06:32 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=YUJIblVRcGcrMVBHYXhRMWxJcTdLSGtOZkhZcnZWZ0Y3cWJzMDVnaE81MmJqSk1tY2grVWhWSjcySlo0SXB3TWJWaWJkUEViM1ByZU9NS1QwZ2gyY2IzTEZVeVZSTEYrT3J6dUU4dmZvbzhreTNCTkovWnR3TktxSTFjeThrNUgtLWw3U3IyUDZwU1NrNEptUVlLN2xOeXc9PQ%3D%3D--972c7019520913218db8b0668e9c9f18e44e6969;
+      - __cfduid=d1d1ce0a0c63259648bab25e5e1a633c71548344434; expires=Fri, 24-Jan-20
+        15:40:34 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=d0p2WEliQjNIU0VKTkE0bUxFQTBkYlBsSkN4L1ArSXpUYWRxbzVDaDVmVEl1MlJjWjUxSmpXZTlsY3oyRVQxZGZ2Z0RFODl3LzRmK1B5cEd3ZjByNlJsUjdMQStKZE9iWE1ZV1JTVVZ4Z0hpcXV6cnVKZHhtMXphZUk5TGZOT0I3NVpRSFErVnJmZkt5MW5qclZza0lqS0N5WmtNUmJwbWdPQlNTTCtmY2dVPS0tMWFGcFdpelI4cUZNaTljeGdhSUdBdz09--ad8cdb49e5dc376a472cf7b7bca344c359e9faa3;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -44,13 +44,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"f640f950f034fcb58c3dac8c5f3fec19"
+      - W/"4066365f6e553a8ac905aacbbc0eda7b"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5052f1c5-8316-4337-9b23-a965f2053203
+      - aecae55a-c154-4a25-9b76-4a345e91c1b1
       X-Runtime:
-      - '0.064920'
+      - '0.168958'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -58,10 +58,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49b19f6a9be88100-SCL
+      - 49e3996cd97bbafe-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"36295659","type":"asks","attributes":{"amount":0.1,"remaining_amount":0.1,"price":130.0,"status":"pending","orderbook_code":"bch_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
-    http_version: 
-  recorded_at: Fri, 18 Jan 2019 14:06:32 GMT
+      string: '{"data":{"id":"1580","type":"asks","attributes":{"amount":3.0,"remaining_amount":3.0,"price":150.0,"status":"pending","orderbook_code":"bch_usd"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 15:40:35 GMT
 recorded_with: VCR 4.0.0

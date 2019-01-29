@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bitex.la/api/coin_withdrawals?filter%5Bfrom%5D=2018-01-01
+    uri: https://sandbox.bitex.la/api/coin_withdrawals?filter%5Bfrom%5D=2019-01-01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -61,7 +61,7 @@ http_interactions:
       - 49ccd34ddd9d80a0-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"68743","type":"coin_withdrawals","attributes":{"amount":0.01,"status":"done","label":"Bitstamp-for-test","to_addresses":"37VbMTTQuLfF7o5NYkz7eD3heet5ka7MV3","coin_code":"btc"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}},{"id":"68822","type":"coin_withdrawals","attributes":{"amount":0.012,"status":"done","label":"","to_addresses":"37VbMTTQuLfF7o5NYkz7eD3heet5ka7MV3","coin_code":"btc"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}},{"id":"77472","type":"coin_withdrawals","attributes":{"amount":0.02,"status":"done","label":"to-itbit","to_addresses":"39iiGVB1UNYjmNGQwHuY7LkjDAzECyNZMk","coin_code":"btc"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}},{"id":"77473","type":"coin_withdrawals","attributes":{"amount":0.5,"status":"done","label":"to-kraken","to_addresses":"bitcoincash:qp2w4exjlvlrw4ukkzjv22exued32t7a9ust5qmkq6","coin_code":"bch"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}},{"id":"77916","type":"coin_withdrawals","attributes":{"amount":0.01838662,"status":"done","label":null,"to_addresses":"1CEAgjYtugxMk6irZQK11KR2HkvECKSFtj","coin_code":"btc"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}]}'
-    http_version: 
+      string: '{"data":[{"id":"1","type":"coin_withdrawals","attributes":{"amount":150.0,"status":"received","label":"to-me","to_addresses":"mnkzungYoJb8HMVSCmtQ5gmE9tksVqwdpf","coin_code":"btc","created_at":"2019-01-22T13:58:41.443Z"},"relationships":{"user":{"data":{"id":"1","type":"users"}}}}]}'
+    http_version:
   recorded_at: Mon, 21 Jan 2019 21:20:32 GMT
 recorded_with: VCR 4.0.0

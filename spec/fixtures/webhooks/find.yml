@@ -12,7 +12,7 @@ http_interactions:
       Authorization:
       - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:

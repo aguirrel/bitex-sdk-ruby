@@ -13,7 +13,7 @@ http_interactions:
       - your_magic_api_key;
         user=601
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:

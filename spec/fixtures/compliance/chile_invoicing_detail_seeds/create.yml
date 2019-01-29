@@ -10,10 +10,10 @@ http_interactions:
       User-Agent:
       - Faraday v0.15.4
       Authorization:
-      - 7fc6c5f9a4b7be2c4912c43d76310f49ae4dcfb1a58999f500c1edc082a7ce57eed20fb19a9d99a7;
+      - your_magic_api_key;
         user=601
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:

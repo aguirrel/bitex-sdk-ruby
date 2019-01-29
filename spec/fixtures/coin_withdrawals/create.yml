@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: https://bitex.la/api/coin_withdrawals
+    uri: https://sandbox.bitex.la/api/coin_withdrawals
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"coin_withdrawals","attributes":{"type":"coin_withdrawals","to_addresses":"1Me52PH47zLTituf92KGx1ZGQWV2vnEtBd","label":"api-test","amount":0.001,"coin_code":"btc"}}}'
+      string: '{"data":{"type":"coin_withdrawals","attributes":{"to_addresses":"mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev","label":"api-test","amount":0.001,"coin_code":"btc"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       One-Time-Password:
-      - '544943'
+      - '614686'
       Authorization:
-      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Jan 2019 14:50:48 GMT
+      - Thu, 24 Jan 2019 15:26:46 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -35,9 +35,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d0db14abe740b353cd32e185741b61b621548168647; expires=Wed, 22-Jan-20
-        14:50:47 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=SnBpL2hReDBPN2pvZmxpNDNEMVZVNWl4blh1OWJWNzQ1cE45d2hYaGNtUlEraUpOdjMxWE0wa2dhcWUrRW9kME44di9ub1pMWG5lQlRlYVBJbGJkemc1S2J5RVBtTjVyQmpxbXVEaTE4RTJmaitYVTdpWXJPYUVvanB2VlRKQ00tLTRRZS92aHFDN1ZVREVKZVM3dnc3VlE9PQ%3D%3D--0544625c1d4303c25c4c10fd20de7c94b2c76480;
+      - __cfduid=d0a282dd11d30a9db53c293aed09e85f81548343605; expires=Fri, 24-Jan-20
+        15:26:45 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=M0lhMUd3ZE1PckIzTGd5cmVkTHFEWWV3Nk1RVlBRa2pJOXhyNU1KMlh1aXFtNE5PYS9MNlhMbHp0cHIvNmxpTjcvZjRTL3lNVHlqVjkxWE41a0U0ZnBmQi9KdS9KcjNvd1NwQ2JzNHJXVUpmQ2hQbHFFOUU1MmRsN0hKWWxzVWtaL3ROSXJtc2hBR2tKT3YvdmxYNitGWEdUYW4zYU8vZzFlanZxMU5jUmVFPS0tQmJpZmd1dWN2eWxjSlNTQWNvallpUT09--93545240a2ea356f1bd363acd1fd3ec0a1595706;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -46,13 +46,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"d0fdaa8573ce3b555138295f49ed41fe"
+      - W/"97f5d89f94d4700b2e4f8d0f36fbdb54"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b7971b0e-4e63-4239-bd34-1f37afbc60bd
+      - 3afcc8cd-681f-40ab-a7ac-fb718f84f653
       X-Runtime:
-      - '0.091259'
+      - '0.411495'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -60,10 +60,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d2d5c14b1680e2-SCL
+      - 49e3852cc8018100-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"78860","type":"coin_withdrawals","attributes":{"amount":0.001,"status":"received","label":"api-test","to_addresses":"1Me52PH47zLTituf92KGx1ZGQWV2vnEtBd","coin_code":"btc"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
-    http_version: 
-  recorded_at: Tue, 22 Jan 2019 14:50:48 GMT
+      string: '{"data":{"id":"108","type":"coin_withdrawals","attributes":{"amount":0.001,"status":"received","label":"api-test","to_addresses":"mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev","coin_code":"btc"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 15:26:46 GMT
 recorded_with: VCR 4.0.0

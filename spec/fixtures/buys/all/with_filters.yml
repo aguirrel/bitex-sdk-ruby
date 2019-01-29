@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bitex.la/api/buys?filter%5Bdays%5D=15&filter%5Borderbook_code%5D=btc_usd&limit=50
+    uri: https://sandbox.bitex.la/api/buys?filter%5Bdays%5D=15&filter%5Borderbook_code%5D=btc_usd&limit=50
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - my_awesome_api_key
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -62,6 +62,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"id":"159862","type":"buys","attributes":{"created_at":"2019-01-08T19:43:34.534Z","coin_amount":0.00248127,"cash_amount":10.0,"fee":0.00000621,"price":4020.13208048,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35453058","type":"bids"}}}},{"id":"159839","type":"buys","attributes":{"created_at":"2019-01-08T19:21:18.062Z","coin_amount":0.0024851,"cash_amount":10.0,"fee":0.00000622,"price":4013.92044241,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35452001","type":"bids"}}}},{"id":"159818","type":"buys","attributes":{"created_at":"2019-01-08T18:51:49.298Z","coin_amount":0.00248624,"cash_amount":10.0,"fee":0.00000623,"price":4012.08059515,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35450589","type":"bids"}}}},{"id":"159816","type":"buys","attributes":{"created_at":"2019-01-08T18:12:48.167Z","coin_amount":0.00248752,"cash_amount":10.0,"fee":0.00000623,"price":4010.0131217,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35448763","type":"bids"}}}},{"id":"159493","type":"buys","attributes":{"created_at":"2019-01-07T20:01:02.839Z","coin_amount":0.01114167,"cash_amount":45.0,"fee":0.00002792,"price":4028.79455346,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35386391","type":"bids"}}}},{"id":"159479","type":"buys","attributes":{"created_at":"2019-01-07T19:25:09.537Z","coin_amount":0.00248097,"cash_amount":10.0,"fee":0.00000621,"price":4020.60772532,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35384664","type":"bids"}}}},{"id":"159478","type":"buys","attributes":{"created_at":"2019-01-07T19:21:53.743Z","coin_amount":0.00248011,"cash_amount":10.0,"fee":0.00000621,"price":4021.99465736,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35384508","type":"bids"}}}},{"id":"159477","type":"buys","attributes":{"created_at":"2019-01-07T19:15:16.120Z","coin_amount":0.00248212,"cash_amount":10.0,"fee":0.00000622,"price":4018.7331615,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35384192","type":"bids"}}}},{"id":"159473","type":"buys","attributes":{"created_at":"2019-01-07T19:10:32.123Z","coin_amount":0.00248272,"cash_amount":10.0,"fee":0.00000622,"price":4017.772721,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35383962","type":"bids"}}}},{"id":"159470","type":"buys","attributes":{"created_at":"2019-01-07T19:09:03.933Z","coin_amount":0.00248118,"cash_amount":10.0,"fee":0.00000621,"price":4020.26386354,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35383886","type":"bids"}}}},{"id":"159464","type":"buys","attributes":{"created_at":"2019-01-07T19:03:48.367Z","coin_amount":0.00248305,"cash_amount":10.0,"fee":0.00000622,"price":4017.23247322,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35383632","type":"bids"}}}},{"id":"158736","type":"buys","attributes":{"created_at":"2019-01-04T18:31:14.045Z","coin_amount":0.01588156,"cash_amount":60.0,"fee":0.0000398,"price":3768.52222667,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35153176","type":"bids"}}}},{"id":"158730","type":"buys","attributes":{"created_at":"2019-01-04T18:08:19.309Z","coin_amount":0.00264398,"cash_amount":10.0,"fee":0.00000662,"price":3772.72727273,"fee_currency":"BTC","fee_decimals":8,"orderbook_code":"btc_usd"},"relationships":{"order":{"data":{"id":"35151891","type":"bids"}}}}]}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 16 Jan 2019 21:24:55 GMT
 recorded_with: VCR 4.0.0

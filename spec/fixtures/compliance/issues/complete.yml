@@ -2,15 +2,16 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/webhooks
+    uri: https://sandbox.bitex.la/api/issues/current/complete
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"webhooks","attributes":{"url":"https://webhooktest.com"}}}'
+      string: "{}"
     headers:
       User-Agent:
       - Faraday v0.15.4
       Authorization:
-      - your_magic_api_key
+      - your_magic_api_key;
+        user=601
       Version:
       - '2.1'
       Content-Type:
@@ -25,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Jan 2019 20:22:32 GMT
+      - Tue, 29 Jan 2019 16:10:02 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +34,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dabc3023f74529357beae6767dd662f8c1548361350; expires=Fri, 24-Jan-20
-        20:22:30 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=OVlPck9CUTBqbWRHRnlhbFRFS0RGUHd3SE1mVkFWZUVFUlhETnJ5Vy9jNHEvSXQyMXd1UWlDRW8wQ0gxVFptQzNjUEl6d1hLZjVsUVY0bFYzWEpIVkRuNmhkMDdNV0NlbDRHYk0yRjBsUXhRT0ZiSEVBMDExZkZwTmVQWkRIcDZMaVJmOGU0aXI4emMyK3VEOU9ldjI2d054WmxTM1N6Zm1YWFdrYStGZmZBPS0ta2dGdTdFZnZkWkM0TU85aVF5eklPdz09--5fc23ec1c09b94504ae53644493b0c05f666689b;
+      - __cfduid=da0ff18d29937bd1396f53dcb1f7669ae1548778198; expires=Wed, 29-Jan-20
+        16:09:58 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=S2w1aGxjNklLalpvU0RQRnk2NTN4VTdxUWRGNkZ4c0dqZHpxTENvZlhxeUNyWnJ5UTYyUE4yTWprTFZPcXptYUFLTmtsaDl6dUZaQVNRK05WMmhwQm5jb3FBVHJDdWU2SUhlbm1FTnhaWWpaMVpCR29OSVVoK1NHSm81ZlF0VXZNVVcwOXNWNFdoTCttN2tGWGVtSFZZem1iUEFlK00reUlIYlhpRnNCVEMwPS0tdGFwTDZUbzNOVFZwYzFuYnpSTlREZz09--35988a21822b2065b4729df80521bae360c90eb5;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -44,13 +45,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"4839bfd544902a7911feb8892142d6af"
+      - W/"5519256d95c5df660e5937e10701f9c1"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 00ba4110-5a6a-49c7-ba57-4c9d06f7bed3
+      - 41c1f369-cf8c-4b9d-ad82-788ab6412f8e
       X-Runtime:
-      - '1.121071'
+      - '2.929083'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -58,10 +59,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49e536683cd580fa-SCL
+      - 4a0cf75d881380a6-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"1548361352","type":"webhooks","attributes":{"url":"https://webhooktest.com"}}}'
-    http_version:
-  recorded_at: Thu, 24 Jan 2019 20:22:31 GMT
+      string: '{"data":{"id":"1521","type":"issues","attributes":{"state":"new"}}}'
+    http_version: 
+  recorded_at: Tue, 29 Jan 2019 16:10:00 GMT
 recorded_with: VCR 4.0.0

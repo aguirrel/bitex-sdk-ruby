@@ -2,18 +2,18 @@
 http_interactions:
 - request:
     method: post
-    uri: https://bitex.la/api/merchants/pos
+    uri: https://sandbox.bitex.la/api/merchants/pos
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"pos","attributes":{"type":"pos","merchant_keep":10,"merchant_logo":"https://mysite.com/logo","merchant_name":"My
+      string: '{"data":{"type":"pos","attributes":{"merchant_keep":10,"merchant_logo":"https://mysite.com/logo","merchant_name":"My
         Site","merchant_site":"https://mysite.com","merchant_slug":"my-site"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - 4df79d05ce6fc1baeb1a4d14d303638aa4a866fa82cb686c05051959a07c02371ea4e38e9edd78ab
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 22 Jan 2019 16:14:17 GMT
+      - Thu, 24 Jan 2019 16:44:05 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -34,9 +34,9 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=da2761cfe0b40b682b1a5cc197659f0e71548173656; expires=Wed, 22-Jan-20
-        16:14:16 GMT; path=/; domain=.bitex.la; HttpOnly
-      - _bitex_la_session=OGxmbHFqckF2ZTRTQXRxVHZ1OStZZmltYnFlWlIzT1dTelhjaWRFTXkyVFNXT2J4L0JOdkxUVmF0T3NVY3kzempBbDQ1ME15dlk2V1JTYitHS29kSWg2VU1udW5KUXhmcVY2K3lpWHhmTnF0dzJ5dU9ObWRpb2s0UkdTR01yUEstLTg3Ynk2aUNWK0dmdzNvR3lQRTdlY3c9PQ%3D%3D--741b85153c4da698a669ba45828e4cbfe6fb858d;
+      - __cfduid=d18e53d7b3c97b8e5d7a329bc582b34541548348244; expires=Fri, 24-Jan-20
+        16:44:04 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=cVdFVUFzNG54Y1dCVGd0OXZ1RFdLTW9vK0I0NVJCZTJ1Sy9na0ZCNEJQQ2pFeklFWklaUklkeTliRXU3M0NSVk9XSVZrUlhXTGdSd3AyK2haQmZwZkl3TFhpYVZWdW9zdnhnbk5KelB2dEVhTGhDSi9tWG1MeVArVkkzS0lXUjNVR2lHUGNCNGxBSFdTUTVld1Znd3VTSGxGd0ZWWWtSMDFIMWNjSGs4ejVFPS0tamtOSXhubXlPUVBNRWdDYThEVHNLZz09--da244e0d40495386e9287c50df1e63fbb0693d87;
         path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
@@ -45,13 +45,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"bbbb579ae36292c6b93d0dd51010b9c6"
+      - W/"55ca4c5743afd8635db91e4e70eebb9f"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d9684529-7412-44cb-a009-22ff974476e8
+      - 2bda4b62-39c8-4794-a2fb-09e2c1508605
       X-Runtime:
-      - '0.241186'
+      - '0.936273'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -59,11 +59,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49d3500a892880ee-SCL
+      - 49e3f66f4954babc-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"3197","type":"pos","attributes":{"merchant_slug":"my-site","merchant_keep":10.0,"merchant_name":"My
+      string: '{"data":{"id":"592","type":"pos","attributes":{"merchant_slug":"my-site","merchant_keep":10.0,"merchant_name":"My
         Site","merchant_logo":"https://mysite.com/logo","merchant_site":"https://mysite.com"}}}'
-    http_version: 
-  recorded_at: Tue, 22 Jan 2019 16:14:16 GMT
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 16:44:05 GMT
 recorded_with: VCR 4.0.0
