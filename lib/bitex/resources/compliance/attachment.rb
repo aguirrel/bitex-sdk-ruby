@@ -1,6 +1,7 @@
 module Bitex
   module Resources
     module Compliance
+      # This resource allows you to link attachments to reinforce orders where necessary.
       class Attachment < Private
         # POST /api/attachments
         #

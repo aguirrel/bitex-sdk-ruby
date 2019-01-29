@@ -1,3 +1,3 @@
 module Bitex
-  VERSION = '2.0'.freeze
+  VERSION = '1.0'.freeze
 end

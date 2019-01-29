@@ -6,7 +6,7 @@ module Bitex
       # @param [String] url. Your webhook.
       #
       # @return [Weebhook]
-      # 
+      #
       # .create(url:)
 
       # GET /aoi/webhoooks

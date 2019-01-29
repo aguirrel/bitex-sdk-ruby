@@ -20,7 +20,7 @@ module Bitex
         # @options [Hash]: this argument can give this optionals kwargs
         #   includes: with tables symbols list
         #   filters: with kwarg conditional fields. Here send :limit and :span filters
-        def all(*args, **options)
+        def all(**options)
           return super() unless options.any?
 
           build_query(options).all
@@ -33,12 +33,12 @@ module Bitex
         end
 
         def build_query(options)
-          query = set_includes(options.delete(:includes)) if options.key?(:includes)
+          query = add_includes(options.delete(:includes)) if options.key?(:includes)
           query = set_filters(query, options.extract!(:limit, :span)) if options.key?(:limit) || options.key?(:span)
           options.any? ? set_conditions(query, options) : query
         end
 
-        def set_includes(tables)
+        def add_includes(tables)
           includes(*tables)
         end
 
