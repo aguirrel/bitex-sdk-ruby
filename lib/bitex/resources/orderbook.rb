@@ -4,6 +4,7 @@ module Bitex
     class Orderbook < Public
       include StaticModels::Model
 
+      # rubocop:disable Style/SymbolArray, Layout/SpaceInsideArrayLiteralBrackets
       static_models_dense [
         [:id, :code,        :base,        :quote      ],
         [1,   :btc_usd,     Currency.btc, Currency.usd],
@@ -20,8 +21,9 @@ module Bitex
         [12,  :btc_uyu,     Currency.btc, Currency.uyu],
         [13,  :usd_clp_otc, Currency.usd, Currency.clp],
         [14,  :usd_uyu_otc, Currency.usd, Currency.uyu],
-        [15,  :usd_pyg_otc, Currency.usd, Currency.pyg],
+        [15,  :usd_pyg_otc, Currency.usd, Currency.pyg]
       ]
+      # rubocop:enable Style/SymbolArray, Layout/SpaceInsideArrayLiteralBrackets
 
       # Get all orderbooks with your codes, base and quotes currencies.
       #
