@@ -42,11 +42,13 @@ module Bitex
 
         # POST /api/asks
         #
-        # @param [String] orderbook code.
+        # @param [Orderbook] orderbook.
         # @param [Decimal|String] amount.
         # @param [Decimal|String] price.
         #
         # @return [Ask]
+        #
+        # self.create(orderbook:, amount:, price:)
       end
     end
   end

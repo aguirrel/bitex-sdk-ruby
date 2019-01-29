@@ -20,7 +20,9 @@ describe Bitex::Resources::TradingBots::BuyingBot do
   end
 
   describe '.create', vcr: { cassette_name: 'buying_bots/create' } do
-    subject { client.buying_bots.create(orderbook_code: 'btc_usd', amount: 100) }
+    subject { client.buying_bots.create(orderbook: orderbook, amount: 100) }
+
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
     it { is_expected.to be_a(Bitex::Resources::TradingBots::BuyingBot) }
 

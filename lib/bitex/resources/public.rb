@@ -26,10 +26,11 @@ module Bitex
           build_query(options).all
         end
 
-        def find(*args, **options)
-          return super(*args)[0] unless options.any?
+        def find(id = nil, **options)
+          id = id.code if id.present? && id.is_a?(Orderbook)
+          return super(id)[0] unless options.any?
 
-          build_query(options).find(*args)[0]
+          build_query(options).find(id)[0]
         end
 
         def build_query(options)

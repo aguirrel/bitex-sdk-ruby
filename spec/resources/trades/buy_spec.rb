@@ -25,10 +25,10 @@ describe Bitex::Resources::Trades::Buy do
 
       subject(:buys) { client.buys.all(orderbook: orderbook, days: 15, limit: 50) }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
       it 'retrieves from specific orderbooks' do
-        expect(buys.map(&:orderbook_code).uniq).to eq([orderbook.code])
+        expect(buys.map(&:orderbook_code).uniq).to eq(['btc_usd'])
       end
 
       it { expect(buys.all? { |buy| buy.created_at.to_time >= 15.days.ago }).to be_truthy }

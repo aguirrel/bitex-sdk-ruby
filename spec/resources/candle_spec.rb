@@ -27,11 +27,12 @@ describe Bitex::Resources::Candle do
     context 'with orderbook filter', vcr: { cassette_name: 'candles/all/with_orderbook' } do
       subject(:candles) { client.candles.all(orderbook: orderbook) }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from specific orderbook' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(orderbook.code)
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly('btc_usd')
       end
     end
 
@@ -42,7 +43,7 @@ describe Bitex::Resources::Candle do
       let(:span) { 8 }
       let(:time_ago) { 10 }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 

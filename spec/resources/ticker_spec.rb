@@ -20,7 +20,9 @@ describe Bitex::Resources::Ticker do
   end
 
   describe '.find', vcr: { cassette_name: 'tickers/find' } do
-    subject { client.tickers.find('btc_usd') }
+    subject { client.tickers.find(orderbook) }
+
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
     it { is_expected.to be_a(Bitex::Resources::Ticker) }
 

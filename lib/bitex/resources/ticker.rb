@@ -14,11 +14,13 @@ module Bitex
       #
       # Get the ticker of a market.
       #
-      # @param [Symbol] orderbook_code. Values: :btc_usd, :btc_ars, :bch_usd, :btc_pyg, :btc_clp, :btc_uyu
+      # @param [Orderbook] orderbook.
       #
       # @return [Ticker]
       #
-      # .find(orderbook_code)
+      def self.find(orderbook)
+        super(orderbook.code)
+      end
     end
   end
 end

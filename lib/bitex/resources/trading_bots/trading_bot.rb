@@ -17,6 +17,10 @@ module Bitex
       # will be terminated prematurely. You'll find the termination reason in exit_status.
       class TradingBot < Private
         custom_endpoint :cancel, on: :collection, request_method: :post
+
+        def self.create(orderbook:, amount:)
+          super(orderbook_code: orderbook.code, amount: amount)
+        end
       end
     end
   end

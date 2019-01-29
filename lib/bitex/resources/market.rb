@@ -14,12 +14,12 @@ module Bitex
       #   /api/markets/:orderbook_code/transactions and /api/markets/:orderbook_code/candles respectively.
       # To get all possible orderbook_codes check Orderbooks.
       #
-      # @param [Symbol] orderbook_code. Values: :btc_usd, :btc_ars, :bch_usd, :btc_pyg, :btc_clp, :btc_uyu
+      # @param [Orderbook] orderbook.
       # @param [Array<Symbol>] resources. Values:  [:bids, :asks, :candles, :transactions]
       #
       # @return [Market]
       #
-      # .find(orderbook_code, includes:)
+      # .find(orderbook, **options)
     end
   end
 end

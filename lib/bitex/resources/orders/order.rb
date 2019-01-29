@@ -10,6 +10,10 @@ module Bitex
         # self.all
 
         custom_endpoint :cancel, on: :collection, request_method: :post
+
+        def self.create(orderbook:, amount:, price:)
+          super(orderbook_code: orderbook.code, amount: amount, price: price)
+        end
       end
     end
   end

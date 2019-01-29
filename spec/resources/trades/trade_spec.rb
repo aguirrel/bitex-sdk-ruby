@@ -33,10 +33,10 @@ describe Bitex::Resources::Trades::Trade do
 
       subject(:trades) { client.trades.all(orderbook: orderbook, days: 50, limit: 100) }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
       it 'retrieves from specific traded orderbooks' do
-        expect(trades.map(&:orderbook_code).uniq).to eq([orderbook.code])
+        expect(trades.map(&:orderbook_code).uniq).to eq(['btc_usd'])
       end
 
       it { expect(trades.all? { |trade| trade.created_at.to_time >= 50.days.ago }).to be_truthy }

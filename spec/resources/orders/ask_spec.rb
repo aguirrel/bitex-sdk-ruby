@@ -22,10 +22,10 @@ describe Bitex::Resources::Orders::Ask do
   context 'with filters', vcr: { cassette_name: 'asks/all/with_filters' } do
     subject(:asks) { client.asks.all(orderbook: orderbook) }
 
-    let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
     it 'retrieves from specific orderbooks' do
-      expect(asks.map(&:orderbook_code).uniq).to eq([orderbook.code])
+      expect(asks.map(&:orderbook_code).uniq).to eq(['btc_usd'])
     end
   end
 
@@ -45,7 +45,9 @@ describe Bitex::Resources::Orders::Ask do
   end
 
   describe '.create', vcr: { cassette_name: 'asks/create' } do
-    subject { client.asks.create(orderbook_code: 'bch_usd', amount: 3, price: 150) }
+    subject { client.asks.create(orderbook: orderbook, amount: 3, price: 150) }
+
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('bch_usd') }
 
     it { is_expected.to be_a(Bitex::Resources::Orders::Ask) }
 

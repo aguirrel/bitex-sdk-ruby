@@ -3,7 +3,9 @@ require 'spec_helper'
 describe Bitex::Resources::Market do
   describe '.find' do
     context 'without resources parameters', vcr: { cassette_name: 'markets/find' } do
-      subject(:market) { client.markets.find('btc_usd') }
+      subject(:market) { client.markets.find(orderbook) }
+
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
       it { is_expected.to be_a(Bitex::Resources::Market) }
 
@@ -19,7 +21,9 @@ describe Bitex::Resources::Market do
     end
 
     context 'about included resources' do
-      subject { client.markets.find('btc_usd', includes: resource) }
+      subject { client.markets.find(orderbook, includes: resource) }
+
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
       context 'asks', vcr: { cassette_name: 'markets/with_resources/asks' } do
         let(:resource) { :asks }
