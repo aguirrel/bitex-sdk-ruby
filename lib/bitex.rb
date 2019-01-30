@@ -11,5 +11,5 @@ require 'static_models'
 
 # Bitex library namespace
 module Bitex
-  ActiveSupport::Dependencies.autoload_paths += %w[lib]
+  ActiveSupport::Dependencies.autoload_paths += [File.expand_path(__dir__)]
 end
