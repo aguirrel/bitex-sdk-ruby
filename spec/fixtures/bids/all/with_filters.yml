@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/bids?filter%5Borderbook_code%5D=btc_usd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 17 Jan 2019 17:55:36 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d70a15231eb12f601739d7ef772b639981547747736; expires=Fri, 17-Jan-20
+        17:55:36 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=M2xPa0dwVnB1bG95ZXJPenJTaERGMlFCY2hlZlR0cm9jcTQ3cDE4V3k3L1FvYjBzaE5id0JwblhXZDU3K0xhclYrNk9hLzVRRHdydXJGcDJhcXJ2SnBuWjdNMFQ5MndKUkJ4QUFIT0dZdis0Z3dkZ2I4aDJ2bkxPZDRxYmxpUXktLXk2SGdwYW5XQTJ0aTg2Z2tMNTdhQ3c9PQ%3D%3D--5bfc7e64c29653538d8bd38926a3c0ba5958020e;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"b23ce536d53b02b42d0ee5812de91f23"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b787aaed-5506-4faa-a8c4-64e79611a8e2
+      X-Runtime:
+      - '0.200851'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49aab196cfc280fa-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"36302022","type":"bids","attributes":{"amount":10.0,"remaining_amount":10.0,"price":3569.99558554,"status":"executing","orderbook_code":"btc_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}},{"id":"36302035","type":"bids","attributes":{"amount":10.0,"remaining_amount":10.0,"price":3569.99558554,"status":"executing","orderbook_code":"btc_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}]}'
+    http_version: 
+  recorded_at: Thu, 17 Jan 2019 17:55:36 GMT
+recorded_with: VCR 4.0.0

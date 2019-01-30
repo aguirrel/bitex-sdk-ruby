@@ -4,7 +4,8 @@ module Bitex
       class CoinDeposit < Deposit
         # GET /api/coin_deposits?filter[from]={yyyy-mm-dd}
         #
-        # @param [String] from.
+        # filters:
+        #   @param [String] from. 'YYYY-MM-DD'
         #
         # @return [ResultSet<CoinDeposit>]
         #

@@ -1,55 +1,41 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Deposits::CoinDeposit do
-  shared_examples_for 'Coin Deposit' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id address coin amount created_at]) }
-    its(:type) { is_expected.to eq(resource_name) }
-  end
-
   describe '.all' do
-    subject { client.coin_deposits.all(from: from) }
+    context 'without filters', vcr: { cassette_name: 'coin_deposits/all/without_filters' } do
+      subject(:deposits) { client.coin_deposits.all }
 
-    context 'with any level key' do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      context 'without filters', vcr: { cassette_name: 'coin_deposits/all/without_filters' } do
-        let(:from) { nil }
+      context 'taking a sample' do
+        subject(:sample) { deposits.sample }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+        it { is_expected.to be_a(Bitex::Resources::Deposits::CoinDeposit) }
 
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Coin Deposit'
-        end
+        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id coin amount created_at]) }
+        its(:type) { is_expected.to eq('coin_deposits') }
+        its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[address]) }
       end
+    end
 
-      context 'with filters', vcr: { cassette_name: 'coin_deposits/all/with_filters' } do
-        let(:from) { '2018-01-01' }
+    context 'with filters', vcr: { cassette_name: 'coin_deposits/all/with_filters' } do
+      subject(:deposits) { client.coin_deposits.all(from: str_date) }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      let(:str_date) { '2019-01-01' }
 
-        context 'taking a sample' do
-          subject { super().sample }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-          it_behaves_like 'Coin Deposit'
-        end
+      it 'retrieves from specified date' do
+        expect(deposits.all? { |deposit| Date.strptime(deposit.created_at, '%FT') >= str_date.to_date }).to be_truthy
       end
     end
   end
 
-  describe '.find' do
-    subject { client.coin_deposits.find(id) }
+  describe '.find', vcr: { cassette_name: 'coin_deposits/find' } do
+    subject { client.coin_deposits.find('2920') }
 
-    context 'with any level key', vcr: { cassette_name: 'coin_deposits/find' } do
-      let(:key) { read_level_key }
-      let(:id) { '7' }
+    it { is_expected.to be_a(Bitex::Resources::Deposits::CoinDeposit) }
 
-      it_behaves_like 'Coin Deposit'
-
-      its(:id) { is_expected.to eq(id) }
-    end
+    its(:id) { is_expected.to eq('2920') }
   end
 end

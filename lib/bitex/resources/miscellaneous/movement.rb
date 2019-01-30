@@ -7,7 +7,7 @@ module Bitex
       class Movement < Private
         # GET /api/movements/
         #
-        # @return [ResultSet<Buy|Sell|Deposit|Withdrawal>]
+        # @return [ResultSet<Movement>]
         #
         # self.all
       end

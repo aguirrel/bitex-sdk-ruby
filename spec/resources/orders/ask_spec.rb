@@ -1,72 +1,58 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Orders::Ask do
-  shared_examples_for 'Ask' do
-    it { is_expected.to be_a(described_class) }
+  context 'without filters', vcr: { cassette_name: 'asks/all/without_filters' } do
+    subject(:asks) { client.asks.all }
 
-    its(:type) { is_expected.to eq('asks') }
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id amount remaining_amount price status]) }
-    its(:'relationships.attributes.keys') { is_expected.to include(*%w[user orderbook]) }
-  end
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-  describe '.all' do
-    context 'with any level key', vcr: { cassette_name: 'asks/all' } do
-      subject { read_level_client.asks.all }
+    it 'retrieves executing asks' do
+      expect(subject.map(&:status).uniq).to eq(['executing'])
+    end
 
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+    context 'taking a sample' do
+      subject(:sample) { asks.sample }
 
-      it 'retrieves executing asks' do
-        subject.map(&:status).all? { |status| expect(status).to eq('executing') }
-      end
+      it_behaves_like 'Orders'
 
-      context 'taking a sample' do
-        subject { super().sample }
-
-        it_behaves_like 'Ask'
-      end
+      its(:type) { is_expected.to eq('asks') }
     end
   end
 
-  describe '.find' do
-    context 'with any level key', vcr: { cassette_name: 'asks/find' } do
-      subject { read_level_client.asks.find(id) }
+  context 'with filters', vcr: { cassette_name: 'asks/all/with_filters' } do
+    subject(:asks) { client.asks.all(orderbook: orderbook) }
 
-      let(:id) { '36' }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
-      it_behaves_like 'Ask'
-
-      its(:status) { is_expected.to eq('executing') }
-      its(:id) { is_expected.to eq(id) }
+    it 'retrieves from specific orderbooks' do
+      expect(asks.map(&:orderbook_code).uniq).to eq(['btc_usd'])
     end
   end
 
-  describe '.cancel' do
-    context 'with authorized level key', vcr: { cassette_name: 'asks/cancel' } do
-      subject { write_level_client.asks.cancel(id: id) }
+  describe '.find', vcr: { cassette_name: 'asks/find' } do
+    subject { client.asks.find('36270309') }
 
-      let(:id) { '36' }
+    it { is_expected.to be_a(Bitex::Resources::Orders::Ask) }
 
-      it { is_expected.to be_an(Array) }
-      it { is_expected.to be_empty }
-    end
+    its(:id) { is_expected.to eq('36270309') }
   end
 
-  describe '.create' do
-    context 'with authorized level key', vcr: { cassette_name: 'asks/create' } do
-      subject { write_level_client.asks.create(orderbook: orderbook, amount: amount, price: price) }
+  describe '.cancel', vcr: { cassette_name: 'asks/cancel' } do
+    subject { client.asks.cancel(id: '36270309') }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: '1', code: 'btc_usd') }
-      let(:amount) { 2_000 }
-      let(:price) { 100 }
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to be_empty }
+  end
 
-      it_behaves_like 'Ask'
+  describe '.create', vcr: { cassette_name: 'asks/create' } do
+    subject { client.asks.create(orderbook: orderbook, amount: 3, price: 150) }
 
-      its(:amount) { is_expected.to eq(amount) }
-      its(:price) { is_expected.to eq(price) }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('bch_usd') }
 
-      it 'Your relationships with your orderbook' do
-        expect(subject.relationships.orderbook[:data][:id]).to eq(orderbook.id)
-      end
-    end
+    it { is_expected.to be_a(Bitex::Resources::Orders::Ask) }
+
+    its(:orderbook_code) { is_expected.to eq('bch_usd') }
+    its(:amount) { is_expected.to eq(3) }
+    its(:price) { is_expected.to eq(150) }
   end
 end

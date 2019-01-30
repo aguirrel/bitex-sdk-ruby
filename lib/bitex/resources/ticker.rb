@@ -6,21 +6,20 @@ module Bitex
       #
       # Get Tickers of all available markets
       #
-      # @return JsonApiClient::ResultSet. It has the server response.
+      # @return [ResultSet<Ticker>]
       #
-      # self.all
+      # .all
 
       # GET /api/tickers/:orderbook_code
       #
       # Get the ticker of a market.
       #
-      # @param [Symbol] orderbook_code. Values: :btc_usd, :btc_ars, :bch_usd, :btc_pyg, :btc_clp, :btc_uyu
+      # @param [Orderbook] orderbook.
       #
-      # @return JsonApiClient::ResultSet. It has the server response data, and in its only element, market parsed to json api.
+      # @return [Ticker]
       #
-      # self.find(orderbook_code)
-      def self.find(orderbook_code)
-        super(orderbook_code)[0]
+      def self.find(orderbook)
+        super(orderbook.code)
       end
     end
   end

@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/transactions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Jan 2019 13:09:54 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dab669cec88bb9db0246b9236d91a9dc91548076194; expires=Tue, 21-Jan-20
+        13:09:54 GMT; path=/; domain=.bitex.la; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"4abe73b1243ff39d2d96dc3320891584"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ad3c94eb-5e4e-421f-b772-1f8b254ab082
+      X-Runtime:
+      - '0.015307'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49ca0494e8bfbace-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"163395","type":"transactions","attributes":{"timestamp":1548076172,"price":3539.622501,"amount":0.00009999,"orderbook_code":"btc_usd"}},{"id":"163394","type":"transactions","attributes":{"timestamp":1548076139,"price":121.961244,"amount":0.00099999,"orderbook_code":"bch_usd"}},{"id":"163393","type":"transactions","attributes":{"timestamp":1548076109,"price":137415.94,"amount":0.00145543,"orderbook_code":"btc_ars"}},{"id":"163392","type":"transactions","attributes":{"timestamp":1548076035,"price":2382484.57913275,"amount":0.00000747,"orderbook_code":"btc_clp"}},{"id":"163391","type":"transactions","attributes":{"timestamp":1548075975,"price":21171215.1,"amount":0.0001,"orderbook_code":"btc_pyg"}},{"id":"163390","type":"transactions","attributes":{"timestamp":1548075874,"price":3567.5539397,"amount":0.00280304,"orderbook_code":"btc_usd"}}]}'
+    http_version: 
+  recorded_at: Mon, 21 Jan 2019 13:09:54 GMT
+recorded_with: VCR 4.0.0

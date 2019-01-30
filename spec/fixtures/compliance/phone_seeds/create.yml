@@ -5,16 +5,17 @@ http_interactions:
     uri: https://sandbox.bitex.la/api/phone_seeds
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"phone_seeds","attributes":{"type":"phone_seeds","country":"AR","number":"1234567890","phone_kind_code":"main","has_telegram":true,"has_whatsapp":false,"note":"It´s
+      string: '{"data":{"type":"phone_seeds","attributes":{"country":"AR","number":"1234567890","phone_kind_code":"main","has_telegram":true,"has_whatsapp":true,"note":"It´s
         a figure of speech, Morty! They´re bureaucrats! I don´t respect them. Just
         keep shooting, Morty! You have no idea what prison is like here!"}}}'
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - write_level_key
+      - your_magic_api_key;
+        user=601
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -26,29 +27,45 @@ http_interactions:
       code: 201
       message: Created
     headers:
+      Date:
+      - Mon, 28 Jan 2019 21:22:04 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d5b057e776a42af91d6d779fc2b116ce81548710521; expires=Tue, 28-Jan-20
+        21:22:01 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=ZTdVdk42d29Jb3Yrb1h4VllpSG9Ha1ZDelFJSWpTR0lzTFcrWGwyU2xacW5kY2Y2WUE5ellRRmloa2J6WGpFVS9yT3g2dmtUVzBiU0ZjeDJINVg4TWdpMXdZMFNvUG1SZG9XaTJpVFdmYThlU21MVmhjNGltdngrbnlodmQrSXBSL2cyN1RLTDRaMkErRmRTTUoyV1ROOFRiM2NCZkNhcVFjcmczMkhXbGp3PS0tQjBFNTBPOUFQNG9SSVV5enAwVEJiUT09--749b049ed64027e2e1392031da5abd8138bf0335;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"c4828065126be2760149729c99375fc5"
+      - W/"2d772212a1c3c11fbf7569ad99c0ffcf"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=Y2RBTnhLRS9QaGxIeXljWkZDanF3YW51eEVPTXpJeTY5VWVuTWcxa3U1WlZ5cEptOGlrcjd0R1RqdDQzbW5Obk5mWExiYzJ5blVHeUVlYmttaWE5UVhvYmVNSW9OcE9ZaTVRSE1SbGtnYzJUdVJ1MXJxalh6d3EyZ2V0K3lTMnRLTDZ6cXgxeU1IVVRCUWJjMkJBTXd6RXVoMGdzTGFpZTJHWEcrYXlNdGxFPS0tbUFQRWN5S1Mrd3l6bldkY2JMMGc0Zz09--d74aa9eb7411fa15dd24627f353a26a3f9a072ed;
-        path=/; HttpOnly
       X-Request-Id:
-      - 70c0a1ef-2a66-4347-abc4-8514c48a4390
+      - e1d14ff1-632b-450f-9953-93d33eefb0da
       X-Runtime:
-      - '0.750539'
+      - '2.111259'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4a0683176c5880b8-SCL
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJkYXRhIjp7ImlkIjoiMiIsInR5cGUiOiJwaG9uZV9zZWVkcyIsImF0dHJpYnV0ZXMiOnsibnVtYmVyIjoiMTIzNDU2Nzg5MCIsInBob25lX2tpbmRfY29kZSI6Im1haW4iLCJjb3VudHJ5IjoiQVIiLCJoYXNfd2hhdHNhcHAiOmZhbHNlLCJoYXNfdGVsZWdyYW0iOnRydWUsIm5vdGUiOiJJdMK0cyBhIGZpZ3VyZSBvZiBzcGVlY2gsIE1vcnR5ISBUaGV5wrRyZSBidXJlYXVjcmF0cyEgSSBkb27CtHQgcmVzcGVjdCB0aGVtLiBKdXN0IGtlZXAgc2hvb3RpbmcsIE1vcnR5ISBZb3UgaGF2ZSBubyBpZGVhIHdoYXQgcHJpc29uIGlzIGxpa2UgaGVyZSEiLCJjcmVhdGVkX2F0IjoiMjAxOC0xMi0wM1QwMTowNzozMy4wMDBaIiwidXBkYXRlZF9hdCI6IjIwMTgtMTItMDNUMDE6MDc6MzMuMDAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7Imlzc3VlIjp7ImRhdGEiOnsiaWQiOiIyIiwidHlwZSI6Imlzc3VlcyJ9fSwiYXR0YWNobWVudHMiOnsiZGF0YSI6W119fX19
+        eyJkYXRhIjp7ImlkIjoiMTM2IiwidHlwZSI6InBob25lX3NlZWRzIiwiYXR0cmlidXRlcyI6eyJudW1iZXIiOiIxMjM0NTY3ODkwIiwicGhvbmVfa2luZF9jb2RlIjoibWFpbiIsImNvdW50cnkiOiJBUiIsImhhc193aGF0c2FwcCI6dHJ1ZSwiaGFzX3RlbGVncmFtIjp0cnVlLCJub3RlIjoiSXTCtHMgYSBmaWd1cmUgb2Ygc3BlZWNoLCBNb3J0eSEgVGhlecK0cmUgYnVyZWF1Y3JhdHMhIEkgZG9uwrR0IHJlc3BlY3QgdGhlbS4gSnVzdCBrZWVwIHNob290aW5nLCBNb3J0eSEgWW91IGhhdmUgbm8gaWRlYSB3aGF0IHByaXNvbiBpcyBsaWtlIGhlcmUhIiwiY3JlYXRlZF9hdCI6IjIwMTktMDEtMjhUMjE6MjI6MDMuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE5LTAxLTI4VDIxOjIyOjAzLjAwMFoifSwicmVsYXRpb25zaGlwcyI6eyJpc3N1ZSI6eyJkYXRhIjp7ImlkIjoiMTUyMSIsInR5cGUiOiJpc3N1ZXMifX0sImF0dGFjaG1lbnRzIjp7ImRhdGEiOltdfX19fQ==
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 01:07:34 GMT
+  recorded_at: Mon, 28 Jan 2019 21:22:03 GMT
 recorded_with: VCR 4.0.0

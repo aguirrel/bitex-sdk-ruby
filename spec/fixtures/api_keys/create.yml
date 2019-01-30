@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.bitex.la/api/api_keys
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"api_keys","attributes":{"fund_account":true,"payments":true,"api_keys":true}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      One-Time-Password:
+      - '826641'
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 24 Jan 2019 15:34:23 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc860b012ab6298f35f1bd6e73f887dd71548344062; expires=Fri, 24-Jan-20
+        15:34:22 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=N3hDMlpRQ3lWVndoZG54TXM3ek8xUkxHYlhYcVJGMmI2a1A5OEErNW9VNWNTT2FTdUNNaXRObU9GK3o5TWhab0xHOE9KL05ZUi85Z3NzVE1sUVYvZ1FrY0F2YmlGNW5KWDlVUzZlNlJYNUhrN3Q0Z2pIZzNndWZTMWtLQk5vKystLXpJcUNIaldxQi9wbGFaQjQ4aFByWVE9PQ%3D%3D--e802a581253d6e987f0b1da83571a2763d3f0f93;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"92b66c7423b1426cf4d9d6b5193c81c1"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 86c603d9-6db8-4246-a515-ad6bbcd1c399
+      X-Runtime:
+      - '0.224783'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49e39058c9f480c4-SCL
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"187","type":"api_keys","attributes":{"token":"dc554bcaf943cc6b89164d02e9dff24f85c7b5d4e1dda51a6422131a231a466b6e934f8602fa4f98","fund_account":true,"create_withdrawal":false,"get_withdrawal":false,"get_balances":false,"trading":false,"payments":true,"compliance":false,"api_keys":true}}}'
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 15:34:23 GMT
+recorded_with: VCR 4.0.0

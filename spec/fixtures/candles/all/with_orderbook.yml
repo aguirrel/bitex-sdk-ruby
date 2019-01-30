@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/candles?filter%5Borderbook_code%5D=btc_usd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Jan 2019 15:53:00 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d17a6c1606832d0812b62f15e640d92241548085980; expires=Tue, 21-Jan-20
+        15:53:00 GMT; path=/; domain=.bitex.la; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"db9dd86b9f000c2b3d35cf6096153d12"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 30555611-4299-4b8c-a235-ff3f10220b51
+      X-Runtime:
+      - '0.006850'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49caf38329f0bada-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"1548007200_1","type":"candles","attributes":{"timestamp":1548007200,"low":3544.69693467,"open":3544.69693467,"close":3544.69693467,"high":3544.69693467,"volume":0.03949561,"price_before_last":3512.18,"vwap":3544.69693467,"orderbook_code":"btc_usd"}},{"id":"1548018000_1","type":"candles","attributes":{"timestamp":1548018000,"low":3565.16964824,"open":3565.16964824,"close":3565.16964824,"high":3565.16964824,"volume":0.23569705,"price_before_last":3544.69693467,"vwap":3565.16964824,"orderbook_code":"btc_usd"}},{"id":"1548039600_1","type":"candles","attributes":{"timestamp":1548039600,"low":3539.99,"open":3539.99,"close":3539.99,"high":3539.99,"volume":0.08833358,"price_before_last":3565.16964824,"vwap":3539.99,"orderbook_code":"btc_usd"}},{"id":"1548075600_1","type":"candles","attributes":{"timestamp":1548075600,"low":3539.622501,"open":3567.5539397,"close":3539.622501,"high":3567.5539397,"volume":0.00290303,"price_before_last":3567.5539397,"vwap":3566.591888134699951430057560549,"orderbook_code":"btc_usd"}},{"id":"1548079200_1","type":"candles","attributes":{"timestamp":1548079200,"low":3556.99759317,"open":3556.99759317,"close":3558.38900503,"high":3558.38900503,"volume":0.63426517,"price_before_last":3557.09759317,"vwap":3557.250133276619728149348008499,"orderbook_code":"btc_usd"}},{"id":"1548082800_1","type":"candles","attributes":{"timestamp":1548082800,"low":3525.74222,"open":3545.99,"close":3560.2401005,"high":3560.2401005,"volume":0.1033367,"price_before_last":3525.74222,"vwap":3536.088619485065373676535054826,"orderbook_code":"btc_usd"}}]}'
+    http_version: 
+  recorded_at: Mon, 21 Jan 2019 15:53:00 GMT
+recorded_with: VCR 4.0.0

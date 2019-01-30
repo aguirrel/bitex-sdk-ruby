@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Jan 2019 19:19:16 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df678a7ec382c86802874235bdcd3e4f51548443955; expires=Sat, 25-Jan-20
+        19:19:15 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=YWhxc1JUZW9ONDhOaEFhSGdzLzVKalRNRDZSaDJrazcxVkhvVEpTd3FRRHgyMnpPWmZTSHlxSkw4NkcrNS9qZkNnM2NIK3F3S3pPbnBhejFGU0pJQVZBMVJZQ0hLMWVZakNFM0Uwa3RBWkhlaW40cUFNTUtFVng0dUVyNTVOd1BCdndhQ212R05leVNWTzErdUJYUXZZaGJGSDVtdXF2ZE9WRkdoeS9qOFFNPS0tN0h0WFZ2R3MySkhmRHkyTnlwcktQdz09--2efd100631d20dbf89a833b1a80164517f119665;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"f760a5b7800964bff4f080f68f62c0a1"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 19ac9f4d-b900-444b-81b1-d5e696783362
+      X-Runtime:
+      - '0.762487'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49ed172109d1baf2-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"594","type":"users","attributes":{"name":"user+test123@sample.com","email":"user+test123@sample.com","kyc_accepted":false,"otp_enabled":false,"do_not_email":false,"trezor_login_enabled":false}},{"id":"597","type":"users","attributes":{"name":"user+test1234@sample.com","email":"user+test1234@sample.com","kyc_accepted":false,"otp_enabled":false,"do_not_email":false,"trezor_login_enabled":false}}]}'
+    http_version: 
+  recorded_at: Fri, 25 Jan 2019 19:19:16 GMT
+recorded_with: VCR 4.0.0

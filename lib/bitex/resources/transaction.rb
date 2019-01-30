@@ -7,32 +7,22 @@ module Bitex
       #
       # Get last transactions of a given market.
       #
-      # @param [Bitex::Orderbook] orderbook.
-      #   filter: Market from which you want to retrieve data. If no Orderbook is specified, all markets are retrieved.
+      # Optional filter
+      #   @param [Orderbook] orderbook.
+      #   @param [Integer|String] from.
+      #     Number of hours from where you want the transactions to be retrieved. default value = 1 | maximum value = 24.
       #
-      # @param [Integer|String] from.
-      #   filter: Number of hours from where you want the transactions to be retrieved. default value = 1 | maximum value = 24.
+      # @return [ResultSet<Transaction>]
       #
-      # @return JsonApiClient::ResultSet. It has the server response data, and all transactions parsed to json api.
-      def self.all(orderbook: nil, from: nil)
-        filters = {}.tap do |params|
-          params[:from] = from if from.present?
-          params.merge!(orderbook_code: orderbook.code) if orderbook.present?
-        end
+      # .all(orderbook:, from:)
 
-        where(filters).all
-      end
-
-      # GET https://bitex.la/api/transactions/:id
+      # GET /api/transactions/:id
       #
       # Get transaction by id.
       #
-      # @return Transaction.
+      # @return [Transaction]
       #
-      # self.find(id)
-      def self.find(id)
-        super(id)[0]
-      end
+      # .find(id)
     end
   end
 end

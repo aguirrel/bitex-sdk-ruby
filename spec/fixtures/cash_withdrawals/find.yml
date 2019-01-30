@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/cash_withdrawals/2
+    uri: https://sandbox.bitex.la/api/cash_withdrawals/28787
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - write_level
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -24,32 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 21 Jan 2019 22:40:55 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d72598969fa28f715506b115c3243e44c1548110425; expires=Tue, 21-Jan-20
+        22:40:25 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=Rm1MbHM2OGNTQjlrZVBRb3Z6Ym9wYTRsdWRaQU9XOHVwc0dnMUxZT2EvOFIwMVZzanBDbUdLOVBZRmUxdnVZRE5uWEZ5WGdpTTZXenU4cmxMN1hqbFpxQiszOEd3UVRva3NzbElVM1RkZjhsbkdySW95MXU0c29uQzNIT2x2UGctLXV3MTRBNVVPaG1jR05jTDFHK09DSFE9PQ%3D%3D--821a33e91e9dc19a673aa660b21a1d2b28287186;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"c2a4b9906e5d25054c2238b7f2063879"
+      - W/"63d0501d4bd8bbda2f12e5ca6245faf0"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=RzRvOVJlQ1R5R0RaU0tteENjMUFidm51ai95UHZ2R1V3Q1ljQVVTblpJaUZZZGdOTEJEMjlYU3BPRENTdllIek9YWkN0SGNDQW94TDI2YmJwUk1rZlRLUUhka3YwbVIzeVd6ZDZBQWJLYlYrUHFaWlZXQytPa0RheVVMRFd3aGV3ZXRqL3JaTUVVYUU0SUt6SlBORlBGcG9vT2FGdmZSbElKQk9CRVlJSEM0PS0tRU1NK1BydkF2eHFTaGJZYUMyQXg2UT09--ecedfd95f7fa95a3f695c850cdb5b75e7008ec1a;
-        path=/; HttpOnly
       X-Request-Id:
-      - ed73d7e8-68f2-40a6-abc2-528084970f2d
+      - c3942df6-96f8-4d3c-ac64-04e1dda8aab9
       X-Runtime:
-      - '0.480229'
+      - '30.144438'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49cd484c7f40bace-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"2","type":"cash_withdrawals","attributes":{"status":"received","amount":1000.0,"gross_amount":1000.0,"cost":0.0,"fee":0.0,"net_amount":1000.0,"country":"CL","payment_method":"international_bank","currency":"USD","label":"label","created_at":"2018-12-02T17:26:42.996Z"},"relationships":{"withdrawal_instruction":{"data":{"id":"14","type":"withdrawal_instructions"}},"funding_receipt":{"data":null}}},"included":[{"id":"14","type":"withdrawal_instructions","attributes":{"label":"label","schema":"bitex","body":{"account_type":"savings","address":"a
-        address","bank":"bco_chile","bank_account_number":"12345678","bank_address":"a
-        bank address","bank_city":"a bank city","bank_country":"CL","bank_postal_code":"AABBCC","bank_swift":"BANKUS66","postal_code":"XXYYZZ","city":"Dimension
-        C-132","country":"CL","currency":"USD","further_instructions":"A further instructions","name":"Rick
-        Sanchez","payment_method":"international_bank","phone":"1122334455"}}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"28787","type":"cash_withdrawals","attributes":{"status":"settled","amount":500.0,"gross_amount":500.0,"cost":0.0,"fee":0.0,"net_amount":500.0,"country":"AR","payment_method":"third_party","fiat_code":"usd","label":"pase","created_at":"2019-01-16T19:45:37.657Z"},"relationships":{"withdrawal_instruction":{"data":{"id":"15234","type":"withdrawal_instructions"}},"funding_receipt":{"data":null}}},"included":[{"id":"15234","type":"withdrawal_instructions","attributes":{"label":"pase","schema":"bitex","body":{"country":"AR","payment_method":"third_party","name":"-","city":"-","phone":"-","further_instructions":"-","currency":"ARS"}}}]}'
     http_version: 
-  recorded_at: Sun, 02 Dec 2018 17:32:31 GMT
+  recorded_at: Mon, 21 Jan 2019 22:40:54 GMT
 recorded_with: VCR 4.0.0

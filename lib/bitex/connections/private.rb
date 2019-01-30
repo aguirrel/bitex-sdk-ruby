@@ -7,7 +7,8 @@ module Bitex
       protected
 
       def custom_headers(headers)
-        super(headers.merge(Authorization: api_key))
+        headers[:Authorization] = api_key unless headers.key?(:Authorization)
+        super(headers)
       end
     end
   end

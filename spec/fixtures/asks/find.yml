@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox.bitex.la/api/asks/36
+    uri: https://sandbox.bitex.la/api/asks/36270309
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - read_level
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -24,28 +24,44 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Fri, 18 Jan 2019 13:39:25 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d56c41c4ac9a8d5e92f6c690057e27bf31547818765; expires=Sat, 18-Jan-20
+        13:39:25 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=VHFLaWhsMWtHUElQOWptRTFnREFrZWpiTmxuRC83b005ZHN4eEt1SER1eXlERlIxV0U5SzMyU3ZnU3lLc01yRE9TdEppUUZTeTRpQk5ZQTEwamxtNVIzbGNRd1UxUVM3cDI4THQ2YWd2UWJvTXpmYkFtRVNvdmpqa0Zvemp2UCstLXNIQk52NEJ3RitVTVhjQ3BOZ3RsYkE9PQ%3D%3D--141791bd0dd388f6804e786c0cfa2a8c1813cdaf;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Etag:
-      - W/"77e54ce12cf8a3ebb9615c749996bd0f"
+      - W/"bc5467931ef1a5194bed217774546ec2"
       Cache-Control:
       - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - _bitex_la_session=bWxUL3dNL0kvbmxZbHFOQ1JRcWVvSTJoOXBXNWp3MHNsWkxwMllidVkyNEo2LzhZcGJGemZMVkt2MlUzVkpLQTR0TWhLZzBPeEl4MGN5ZE9wSEp5RkJiZzRKTDhla0xjNkR1UklTTlV1NzM3TG8xeC9Eek15ZStUQVJZcysyd2xhLzZiZ1ZsRTYrSmxxckpVZVAwdGZ3TXdkSWo5Ujlza25hYjVYdk5sVHdVPS0tQjdZZkE5NUxac1g1RkRTcFhJV0FFZz09--1cb9310cadabe530552d749de8df2a889e4ebaef;
-        path=/; HttpOnly
       X-Request-Id:
-      - 76d981f1-2cc3-40fa-b7b7-fef10e6b97e6
+      - ea4e6557-c757-4973-a019-201c8da6f92c
       X-Runtime:
-      - '0.486001'
+      - '0.087569'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49b177b3a8fd80d0-SCL
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"36","type":"asks","attributes":{"amount":2.0,"remaining_amount":2.0,"price":300.0,"status":"executing"},"relationships":{"user":{"data":{"id":"7","type":"users"}},"orderbook":{"data":{"id":"1","type":"orderbooks"}}}}}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"36270309","type":"asks","attributes":{"amount":0.06,"remaining_amount":0.06,"price":129.60081657,"status":"executing","orderbook_code":"bch_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
     http_version: 
-  recorded_at: Sat, 01 Dec 2018 04:51:29 GMT
+  recorded_at: Fri, 18 Jan 2019 13:39:25 GMT
 recorded_with: VCR 4.0.0

@@ -1,9 +1,23 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
-      class ArgentinaInvoicingDetailSeed < Private
-        # .create(address:, country:, full_name:, receipt_kind_code:, tax_id:, tax_id_kind_code:, vat_status_code:)
+      class ArgentinaInvoicingDetailSeed < Seed
+        # POST /api/argentina_invoicing_detail_seed
+        #
+        # @param [Integer] id. Impersonated user id.
+        #
+        # @param attrs [Hash]:
+        #   @param [String] address.
+        #   @param [String] country.
+        #   @param [String] full_name.
+        #   @param [String] receipt_kind_code.
+        #   @param [String] tax_id.
+        #   @param [String] tax_id_kind_code.
+        #   @param [String] vat_status_code.
+        #
+        # @return [ArgentinaInvoicingDetailSeed]
+        #
+        # .create(id, **attrs)
       end
     end
   end

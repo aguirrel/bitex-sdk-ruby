@@ -37,9 +37,8 @@ module Bitex
         # @param [Integer|String] id.
         #
         # @return [Payment]
-        def self.find(id)
-          super(id)[0]
-        end
+        #
+        # .find(id)
 
         # POST /api/merchants/payments
         #

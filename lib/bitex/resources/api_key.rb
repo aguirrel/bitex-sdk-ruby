@@ -10,8 +10,9 @@ module Bitex
       # GET /api/api_keys
       #
       # Get all api keys.
+      # Important: The tokens will be obfuscated after 10 minutes of the Api Key's creation (for security purposes).
       #
-      # @return JsonApiClient::ResultSet. It has the server response data, and all  api key parsed to json api.
+      # @return [ResultSet<ApiKey>]
       #
       # .all
 
@@ -20,9 +21,8 @@ module Bitex
       # @param [Integer|String] id.
       #
       # @return [ApiKey]
-      def self.find(id)
-        super(id)[0]
-      end
+      #
+      # .find(id)
 
       # POST /api/api_keys
       #
@@ -34,7 +34,7 @@ module Bitex
       #
       # @return [ApiKey]
       def self.create(permissions: {}, otp: nil)
-        with_headers(otp: otp) { super(permissions) }
+        with_headers('One-Time-Password': otp) { super(permissions) }
       end
 
       # DELETE /api/api_keys/:id
@@ -43,7 +43,7 @@ module Bitex
       #
       # @param [Integer|String] id.
       #
-      # @return [nil]
+      # @return [Boolean]
       #
       # #destroy
     end

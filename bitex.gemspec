@@ -5,7 +5,7 @@ require 'bitex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'bitex'
-  spec.version       = '0.1.0'
+  spec.version       = '1.0.0'
   spec.authors       = ['Nubis', 'Eromirou', 'Jas']
   spec.email         = ['nb@bitex.la', 'tr@bitex.la', 'juanangelszymczak@gmail.com']
   spec.description   = %q{API-V2 client library for bitex.la}
@@ -19,6 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport'
+  spec.add_dependency 'json_api_client'
+  spec.add_dependency 'static_models'
   spec.add_dependency 'curb', '~> 0.9.3'
 
   spec.required_ruby_version = '>= 2.0'

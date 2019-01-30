@@ -32,7 +32,7 @@ module Bitex
         #
         # @return [BuyingBot]
         #
-        # .create(amount:, orderbook:)
+        # .create(orderbook:, amount:)
 
         # POST /api/buying_bots/cancel
         #

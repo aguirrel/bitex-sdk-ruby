@@ -1,61 +1,47 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Trades::Trade do
-  shared_examples_for 'Trade' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') do
-      is_expected.to contain_exactly(*%w[type id created_at coin_amount cash_amount fee price fee_currency fee_decimals])
-    end
-
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook order]) }
-
-    context 'about included resources' do
-      its(:orderbook) { is_expected.to be_a(Bitex::Resources::Orderbook) }
-    end
-  end
-
   describe '.all' do
     context 'without filters', vcr: { cassette_name: 'trades/all/without_filters' } do
-      subject { read_level_client.trades.all }
+      subject(:trades) { client.trades.all }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-      it 'about records types' do
-        expect(subject.map(&:type))
-          .to contain_exactly(*%w[buys sells buys sells buys sells buys sells buys sells buys sells buys buys sells buys])
+      it 'retrieves from all orderbooks' do
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_ars btc_pyg btc_usd])
       end
 
-      context 'taking first trade' do
-        subject { super().first }
+      context 'taking buy trade type' do
+        subject(:buy) { trades.find { |trade| trade.type == 'buys' } }
+
+        it_behaves_like 'Trades'
 
         its(:type) { is_expected.to eq('buys') }
-
-        it_behaves_like 'Trade'
       end
 
-      context 'taking second trade' do
-        subject { super().second }
+      context 'taking sell trade type' do
+        subject(:sell) { trades.find { |trade| trade.type == 'sells' } }
+
+        it_behaves_like 'Trades'
 
         its(:type) { is_expected.to eq('sells') }
-
-        it_behaves_like 'Trade'
       end
     end
 
     context 'with filters', vcr: { cassette_name: 'trades/all/with_filters' } do
-      subject { read_level_client.trades.all(orderbook: orderbook, days: days, limit: limit) }
+      before(:each) { Timecop.freeze('2019-01-16') }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
-      let(:days) { 10 }
-      let(:limit) { 5 }
+      subject(:trades) { client.trades.all(orderbook: orderbook, days: 50, limit: 100) }
 
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
-      it 'sends required filters' do
-        expect(URI.decode(subject.uri.query))
-          .to eq("filter[days]=#{days}&filter[orderbook_code]=#{orderbook.code}&limit=#{limit}")
+      it 'retrieves from specific traded orderbooks' do
+        expect(trades.map(&:orderbook_code).uniq).to eq(['btc_usd'])
       end
+
+      it { expect(trades.all? { |trade| trade.created_at.to_time >= 50.days.ago }).to be_truthy }
+
+      its(:count) { is_expected.to be <= 100 }
     end
   end
 end

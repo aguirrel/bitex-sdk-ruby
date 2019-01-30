@@ -17,7 +17,7 @@ module Bitex
         #
         # @return [CashWallet]
         #
-        # .find(currency_code: currency_code)
+        # .find(currency_code)
       end
     end
   end

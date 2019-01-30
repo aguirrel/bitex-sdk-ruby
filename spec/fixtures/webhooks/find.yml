@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.bitex.la/api/webhooks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 24 Jan 2019 20:22:52 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d260d1e9620b48341387d3419c265b28b1548361372; expires=Fri, 24-Jan-20
+        20:22:52 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=ampaNDE3Q1NJWmp4RGRmN0QxUWpuaDlmRTlaOXY0SFdaZkdNMXNnNE9GanBUTEVuSnc4U2txbDlETGRTM3BRdVlFS25LN0FqYzRDWGtneVhKN2IrNHNmVHVlOG1YVWlxWlhPK3lRTkxEVzFCNnZRbDR0R0FvOUlyVmRxZE9vNVRXVEhYTEx4dzVXR211L2JtTTNrd1I4ZThhYkV2QTMvekpORHFPM01uOGRVPS0tSFh4S29TVkxreUtING84dit5ZG1wUT09--cec7fce901af53cb3ec5934e302dd0d088c76112;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"cf348922ec8a832009cd24341aa94ac6"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ab90dbde-700c-4d44-a6c6-f2be66b4a4e5
+      X-Runtime:
+      - '0.124295'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49e536f11a8380b2-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1548361372","type":"webhooks","attributes":{"url":"https://webhooktest.com"}}}'
+    http_version:
+  recorded_at: Thu, 24 Jan 2019 20:22:52 GMT
+recorded_with: VCR 4.0.0

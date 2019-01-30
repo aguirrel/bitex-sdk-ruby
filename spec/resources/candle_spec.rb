@@ -1,77 +1,60 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Candle do
-  shared_examples_for 'Candle' do
-    it { is_expected.to be_a(described_class) }
-
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id timestamp low open close high volume price_before_last vwap]) }
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[orderbook]) }
-  end
-
-  describe '.find' do
-    subject { client.candles.find(days: days, orderbook: orderbook, span: span)  }
-
-    context 'without parameters', vcr: { cassette_name: 'candles/find/without_params' } do
-      let(:orderbook) { nil }
-      let(:days) { nil }
-      let(:span) { nil }
+  describe '.all' do
+    context 'without filters', vcr: { cassette_name: 'candles/all/without_filters' } do
+      subject(:candles) { client.candles.all }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
+      it 'retrieves from all orderbooks' do
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[btc_usd btc_ars btc_clp btc_pyg btc_uyu bch_usd])
+      end
+
       context 'taking a sample' do
-        subject { super().sample }
+        subject(:sample) { candles.sample }
 
-        it_behaves_like 'Candle'
+        it { is_expected.to be_a(Bitex::Resources::Candle) }
 
-        context 'about included resources' do
-          subject { super().orderbook }
-
-          it { is_expected.to be_a(Bitex::Resources::Orderbook) }
+        its(:'attributes.keys') do
+          is_expected.to contain_exactly(*%w[type id timestamp low open orderbook_code close high volume price_before_last vwap])
         end
+
+        its(:type) { is_expected.to eq('candles') }
       end
     end
 
-    context 'with orderbook' do
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: 1, code: 'btc_usd') }
+    context 'with orderbook filter', vcr: { cassette_name: 'candles/all/with_orderbook' } do
+      subject(:candles) { client.candles.all(orderbook: orderbook) }
 
-      context 'without span and days', vcr: { cassette_name: 'candles/find/with_orderbook' } do
-        let(:days) { nil }
-        let(:span) { nil }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-        context 'taking a sample' do
-          subject { super().sample }
+      it 'retrieves from specific orderbook' do
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly('btc_usd')
+      end
+    end
 
-          it_behaves_like 'Candle'
+    context 'with all filters', vcr: { cassette_name: 'candles/all/with_all_filters' } do
+      subject(:candles) { client.candles.all(orderbook: orderbook, days: time_ago, span: span) }
 
-          context 'about included resources' do
-            subject { super().orderbook }
+      before(:each) { Timecop.freeze('2019-01-21 13:00') }
+      let(:span) { 8 }
+      let(:time_ago) { 10 }
 
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-            its(:code) { is_expected.to eq(orderbook.code) }
-          end
-        end
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+
+      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+
+      it 'retrieves with specified days ago' do
+        expect(candles.all? { |candle| Time.at(candle.timestamp) >= Time.now - time_ago.days }).to be_truthy
       end
 
-      context 'with span and days', vcr: { cassette_name: 'candles/find/with_span_and_days' } do
-        let(:days) { 10 }
-        let(:span) { 3 }
-
-        it { is_expected.to be_a(JsonApiClient::ResultSet) }
-
-        context 'taking a sample' do
-          subject { super().sample }
-
-          it_behaves_like 'Candle'
-
-          context 'about included resources' do
-            subject { super().orderbook }
-
-            it { is_expected.to be_a(Bitex::Resources::Orderbook) }
-            its(:code) { is_expected.to eq(orderbook.code) }
-          end
+      it 'retrieves with specified time span' do
+        candles.each_cons(2) do |oldest, newest|
+          hours_difference = (Time.at(newest.timestamp).hour - Time.at(oldest.timestamp).hour).abs
+          expect(hours_difference).to be >= span
         end
       end
     end

@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.bitex.la/api/issues/current/complete
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - your_magic_api_key;
+        user=601
+      Version:
+      - '2.1'
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Jan 2019 16:10:02 GMT
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da0ff18d29937bd1396f53dcb1f7669ae1548778198; expires=Wed, 29-Jan-20
+        16:09:58 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=S2w1aGxjNklLalpvU0RQRnk2NTN4VTdxUWRGNkZ4c0dqZHpxTENvZlhxeUNyWnJ5UTYyUE4yTWprTFZPcXptYUFLTmtsaDl6dUZaQVNRK05WMmhwQm5jb3FBVHJDdWU2SUhlbm1FTnhaWWpaMVpCR29OSVVoK1NHSm81ZlF0VXZNVVcwOXNWNFdoTCttN2tGWGVtSFZZem1iUEFlK00reUlIYlhpRnNCVEMwPS0tdGFwTDZUbzNOVFZwYzFuYnpSTlREZz09--35988a21822b2065b4729df80521bae360c90eb5;
+        path=/; secure; HttpOnly
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"5519256d95c5df660e5937e10701f9c1"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 41c1f369-cf8c-4b9d-ad82-788ab6412f8e
+      X-Runtime:
+      - '2.929083'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 4a0cf75d881380a6-SCL
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1521","type":"issues","attributes":{"state":"new"}}}'
+    http_version: 
+  recorded_at: Tue, 29 Jan 2019 16:10:00 GMT
+recorded_with: VCR 4.0.0

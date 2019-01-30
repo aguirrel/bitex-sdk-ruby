@@ -39,7 +39,7 @@ module Bitex
         #
         # @return [Pos]
         #
-        # self.create(merchat_keep: keep, merchant_logo: logo, merchant_name: name, merchant_site: site, merchant_slug: slug)
+        # .create(merchat_keep: keep, merchant_logo: logo, merchant_name: name, merchant_site: site, merchant_slug: slug)
       end
     end
   end

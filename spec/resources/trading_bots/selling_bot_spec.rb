@@ -1,65 +1,47 @@
 require 'spec_helper'
 
 describe Bitex::Resources::TradingBots::SellingBot do
-  shared_examples_for 'Selling Bot' do
-    it { is_expected.to be_a(described_class) }
+  describe '.all', vcr: { cassette_name: 'selling_bots/all' } do
+    subject(:selling_bots) { client.selling_bots.all }
 
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id amount remaining_amount chunk_size eta executing to_cancel]) }
-    its(:type) { is_expected.to eq(resource_name) }
-    its(:'relationships.attributes.keys') { is_expected.to include(*%w[orderbook user]) }
-  end
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-  describe '.all' do
-    context 'with any level key', vcr: { cassette_name: 'selling_bots/all' } do
-      subject { read_level_client.selling_bots.all }
+    context 'taking a sample' do
+      subject(:sample) { selling_bots.sample }
 
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
+      it { is_expected.to be_a(Bitex::Resources::TradingBots::SellingBot) }
 
-      context 'taking a sample' do
-        subject { super().sample }
+      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code amount remaining_amount chunk_size eta executing to_cancel]) }
 
-        it_behaves_like 'Selling Bot'
-      end
+      its(:type) { is_expected.to eq('selling_bots') }
+
+      its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user]) }
     end
   end
 
-  describe '.find' do
-    context 'with any level key', vcr: { cassette_name: 'selling_bots/find' } do
-      subject { read_level_client.selling_bots.find(id) }
+  describe '.create', vcr: { cassette_name: 'selling_bots/create' } do
+    subject { client.selling_bots.create(orderbook: orderbook, amount: 0.03) }
 
-      let(:id) { '5' }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
 
-      it_behaves_like 'Selling Bot'
+    it { is_expected.to be_a(Bitex::Resources::TradingBots::SellingBot) }
 
-      its(:id) { is_expected.to eq(id) }
-    end
+    its(:orderbook_code) { is_expected.to eq('btc_usd') }
+    its(:amount) { is_expected.to eq(0.03) }
   end
 
-  describe '.create' do
-    context 'with authorized level key', vcr: { cassette_name: 'selling_bots/create' } do
-      subject { write_level_client.selling_bots.create(amount: amount, orderbook: orderbook) }
+  describe '.find', vcr: { cassette_name: 'selling_bots/find' } do
+    subject { client.selling_bots.find('4301') }
 
-      let(:amount) { 100_000 }
-      let(:orderbook) { Bitex::Resources::Orderbook.new(id: '1', code: 'btc_usd') }
+    it { is_expected.to be_a(Bitex::Resources::TradingBots::SellingBot) }
 
-      it_behaves_like 'Selling Bot'
-
-      its(:amount) { is_expected.to eq(amount) }
-
-      it 'your relationships with your orderbook' do
-        expect(subject.relationships.orderbook[:data][:id]).to eq(orderbook.id)
-      end
-    end
+    its(:id) { is_expected.to eq('4301') }
   end
 
-  describe '.cancel' do
-    context 'with authorized level key', vcr: { cassette_name: 'selling_bots/cancel' } do
-      subject { write_level_client.selling_bots.cancel(id: id) }
+  describe '.cancel', vcr: { cassette_name: 'selling_bots/cancel' } do
+    subject { client.selling_bots.cancel(id: '4301') }
 
-      let(:id) { '6' }
-
-      it { is_expected.to be_an(Array) }
-      it { is_expected.to be_empty }
-    end
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to be_empty }
   end
 end

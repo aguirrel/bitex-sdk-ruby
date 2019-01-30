@@ -11,9 +11,12 @@ module Bitex
         #   in order to provide you with better support
         # ***************************************************************************************************************
         #
+        # Optional filters:
+        #   @param [String] from. Date from which to take the withdrawals. Fromat is ISO 8601 (YYYY-MM-DD)
+        #
         # @return [ResultSet<CashDepositInstruction>]
         #
-        # .all
+        # .all(from:)
       end
     end
   end

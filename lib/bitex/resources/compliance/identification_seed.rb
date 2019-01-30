@@ -1,10 +1,21 @@
 module Bitex
   module Resources
     module Compliance
-      # pending doc TODO
-      class IdentificationSeed < Private
-        # .create(identification_kind_code:, number:, issuer:, public_registry_authority:, public_registry_book:,
-        #   public_registry_extra_data:)
+      class IdentificationSeed < Seed
+        # POST /api/identification_seeds
+        #
+        # The identification should be checked by an attachment demonstrating its validity.
+        #
+        # @param [Integer] id. Impersonated user id.
+        #
+        # @param attrs [Hash]:
+        #   @param [String] identification_kind_code.
+        #   @param [String] issuer.
+        #   @param [Integer] number.
+        #
+        # @return [IdentificationSeed]
+        #
+        # .create(id, **attrs)
       end
     end
   end

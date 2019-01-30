@@ -1,38 +1,26 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Wallets::CashWallet do
-  shared_examples_for 'Cash Wallet' do
-    it { is_expected.to be_a(described_class) }
+  describe '.all', vcr: { cassette_name: 'cash_wallet/all' } do
+    subject(:wallets) { client.cash_wallets.all }
 
-    its(:'attributes.keys') { is_expected.to contain_exactly(*%w[id type balance available currency]) }
-    its(:type) { is_expected.to eq(resource_name) }
-  end
+    it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
-  describe '.all' do
-    subject { client.cash_wallets.all }
+    context 'taking a sample' do
+      subject(:sample) { wallets.sample }
 
-    context 'with any level key', vcr: { cassette_name: 'cash_wallet/all' } do
-      let(:key) { read_level_key }
+      it { is_expected.to be_a(Bitex::Resources::Wallets::CashWallet) }
 
-      it { is_expected.to be_a(JsonApiClient::ResultSet) }
-
-      context 'taking a sample' do
-        subject { super().sample }
-
-        it_behaves_like 'Cash Wallet'
-      end
+      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[id type balance available currency]) }
+      its(:type) { is_expected.to eq('cash_wallets') }
     end
   end
 
-  describe '.find' do
-    subject { client.cash_wallets.find(currency_code: currency_code)}
+  describe '.find', vcr: { cassette_name: 'cash_wallet/find' } do
+    subject { client.cash_wallets.find('usd') }
 
-    context 'with any level key', vcr: { cassette_name: 'cash_wallet/find' } do
-      let(:key) { read_level_key }
+    it { is_expected.to be_a(Bitex::Resources::Wallets::CashWallet) }
 
-      let(:currency_code) { 'usd' }
-
-      it_behaves_like 'Cash Wallet'
-    end
+    its(:id) { is_expected.to eq('usd') }
   end
 end

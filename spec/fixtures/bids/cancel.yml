@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sandbox.bitex.la/api/bids/38/cancel
+    uri: https://sandbox.bitex.la/api/bids/36291147/cancel
     body:
       encoding: UTF-8
       string: "{}"
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.15.4
       Authorization:
-      - write_level
+      - your_magic_api_key
       Version:
-      - '2.0'
+      - '2.1'
       Content-Type:
       - application/vnd.api+json
       Accept:
@@ -24,6 +24,15 @@ http_interactions:
       code: 204
       message: No Content
     headers:
+      Date:
+      - Thu, 17 Jan 2019 18:09:15 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc8f2d33e0ad1611562aceb29bfee311d1547748555; expires=Fri, 17-Jan-20
+        18:09:15 GMT; path=/; domain=.bitex.la; HttpOnly
+      - _bitex_la_session=eGxVYlpNQWNzUjhGdGZsTXBOSUdnWmQxbTMvN1htM3MrUmk0dGdnQUN6Yjl0QTRtaS9hTFZwME1KL3QwVXBNSlR1VVh3OWF2YWMzVW9qNEFvUWJSWi9oTmUyWG9xT2pQdEkyZFFEb2dsKzhJeHIzeSt0RHB4RGFMVWoyNk05RTItLStxRHFXWmZWdi95NzRMN0JhdUxnWHc9PQ%3D%3D--8f474bf9c274055fd8d7826729220e76688b6390;
+        path=/; secure; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -32,16 +41,21 @@ http_interactions:
       - nosniff
       Cache-Control:
       - no-cache
-      Set-Cookie:
-      - _bitex_la_session=NWtuK1VYSzZaa2crdmJwVkl0T0NJbjdTL3BVcXhyRWg2ckhkN0MybitZcjg0WnJ2VGJPNDQ3MlZobTU5d3p1a3lBR0dZaEJNbDRzY05rakJtaWlHOWwzTkJCNlBuaXNOZDY2Yk15KzNBdlVrL1N0a3JuNHZ3UFczS1lXckRBendnS2pTaHFMQ3NQaGZUS1hJaEpzaWYzNzNtTGp4TVBUSEpzYUdnWERkVTFFPS0tU1pQQ3EvOG40a1RuM2hlMDNCV3RWQT09--bd0bffcdc39854fbc854e0ddeeca23aabb1c7d5c;
-        path=/; HttpOnly
       X-Request-Id:
-      - 0b733180-09d8-4cef-95ba-16c4e56ce9b8
+      - d7f81b3d-546b-44e6-b7b4-a1918189c518
       X-Runtime:
-      - '0.250843'
+      - '0.199199'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 49aac5950f8fbb04-SCL
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 01 Dec 2018 14:10:41 GMT
+  recorded_at: Thu, 17 Jan 2019 18:09:15 GMT
 recorded_with: VCR 4.0.0

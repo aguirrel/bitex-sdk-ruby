@@ -1,25 +1,16 @@
 require 'spec_helper'
 
 describe Bitex::Resources::Compliance::AllowanceSeed do
-  let(:write_level_key) { 'write_level' }
+  describe '.create', vcr: { cassette_name: 'compliance/allowance_seed/create' } do
+    subject { client.allowance_seeds.create(601, kind_code: 'usd') }
 
-  shared_examples_for 'Allowance Seed' do
-    it { is_expected.to be_a(described_class) }
+    it { is_expected.to be_a(Bitex::Resources::Compliance::AllowanceSeed) }
 
     its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id kind_code created_at updated_at]) }
 
-    its(:kind_code) { is_expected.to eq(kind_code) }
-  end
+    its(:type) { is_expected.to eq('allowance_seeds') }
+    its(:id) { is_expected.to be_present }
 
-  describe '.create' do
-    subject { client.allowance_seeds.create(kind_code: kind_code) }
-
-    let(:kind_code) { 'usd' }
-
-    context 'with authorized level key', vcr: { cassette_name: 'compliance/allowance_seed/create' } do
-      let(:key) { write_level_key }
-
-      it_behaves_like 'Allowance Seed'
-    end
+    its(:kind_code) { is_expected.to eq('usd') }
   end
 end
