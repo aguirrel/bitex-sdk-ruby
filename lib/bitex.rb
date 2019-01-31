@@ -9,6 +9,9 @@ require 'json'
 require 'json_api_client'
 require 'static_models'
 
+# Custom parser
+require 'bitex/decimal_caster'
+
 # Bitex library namespace
 module Bitex
   ActiveSupport::Dependencies.autoload_paths += [File.expand_path(__dir__)]
