@@ -3,6 +3,9 @@ module Bitex
     # Returns a list representing all individual trades for the past given hours, sorted by descending date.
     # For market relationships also.
     class Transaction < Public
+      property :amount, type: :decimal
+      property :price, type: :decimal
+
       # GET https://bitex.la/api/transactions?filter[orderbook_code]={:orderbook_code}&filter[from]={:hours}
       #
       # Get last transactions of a given market.
