@@ -2,6 +2,10 @@ module Bitex
   module Resources
     module TradingBots
       class BuyingBot < TradingBot
+        property :amount, type: :decimal
+        property :remaining_amount, type: :decimal
+        property :chunk_size, type: :decimal
+
         # GET /api/buying_bots
         #
         # Get all Buying Bots.
