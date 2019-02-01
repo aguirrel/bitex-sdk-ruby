@@ -9,8 +9,9 @@ require 'json'
 require 'json_api_client'
 require 'static_models'
 
-# Custom parser
-require 'bitex/decimal_caster'
+# Custom casters
+require 'bitex/casters/decimal_caster'
+require 'bitex/casters/balances_caster'
 
 # Bitex library namespace
 module Bitex
