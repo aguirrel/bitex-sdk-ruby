@@ -2,6 +2,14 @@ module Bitex
   module Resources
     # For market relationships.
     class Candle < Public
+      property :low, type: :decimal
+      property :high, type: :decimal
+      property :open, type: :decimal
+      property :close, type: :decimal
+      property :volume, type: :decimal
+      property :vwap, type: :decimal
+      property :price_before_last, type: :decimal
+
       # GET /api/candles?filter[orderbook_code]={orderbook_code}&filter[days]={days}&span={span}
       #
       # Get candles for a given market
