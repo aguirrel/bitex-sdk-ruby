@@ -22,6 +22,16 @@ module Bitex
       # Contact us if you need settlements in currencies other than BTC or USD; if you need to have a guaranteed price instead of
       # settling at the best BTC/USD price; or if you need to automatically settle lots of micro-payments.
       class Payment < Merchant
+        property :amount, type: :decimal
+        property :settlement_amount, type: :decimal
+        property :confirmed_quantity, type: :decimal
+        property :unconfirmed_quantity, type: :decimal
+        property :expected_quantity, type: :decimal
+        property :keep, type: :decimal
+        property :kept, type: :decimal
+        property :overpaid, type: :decimal
+        property :kept, type: :decimal
+
         def self.resource_path
           "#{super()}/payments"
         end

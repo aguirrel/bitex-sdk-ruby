@@ -1,6 +1,9 @@
 module Bitex
   module Resources
     module Deposits
+      # If you want to load Fiat balance (such as USD, ARS, CLP, PYG or UYU), we provide an experimental endpoint to get all the
+      # information you need to make the transfer.
+      # It's in HTML format, for it to be displayed in a browser and read by a human.
       class CashDeposit < Deposit
         property :amount, type: :decimal
         property :gross_amount, type: :decimal

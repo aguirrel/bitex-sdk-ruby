@@ -1,6 +1,7 @@
 module Bitex
   module Resources
     module Trades
+      # This displays your Buy Trades.
       class Buy < Trade
         property :cash_amount, type: :decimal
         property :coin_amount, type: :decimal

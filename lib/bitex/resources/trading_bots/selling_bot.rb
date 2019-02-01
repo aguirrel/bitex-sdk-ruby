@@ -1,6 +1,7 @@
 module Bitex
   module Resources
     module TradingBots
+      # The robots sell crypts intelligently.
       class SellingBot < TradingBot
         property :amount, type: :decimal
         property :remaining_amount, type: :decimal
