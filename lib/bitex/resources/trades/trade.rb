@@ -3,6 +3,11 @@ module Bitex
     module Trades
       # This displays your trades (Buy & Sell).
       class Trade < Private
+        property :cash_amount, type: :decimal
+        property :coin_amount, type: :decimal
+        property :fee, type: :decimal
+        property :price, type: :decimal
+
         # GET /api/trades?filter[orderboook_code]={orderbook_code}&filter[days]={days}&lmit={limit}
         #
         # Market where the buys/sells were done.
