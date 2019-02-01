@@ -2,6 +2,8 @@ module Bitex
   module Resources
     module Deposits
       class CoinDeposit < Deposit
+        property :amount, type: :decimal
+
         # GET /api/coin_deposits?filter[from]={yyyy-mm-dd}
         #
         # filters:

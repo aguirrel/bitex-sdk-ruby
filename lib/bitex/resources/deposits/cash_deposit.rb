@@ -2,6 +2,12 @@ module Bitex
   module Resources
     module Deposits
       class CashDeposit < Deposit
+        property :amount, type: :decimal
+        property :gross_amount, type: :decimal
+        property :net_amount, type: :decimal
+        property :cost, type: :decimal
+        property :fee, type: :decimal
+
         # GET /api/cash_deposits?filter[from]={yyyy-mm-dd}
         #
         # filters:
