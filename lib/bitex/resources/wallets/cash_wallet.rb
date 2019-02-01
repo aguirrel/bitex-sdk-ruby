@@ -3,6 +3,9 @@ module Bitex
     module Wallets
       # This resource has the user's balances in fiat currencies.
       class CashWallet < Wallet
+        property :balance, type: :decimal
+        property :available, type: :decimal
+
         # GET /api/cash_wallets
         #
         # @param [String] from.
