@@ -15,6 +15,8 @@ module Bitex
       # Configures your Web POS in a url of your choice. You should set all fields for the first time so that your POS is enabled.
       # After the initial setup you can change each field independently by only posting the field you wish to change.
       class Pos < Merchant
+        property :merchant_keep, type: :decimal
+
         def self.resource_path
           "#{super()}/pos"
         end

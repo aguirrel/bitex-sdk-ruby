@@ -1,7 +1,13 @@
 module Bitex
   module Resources
     module Trades
+      # This displays your Buy Trades.
       class Buy < Trade
+        property :cash_amount, type: :decimal
+        property :coin_amount, type: :decimal
+        property :fee, type: :decimal
+        property :price, type: :decimal
+
         # GET /api/buys?filter[orderboook_code]={orderbook_code}&filter[days]={days}&lmit={limit}
         #
         # Market where the buys were done.

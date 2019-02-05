@@ -1,7 +1,12 @@
 module Bitex
   module Resources
     module TradingBots
+      # The robots sell crypts intelligently.
       class SellingBot < TradingBot
+        property :amount, type: :decimal
+        property :remaining_amount, type: :decimal
+        property :chunk_size, type: :decimal
+
         # GET /api/selling_bots
         #
         # Get all Selling Bots.

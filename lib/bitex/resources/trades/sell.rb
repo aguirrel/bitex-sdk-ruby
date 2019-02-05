@@ -1,7 +1,13 @@
 module Bitex
   module Resources
     module Trades
+      # This displays your Sell Trades.
       class Sell < Trade
+        property :cash_amount, type: :decimal
+        property :coin_amount, type: :decimal
+        property :fee, type: :decimal
+        property :price, type: :decimal
+
         # GET /api/sells?filter[orderboook_code]={orderbook_code}&filter[days]={days}&lmit={limit}
         #
         # Market where the sells were done.

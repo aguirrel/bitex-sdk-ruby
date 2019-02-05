@@ -10,6 +10,8 @@ module Bitex
       # If you're looking for your individual trades see Your latest Trades.
       # Most accounts only need one Compliance Profile, if you need to create sub-accounts have a look at our Reseller API.
       class Account < Private
+        property :balances, type: :balances
+
         # GET /api/accounts
         #
         # Get all your accounts.

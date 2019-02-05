@@ -3,6 +3,10 @@ module Bitex
     module Orders
       # Abstract class for Bids and Asks.
       class Order < Private
+        property :amount, type: :decimal
+        property :remaining_amount, type: :decimal
+        property :price, type: :decimal
+
         # GET /api/orders
         #
         # @return [ResultSet<Order>]

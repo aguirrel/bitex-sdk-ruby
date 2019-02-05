@@ -17,6 +17,7 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
 
         context 'about included resources' do
           its(:withdrawal_instruction) { is_expected.to be_a(Bitex::Resources::Withdrawals::WithdrawalInstruction) }
+          its(:funding_receipt) { is_expected.to be_a(Bitex::Resources::Withdrawals::InvoicingFundingReceipt) }
         end
 
         its(:'attributes.keys') do

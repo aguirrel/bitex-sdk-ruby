@@ -4,6 +4,12 @@ module Bitex
       # Store a set of instructions to be used when requesting cash withdrawals from Bitex or other brokers/exchanges in the
       # Bitex Concierge network.
       class CashWithdrawal < Withdrawal
+        property :amount, type: :decimal
+        property :gross_amount, type: :decimal
+        property :net_amount, type: :decimal
+        property :cost, type: :decimal
+        property :fee, type: :decimal
+
         # GET /api/cash_withdrawals
         #
         # @param [String] from. Date from which to take the withdrawals. Fromat is ISO 8601 (YYYY-MM-DD)

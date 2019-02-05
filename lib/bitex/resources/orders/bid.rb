@@ -4,6 +4,10 @@ module Bitex
       # Trading endpoints have everything you need to place and cancel Buy orders,
       # as well as listing your active orders and every trade you make.
       class Bid < Order
+        property :amount, type: :decimal
+        property :remaining_amount, type: :decimal
+        property :price, type: :decimal
+
         # GET /api/bids?filter[orderbook_code]={orderbook_code}
         #
         # Optional filters:
