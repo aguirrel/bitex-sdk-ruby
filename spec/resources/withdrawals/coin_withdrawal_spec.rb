@@ -13,9 +13,18 @@ describe Bitex::Resources::Withdrawals::CoinWithdrawal do
         it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 
         its(:type) { is_expected.to eq('coin_withdrawals') }
+
+        its(:id) { is_expected.to be_a(String) }
+        its(:amount) { is_expected.to be_a(BigDecimal) }
+        its(:status) { is_expected.to be_a(Symbol) }
+        its(:label) { is_expected.to be_a(String) }
+        its(:to_addresses) { is_expected.to be_a(String) }
+        its(:coin_code) { is_expected.to be_a(Symbol) }
+        its(:created_at) { is_expected.to be_a(Time) }
+
         its(:'relationships.attributes.keys') { is_expected.to contain_exactly('user') }
 
-        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type coin_code id to_addresses label amount status]) }
+        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type created_at coin_code id to_addresses label amount status]) }
       end
     end
 
@@ -27,7 +36,7 @@ describe Bitex::Resources::Withdrawals::CoinWithdrawal do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from specified date' do
-        expect(withdrawals.all? { |withdrawal| Date.strptime(withdrawal.created_at, '%FT') >= str_date.to_date }).to be_truthy
+        expect(withdrawals.all? { |withdrawal| withdrawal.created_at >= str_date.to_time }).to be_truthy
       end
     end
   end
@@ -46,14 +55,14 @@ describe Bitex::Resources::Withdrawals::CoinWithdrawal do
     let(:amount) { 0.001 }
     let(:label) { 'api-test' }
     let(:to_addresses) { 'mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev' }
-    let(:coin_code) { 'btc' }
+    let(:coin_code) { :btc }
     let(:otp) { '614686' }
 
     it { is_expected.to be_a(Bitex::Resources::Withdrawals::CoinWithdrawal) }
 
     its(:amount) { is_expected.to eq(amount) }
     its(:coin_code) { is_expected.to eq(coin_code) }
-    its(:status) { is_expected.to eq('received') }
+    its(:status) { is_expected.to eq(:received) }
     its(:label) { is_expected.to eq(label) }
     its(:to_addresses) { is_expected.to eq(to_addresses) }
   end
