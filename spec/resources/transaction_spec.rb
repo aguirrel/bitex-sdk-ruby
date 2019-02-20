@@ -17,7 +17,12 @@ describe Bitex::Resources::Transaction do
         it { is_expected.to be_a(Bitex::Resources::Transaction) }
 
         its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code timestamp price amount]) }
+
         its(:type) { is_expected.to eq('transactions') }
+        its(:timestamp) { is_expected.to be_a(Integer) }
+        its(:price) { is_expected.to be_a(BigDecimal) }
+        its(:amount) { is_expected.to be_a(BigDecimal) }
+        its(:orderbook_code) { is_expected.to be_a(Symbol) }
       end
     end
 
