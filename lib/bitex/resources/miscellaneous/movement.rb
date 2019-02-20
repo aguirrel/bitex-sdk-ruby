@@ -5,6 +5,15 @@ module Bitex
     module Miscellaneous
       # This displays your movements (Buy, Sell, Deposit & Withdrawal) of the last 3 days.
       class Movement < Private
+        property :amount, type: :decimal
+        property :fee, type: :decimal
+        property :price, type: :decimal
+
+        property :currencies_involved, type: :symbol
+        property :currency, type: :symbol
+        property :fee_currency, type: :symbol
+        property :kind, type: :symbol
+
         # GET /api/movements/
         #
         # @return [ResultSet<Movement>]

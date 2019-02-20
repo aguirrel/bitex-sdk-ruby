@@ -3,7 +3,7 @@ class SymbolCaster
   def self.cast(value, _default)
     raise NoStringError unless value.is_a?(String)
 
-    value.to_sym
+    value.downcase.to_sym
   rescue NoStingError
     value
   end

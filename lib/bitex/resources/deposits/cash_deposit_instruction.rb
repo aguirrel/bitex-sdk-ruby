@@ -1,6 +1,7 @@
 module Bitex
   module Resources
     module Deposits
+      # Instructions for load fiat wallets.
       class CashDepositInstruction < Private
         property :currency, type: :symbol
 

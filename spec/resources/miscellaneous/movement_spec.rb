@@ -16,7 +16,20 @@ describe Bitex::Resources::Miscellaneous::Movement do
           *%w[type id timestamp currencies_involved currency amount fee fee_decimals fee_currency price price_decimals kind]
         )
       }
+
       its(:type) { is_expected.to eq('movements') }
+
+      its(:id) { is_expected.to be_a(String) }
+      its(:timestamp) { is_expected.to be_a(Integer) }
+      its(:currencies_involved) { is_expected.to be_a(Symbol) }
+      its(:currency) { is_expected.to be_a(Symbol) }
+      its(:amount) { is_expected.to be_a(BigDecimal) }
+      its(:fee) { is_expected.to be_a(BigDecimal) }
+      its(:fee_decimals) { is_expected.to be_a(Integer) }
+      its(:fee_currency) { is_expected.to be_a(Symbol) }
+      its(:price) { is_expected.to be_a(BigDecimal) }
+      its(:price_decimals) { is_expected.to be_a(Integer) }
+      its(:kind) { is_expected.to be_a(Symbol) }
     end
   end
 end
