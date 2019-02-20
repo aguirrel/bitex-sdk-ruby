@@ -7,6 +7,10 @@ module Bitex
         property :remaining_amount, type: :decimal
         property :chunk_size, type: :decimal
 
+        property :orderbook_code, type: :symbol
+
+        property :eta, type: :time
+
         # GET /api/buying_bots
         #
         # Get all Buying Bots.

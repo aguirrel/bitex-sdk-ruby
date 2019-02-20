@@ -11,11 +11,9 @@ describe Bitex::Resources::TradingBots::BuyingBot do
 
       it { is_expected.to be_a(Bitex::Resources::TradingBots::BuyingBot) }
 
-      its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code amount remaining_amount chunk_size eta executing to_cancel]) }
+      it_behaves_like 'TradingBots'
 
       its(:type) { is_expected.to eq('buying_bots') }
-
-      its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[user]) }
     end
   end
 
@@ -26,7 +24,7 @@ describe Bitex::Resources::TradingBots::BuyingBot do
 
     it { is_expected.to be_a(Bitex::Resources::TradingBots::BuyingBot) }
 
-    its(:orderbook_code) { is_expected.to eq('btc_usd') }
+    its(:orderbook_code) { is_expected.to eq(:btc_usd) }
     its(:amount) { is_expected.to eq(100) }
   end
 
