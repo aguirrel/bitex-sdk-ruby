@@ -1,7 +1,7 @@
 # Cast to decimal from string.
 class DecimalCaster
   def self.cast(value, _default)
-    raise NaNError unless value.is_a? Numeric
+    raise NaNError unless value.is_a?(Numeric)
 
     BigDecimal(value.to_s)
   rescue NaNError

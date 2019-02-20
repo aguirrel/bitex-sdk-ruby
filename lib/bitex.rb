@@ -12,6 +12,7 @@ require 'static_models'
 # Custom casters
 require 'bitex/casters/decimal_caster'
 require 'bitex/casters/balances_caster'
+require 'bitex/casters/symbol_caster'
 
 # Bitex library namespace
 module Bitex

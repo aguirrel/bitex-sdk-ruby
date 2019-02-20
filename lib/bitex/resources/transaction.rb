@@ -5,6 +5,7 @@ module Bitex
     class Transaction < Public
       property :amount, type: :decimal
       property :price, type: :decimal
+      property :orderbook_code, type: :symbol
 
       # GET https://bitex.la/api/transactions?filter[orderbook_code]={:orderbook_code}&filter[from]={:hours}
       #

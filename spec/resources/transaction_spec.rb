@@ -8,7 +8,7 @@ describe Bitex::Resources::Transaction do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from all transacted orderbooks' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_clp btc_ars btc_pyg btc_usd])
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%i[bch_usd btc_clp btc_ars btc_pyg btc_usd])
       end
 
       context 'taking a sample' do
@@ -45,7 +45,7 @@ describe Bitex::Resources::Transaction do
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         it 'retrieves from specific orderbooks' do
-          expect(transactions.map(&:orderbook_code).uniq).to eq(['btc_usd'])
+          expect(transactions.map(&:orderbook_code).uniq).to eq([:btc_usd])
         end
       end
 
@@ -61,7 +61,7 @@ describe Bitex::Resources::Transaction do
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         it 'retrieves from specific orderbooks' do
-          expect(transactions.map(&:orderbook_code).uniq).to eq(['bch_usd'])
+          expect(transactions.map(&:orderbook_code).uniq).to eq([:bch_usd])
         end
 
         it 'retrieves transactions from specified hours' do
