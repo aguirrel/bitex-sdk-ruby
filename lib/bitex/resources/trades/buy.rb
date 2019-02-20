@@ -8,6 +8,11 @@ module Bitex
         property :fee, type: :decimal
         property :price, type: :decimal
 
+        property :type, type: :symbol
+        property :orderbook_code, type: :symbol
+
+        property :created_at, type: :time
+
         # GET /api/buys?filter[orderboook_code]={orderbook_code}&filter[days]={days}&lmit={limit}
         #
         # Market where the buys were done.
