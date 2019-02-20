@@ -14,6 +14,12 @@ describe Bitex::Resources::Deposits::CoinDeposit do
 
         its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id coin amount created_at]) }
         its(:type) { is_expected.to eq('coin_deposits') }
+
+        its(:id) { is_expected.to be_a(String) }
+        its(:coin) { is_expected.to be_a(Symbol) }
+        its(:amount) { is_expected.to be_a(BigDecimal) }
+        its(:created_at) { is_expected.to be_a(Time) }
+
         its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[address]) }
       end
     end
@@ -26,7 +32,7 @@ describe Bitex::Resources::Deposits::CoinDeposit do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from specified date' do
-        expect(deposits.all? { |deposit| Date.strptime(deposit.created_at, '%FT') >= str_date.to_date }).to be_truthy
+        expect(deposits.all? { |deposit| deposit.created_at >= str_date.to_time }).to be_truthy
       end
     end
   end

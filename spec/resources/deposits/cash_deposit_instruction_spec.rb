@@ -13,6 +13,10 @@ describe Bitex::Resources::Deposits::CashDepositInstruction do
 
       its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id currency instructions]) }
       its(:type) { is_expected.to eq('cash_deposit_instructions') }
+
+      its(:id) { is_expected.to be_a(String) }
+      its(:currency) { is_expected.to be_a(Symbol) }
+      its(:instructions) { is_expected.to be_a(String) }
     end
   end
 end

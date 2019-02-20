@@ -2,6 +2,8 @@ module Bitex
   module Resources
     module Deposits
       class CashDepositInstruction < Private
+        property :currency, type: :symbol
+
         # GET /api/cash_deposit_instructions?filter[from]={yyyy-mm-dd}
         #
         # ***************************************************************************************************************

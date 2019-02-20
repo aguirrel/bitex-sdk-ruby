@@ -6,6 +6,9 @@ module Bitex
       # at the best price, and you will receive USD in your account.
       class CoinDeposit < Deposit
         property :amount, type: :decimal
+        property :coin, type: :symbol
+
+        property :created_at, type: :time
 
         # GET /api/coin_deposits?filter[from]={yyyy-mm-dd}
         #
