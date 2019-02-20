@@ -7,6 +7,11 @@ module Bitex
         property :remaining_amount, type: :decimal
         property :price, type: :decimal
 
+        property :status, type: :symbol
+        property :orderbook_code, type: :symbol
+
+        property :created_at, type: :time
+
         # GET /api/orders
         #
         # @return [ResultSet<Order>]

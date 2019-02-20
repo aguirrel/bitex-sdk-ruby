@@ -7,7 +7,7 @@ describe Bitex::Resources::Orders::Order do
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
     it 'retrieves executing orders' do
-      expect(subject.map(&:status).uniq).to eq(['executing'])
+      expect(subject.map(&:status).uniq).to eq([:executing])
     end
 
     context 'taking bid order type' do

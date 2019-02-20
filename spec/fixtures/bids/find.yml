@@ -61,7 +61,7 @@ http_interactions:
       - 49aab8d33ebb80a6-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"36291147","type":"bids","attributes":{"amount":10.0,"remaining_amount":10.0,"price":3552.18007332,"status":"cancelled","orderbook_code":"btc_usd"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
+      string: '{"data":{"id":"36291147","type":"bids","attributes":{"amount":10.0,"remaining_amount":10.0,"price":3552.18007332,"status":"cancelled","orderbook_code":"btc_usd","created_at":"2000-01-01T00:00:00.000Z"},"relationships":{"user":{"data":{"id":"3197","type":"users"}}}}}'
     http_version: 
   recorded_at: Thu, 17 Jan 2019 18:00:32 GMT
 recorded_with: VCR 4.0.0
