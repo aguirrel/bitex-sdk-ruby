@@ -3,7 +3,7 @@ shared_examples_for 'Trades' do
     is_expected.to contain_exactly(*%w[type id created_at coin_amount cash_amount fee price fee_currency fee_decimals orderbook_code])
   end
 
-  its(:type) { is_expected.to be_a(Symbol) }
+  its(:type) { is_expected.to be_a(String) }
   its(:id) { is_expected.to be_a(String) }
   its(:created_at) { is_expected.to be_a(Time) }
   its(:coin_amount) { is_expected.to be_a(BigDecimal) }

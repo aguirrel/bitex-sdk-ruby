@@ -16,7 +16,7 @@ describe Bitex::Resources::Trades::Sell do
 
         it_behaves_like 'Trades'
 
-        its(:type) { is_expected.to eq(:sells) }
+        its(:type) { is_expected.to eq('sells') }
       end
     end
 

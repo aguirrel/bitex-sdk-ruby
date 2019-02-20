@@ -8,7 +8,6 @@ module Bitex
         property :fee, type: :decimal
         property :price, type: :decimal
 
-        property :type, type: :symbol
         property :orderbook_code, type: :symbol
 
         property :created_at, type: :time

@@ -12,19 +12,19 @@ describe Bitex::Resources::Trades::Trade do
       end
 
       context 'taking buy trade type' do
-        subject(:buy) { trades.find { |trade| trade.type == :buys } }
+        subject(:buy) { trades.find { |trade| trade.type == 'buys' } }
 
         it_behaves_like 'Trades'
 
-        its(:type) { is_expected.to eq(:buys) }
+        its(:type) { is_expected.to eq('buys') }
       end
 
       context 'taking sell trade type' do
-        subject(:sell) { trades.find { |trade| trade.type == :sells } }
+        subject(:sell) { trades.find { |trade| trade.type == 'sells' } }
 
         it_behaves_like 'Trades'
 
-        its(:type) { is_expected.to eq(:sells) }
+        its(:type) { is_expected.to eq('sells') }
       end
     end
 
