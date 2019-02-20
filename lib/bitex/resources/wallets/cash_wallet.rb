@@ -6,6 +6,8 @@ module Bitex
         property :balance, type: :decimal
         property :available, type: :decimal
 
+        property :currency, type: :symbol
+
         # GET /api/cash_wallets
         #
         # @param [String] from.
