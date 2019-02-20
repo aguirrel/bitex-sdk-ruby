@@ -13,8 +13,12 @@ describe Bitex::Resources::Orderbook do
 
       its(:id) { is_expected.to eq(1) }
       its(:code) { is_expected.to eq(:btc_usd) }
+
       its(:base) { is_expected.to be_a(Bitex::Resources::Currency) }
+      its(:'base.code') { is_expected.to eq(:btc) }
+
       its(:quote) { is_expected.to be_a(Bitex::Resources::Currency) }
+      its(:'quote.code') { is_expected.to eq(:usd) }
     end
   end
 end
