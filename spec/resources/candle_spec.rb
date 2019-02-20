@@ -8,7 +8,7 @@ describe Bitex::Resources::Candle do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from all orderbooks' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[btc_usd btc_ars btc_clp btc_pyg btc_uyu bch_usd])
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%i[btc_usd btc_ars btc_clp btc_pyg btc_uyu bch_usd])
       end
 
       context 'taking a sample' do
@@ -21,18 +21,26 @@ describe Bitex::Resources::Candle do
         end
 
         its(:type) { is_expected.to eq('candles') }
+        its(:low) { is_expected.to be_a(BigDecimal) }
+        its(:open) { is_expected.to be_a(BigDecimal) }
+        its(:close) { is_expected.to be_a(BigDecimal) }
+        its(:high) { is_expected.to be_a(BigDecimal) }
+        its(:volume) { is_expected.to be_a(BigDecimal) }
+        its(:price_before_last) { is_expected.to be_a(BigDecimal) }
+        its(:vwap) { is_expected.to be_a(BigDecimal) }
+        its(:orderbook_code) { is_expected.to be_a(Symbol) }
       end
     end
 
     context 'with orderbook filter', vcr: { cassette_name: 'candles/all/with_orderbook' } do
       subject(:candles) { client.candles.all(orderbook: orderbook) }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:btc_usd) }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from specific orderbook' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly('btc_usd')
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(:btc_usd)
       end
     end
 
@@ -43,7 +51,7 @@ describe Bitex::Resources::Candle do
       let(:span) { 8 }
       let(:time_ago) { 10 }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:btc_usd) }
 
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 

@@ -10,6 +10,8 @@ module Bitex
       property :vwap, type: :decimal
       property :price_before_last, type: :decimal
 
+      property :orderbook_code, type: :symbol
+
       # GET /api/candles?filter[orderbook_code]={orderbook_code}&filter[days]={days}&span={span}
       #
       # Get candles for a given market
