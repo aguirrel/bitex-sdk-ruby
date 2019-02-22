@@ -63,7 +63,7 @@ http_interactions:
       - 49e3852cc8018100-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"108","type":"coin_withdrawals","attributes":{"amount":0.001,"status":"received","label":"api-test","to_addresses":"mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev","coin_code":"btc"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
+      string: '{"data":{"id":"108","type":"coin_withdrawals","attributes":{"amount":0.001,"status":"received","label":"api-test","to_addresses":"mk2jCye9XhXxVwfp9FyVMRwYDzQxscB5ev","coin_code":"btc","created_at":"2019-01-24T15:26:46.309Z"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
     http_version:
   recorded_at: Thu, 24 Jan 2019 15:26:46 GMT
 recorded_with: VCR 4.0.0

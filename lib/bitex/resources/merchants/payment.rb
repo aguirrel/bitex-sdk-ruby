@@ -32,6 +32,14 @@ module Bitex
         property :overpaid, type: :decimal
         property :kept, type: :decimal
 
+        property :currency_code, type: :symbol
+        property :settlement_currency, type: :symbol
+        property :status, type: :symbol
+
+        property :last_quoted_on, type: :time
+        property :quote_valid_until, type: :time
+        property :valid_until, type: :time
+
         def self.resource_path
           "#{super()}/payments"
         end

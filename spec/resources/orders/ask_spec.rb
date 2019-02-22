@@ -7,7 +7,7 @@ describe Bitex::Resources::Orders::Ask do
     it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
     it 'retrieves executing asks' do
-      expect(subject.map(&:status).uniq).to eq(['executing'])
+      expect(subject.map(&:status).uniq).to eq([:executing])
     end
 
     context 'taking a sample' do
@@ -22,10 +22,10 @@ describe Bitex::Resources::Orders::Ask do
   context 'with filters', vcr: { cassette_name: 'asks/all/with_filters' } do
     subject(:asks) { client.asks.all(orderbook: orderbook) }
 
-    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:btc_usd) }
 
     it 'retrieves from specific orderbooks' do
-      expect(asks.map(&:orderbook_code).uniq).to eq(['btc_usd'])
+      expect(asks.map(&:orderbook_code).uniq).to eq([:btc_usd])
     end
   end
 
@@ -47,11 +47,11 @@ describe Bitex::Resources::Orders::Ask do
   describe '.create', vcr: { cassette_name: 'asks/create' } do
     subject { client.asks.create(orderbook: orderbook, amount: 3, price: 150) }
 
-    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('bch_usd') }
+    let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:bch_usd) }
 
     it { is_expected.to be_a(Bitex::Resources::Orders::Ask) }
 
-    its(:orderbook_code) { is_expected.to eq('bch_usd') }
+    its(:orderbook_code) { is_expected.to eq(:bch_usd) }
     its(:amount) { is_expected.to eq(3) }
     its(:price) { is_expected.to eq(150) }
   end

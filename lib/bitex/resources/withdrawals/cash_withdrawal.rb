@@ -10,6 +10,12 @@ module Bitex
         property :cost, type: :decimal
         property :fee, type: :decimal
 
+        property :status, type: :symbol
+        property :fiat_code, type: :symbol
+        property :payment_method, type: :symbol
+
+        property :created_at, type: :time
+
         # GET /api/cash_withdrawals
         #
         # @param [String] from. Date from which to take the withdrawals. Fromat is ISO 8601 (YYYY-MM-DD)

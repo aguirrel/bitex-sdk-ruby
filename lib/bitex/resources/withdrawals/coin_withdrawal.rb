@@ -6,6 +6,11 @@ module Bitex
       class CoinWithdrawal < Withdrawal
         property :amount, type: :decimal
 
+        property :status, type: :symbol
+        property :coin_code, type: :symbol
+
+        property :created_at, type: :time
+
         # GET /api/coin_withdrawals
         #
         # @param [String] from. Date from which to take the withdrawals. Fromat is ISO 8601 (YYYY-MM-DD)

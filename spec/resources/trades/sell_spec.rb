@@ -8,7 +8,7 @@ describe Bitex::Resources::Trades::Sell do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from all orderbooks' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_ars btc_pyg btc_usd])
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%i[bch_usd btc_ars btc_pyg btc_usd])
       end
 
       context 'taking a sample' do
@@ -25,10 +25,10 @@ describe Bitex::Resources::Trades::Sell do
 
       subject(:sells) { client.sells.all(orderbook: orderbook, days: 15, limit: 50) }
 
-      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+      let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:btc_usd) }
 
       it 'retrieves from specific traded orderbooks' do
-        expect(sells.map(&:orderbook_code).uniq).to eq(['btc_usd'])
+        expect(sells.map(&:orderbook_code).uniq).to eq([:btc_usd])
       end
 
       it { expect(sells.all? { |sell| sell.created_at.to_time >= 15.days.ago }).to be_truthy }

@@ -8,7 +8,7 @@ describe Bitex::Resources::Transaction do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from all transacted orderbooks' do
-        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%w[bch_usd btc_clp btc_ars btc_pyg btc_usd])
+        expect(subject.map(&:orderbook_code).uniq).to contain_exactly(*%i[bch_usd btc_clp btc_ars btc_pyg btc_usd])
       end
 
       context 'taking a sample' do
@@ -17,7 +17,12 @@ describe Bitex::Resources::Transaction do
         it { is_expected.to be_a(Bitex::Resources::Transaction) }
 
         its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code timestamp price amount]) }
+
         its(:type) { is_expected.to eq('transactions') }
+        its(:timestamp) { is_expected.to be_a(Integer) }
+        its(:price) { is_expected.to be_a(BigDecimal) }
+        its(:amount) { is_expected.to be_a(BigDecimal) }
+        its(:orderbook_code) { is_expected.to be_a(Symbol) }
       end
     end
 
@@ -40,12 +45,12 @@ describe Bitex::Resources::Transaction do
       context 'with specific orderbok', vcr: { cassette_name: 'transactions/all/with_orderbook' } do
         subject(:transactions) { client.transactions.all(orderbook: orderbook) }
 
-        let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('btc_usd') }
+        let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:btc_usd) }
 
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         it 'retrieves from specific orderbooks' do
-          expect(transactions.map(&:orderbook_code).uniq).to eq(['btc_usd'])
+          expect(transactions.map(&:orderbook_code).uniq).to eq([:btc_usd])
         end
       end
 
@@ -54,14 +59,14 @@ describe Bitex::Resources::Transaction do
 
         before(:each) { Timecop.freeze(date) }
 
-        let(:orderbook) { Bitex::Resources::Orderbook.find_by_code('bch_usd') }
+        let(:orderbook) { Bitex::Resources::Orderbook.find_by_code(:bch_usd) }
         let(:date) { '2019-01-21 14:00'.to_time }
         let(:hours) { 10 }
 
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         it 'retrieves from specific orderbooks' do
-          expect(transactions.map(&:orderbook_code).uniq).to eq(['bch_usd'])
+          expect(transactions.map(&:orderbook_code).uniq).to eq([:bch_usd])
         end
 
         it 'retrieves transactions from specified hours' do

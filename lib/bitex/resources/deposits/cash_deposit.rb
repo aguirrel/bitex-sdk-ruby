@@ -8,8 +8,15 @@ module Bitex
         property :amount, type: :decimal
         property :gross_amount, type: :decimal
         property :net_amount, type: :decimal
+        property :requested_amount, type: :decimal
         property :cost, type: :decimal
         property :fee, type: :decimal
+
+        property :status, type: :symbol
+        property :deposit_method, type: :symbol
+        property :fiat_code, type: :symbol
+
+        property :created_at, type: :time
 
         # GET /api/cash_deposits?filter[from]={yyyy-mm-dd}
         #

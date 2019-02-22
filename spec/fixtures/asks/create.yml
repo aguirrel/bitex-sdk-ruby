@@ -61,7 +61,7 @@ http_interactions:
       - 49e3996cd97bbafe-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"1580","type":"asks","attributes":{"amount":3.0,"remaining_amount":3.0,"price":150.0,"status":"pending","orderbook_code":"bch_usd"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
+      string: '{"data":{"id":"1580","type":"asks","attributes":{"amount":3.0,"remaining_amount":3.0,"price":150.0,"status":"pending","orderbook_code":"bch_usd","created_at":"2000-01-24T15:40:35.000Z"},"relationships":{"user":{"data":{"id":"592","type":"users"}}}}}'
     http_version:
   recorded_at: Thu, 24 Jan 2019 15:40:35 GMT
 recorded_with: VCR 4.0.0

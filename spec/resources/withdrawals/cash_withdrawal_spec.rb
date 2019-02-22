@@ -13,6 +13,20 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
         it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }
 
         its(:type) { is_expected.to eq('cash_withdrawals') }
+
+        its(:id) { is_expected.to be_a(String) }
+
+        its(:amount) { is_expected.to be_a(BigDecimal) }
+        its(:gross_amount) { is_expected.to be_a(BigDecimal) }
+        its(:cost) { is_expected.to be_a(BigDecimal) }
+        its(:fee) { is_expected.to be_a(BigDecimal) }
+        its(:net_amount) { is_expected.to be_a(BigDecimal) }
+        its(:country) { is_expected.to be_a(String) }
+        its(:payment_method) { is_expected.to be_a(Symbol) }
+        its(:fiat_code) { is_expected.to be_a(Symbol) }
+        its(:label) { is_expected.to be_a(String) }
+        its(:created_at) { is_expected.to be_a(Time) }
+
         its(:'relationships.attributes.keys') { is_expected.to contain_exactly(*%w[withdrawal_instruction funding_receipt]) }
 
         context 'about included resources' do
@@ -36,7 +50,7 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
       it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
       it 'retrieves from specified date' do
-        expect(withdrawals.all? { |withdrawal| Date.strptime(withdrawal.created_at, '%FT') >= str_date.to_date }).to be_truthy
+        expect(withdrawals.all? { |withdrawal| withdrawal.created_at >= str_date.to_time }).to be_truthy
       end
     end
   end
@@ -54,7 +68,7 @@ describe Bitex::Resources::Withdrawals::CashWithdrawal do
 
     let(:withdrawal_instruction) { client.withdrawal_instructions.new(id: '299') }
     let(:amount) { 150 }
-    let(:fiat_code) { 'ars' }
+    let(:fiat_code) { :ars }
     let(:otp)  { '062346' }
 
     it { is_expected.to be_a(Bitex::Resources::Withdrawals::CashWithdrawal) }

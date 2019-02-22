@@ -1,7 +1,10 @@
 module Bitex
   module Resources
     module Deposits
+      # Instructions for load fiat wallets.
       class CashDepositInstruction < Private
+        property :currency, type: :symbol
+
         # GET /api/cash_deposit_instructions?filter[from]={yyyy-mm-dd}
         #
         # ***************************************************************************************************************
