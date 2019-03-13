@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 21 Jan 2019 13:33:00 GMT
+      - Wed, 13 Mar 2019 18:07:53 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Transfer-Encoding:
@@ -31,8 +31,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d211b49739b9fd87e1f546430946a5fa61548077580; expires=Tue, 21-Jan-20
-        13:33:00 GMT; path=/; domain=.bitex.la; HttpOnly
+      - __cfduid=dcfb37c8c16ba93d5f1c87351cc21eb341552500473; expires=Thu, 12-Mar-20
+        18:07:53 GMT; path=/; domain=.bitex.la; HttpOnly
       X-Frame-Options:
       - SAMEORIGIN
       X-Xss-Protection:
@@ -40,13 +40,13 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Etag:
-      - W/"4abe73b1243ff39d2d96dc3320891584"
+      - W/"351625939ac965874845720e8fb72d12"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7f213bee-3deb-4a70-b824-d44e093d81dd
+      - 2f4e8ebc-9c4f-4d85-b72e-07f085923ba8
       X-Runtime:
-      - '0.015499'
+      - '0.025961'
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains; preload
       Expect-Ct:
@@ -54,10 +54,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 49ca266be9df80b2-SCL
+      - 4b6ff335be62babc-SCL
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"163395","type":"transactions","attributes":{"timestamp":1548076172,"price":3539.622501,"amount":0.00009999,"orderbook_code":"btc_usd"}},{"id":"163394","type":"transactions","attributes":{"timestamp":1548076139,"price":121.961244,"amount":0.00099999,"orderbook_code":"bch_usd"}},{"id":"163393","type":"transactions","attributes":{"timestamp":1548076109,"price":137415.94,"amount":0.00145543,"orderbook_code":"btc_ars"}},{"id":"163392","type":"transactions","attributes":{"timestamp":1548076035,"price":2382484.57913275,"amount":0.00000747,"orderbook_code":"btc_clp"}},{"id":"163391","type":"transactions","attributes":{"timestamp":1548075975,"price":21171215.1,"amount":0.0001,"orderbook_code":"btc_pyg"}},{"id":"163390","type":"transactions","attributes":{"timestamp":1548075874,"price":3567.5539397,"amount":0.00280304,"orderbook_code":"btc_usd"}}]}'
+      string: '{"data":[{"id":"1682","type":"transactions","attributes":{"datetime":"2019-03-13T17:39:22.000Z","price":239050.0,"amount":10.45806316,"orderbook_code":"btc_ars"}},{"id":"1681","type":"transactions","attributes":{"datetime":"2019-03-13T17:38:35.000Z","price":200000.0,"amount":1.0,"orderbook_code":"btc_ars"}},{"id":"1680","type":"transactions","attributes":{"datetime":"2019-03-13T17:37:10.000Z","price":4100.0,"amount":1.0,"orderbook_code":"btc_usd"}},{"id":"1679","type":"transactions","attributes":{"datetime":"2019-03-13T17:36:56.000Z","price":4400.0,"amount":0.68181818,"orderbook_code":"btc_usd"}}]}'
     http_version: 
-  recorded_at: Mon, 21 Jan 2019 13:33:00 GMT
+  recorded_at: Mon, 21 Jan 2019 17:00:00 GMT
 recorded_with: VCR 4.0.0

@@ -16,10 +16,10 @@ describe Bitex::Resources::Transaction do
 
         it { is_expected.to be_a(Bitex::Resources::Transaction) }
 
-        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code timestamp price amount]) }
+        its(:'attributes.keys') { is_expected.to contain_exactly(*%w[type id orderbook_code datetime price amount]) }
 
         its(:type) { is_expected.to eq('transactions') }
-        its(:timestamp) { is_expected.to be_a(Integer) }
+        its(:datetime) { is_expected.to be_a(Time) }
         its(:price) { is_expected.to be_a(BigDecimal) }
         its(:amount) { is_expected.to be_a(BigDecimal) }
         its(:orderbook_code) { is_expected.to be_a(Symbol) }
@@ -38,7 +38,7 @@ describe Bitex::Resources::Transaction do
         it { is_expected.to be_a(JsonApiClient::ResultSet) }
 
         it 'retrieves transactions from specified hours' do
-          transactions.all? { |transaction| transaction.timestamp >= (date - hours).to_i }
+          transactions.all? { |transaction| transaction.datetime >= (date - hours) }
         end
       end
 
@@ -70,7 +70,7 @@ describe Bitex::Resources::Transaction do
         end
 
         it 'retrieves transactions from specified hours' do
-          transactions.all? { |transaction| transaction.timestamp >= (date - hours).to_i }
+          transactions.all? { |transaction| transaction.datetime >= (date - hours) }
         end
       end
     end
