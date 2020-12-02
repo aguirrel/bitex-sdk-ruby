@@ -7,6 +7,7 @@ require 'curl'
 require 'forwardable'
 require 'json'
 require 'json_api_client'
+require 'static_models'
 
 # Custom casters
 require 'bitex/casters/decimal_caster'
