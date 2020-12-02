@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'json_api_client'
-  spec.add_dependency 'static_models', '~> 1.1.2'
+  spec.add_dependency 'static_models', '~> 0.4.7'
   spec.add_dependency 'curb', '~> 0.9.3'
 
   spec.required_ruby_version = '>= 2.0'
